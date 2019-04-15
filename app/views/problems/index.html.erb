@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> Problemas </title>
+    </head>
+    <body>
+        <h1> Problemas cadastrados: </h1>
+        <% problems = Problem.all %>
+        <% problems.each do |problem| %>
+            <h2><%= problem.title %></h2>
+            <p> <%= problem.statement %> </p>
+        <% end %>
+        <% yield %>
+    </body>
+</html>
