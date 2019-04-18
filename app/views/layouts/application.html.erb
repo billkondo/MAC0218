@@ -7,11 +7,42 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%# Material Icons  %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav>
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">MAC0218</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <% unless user_signed_in? %>
+            <li>
+              <%= link_to "Sign in", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete  %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="sass.html">Sign up</a></li>
+      
+    </ul>
+
+    <%= render "layouts/alerts" %>
+
     <%= yield %>
   </body>
 </html>

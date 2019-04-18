@@ -63,3 +63,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise - Authentication
 gem 'devise'
+
+# Materialize : front-end framework based on material design
+gem 'materialize-sass', '~> 1.0.0'
+
+# jquery
+gem 'jquery-rails'
