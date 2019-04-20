@@ -1,0 +1,31 @@
+<nav>
+  <div class="nav-wrapper container">
+    <%= link_to "MAC0218", home_index_path, class: "brand-logo" %>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <% unless user_signed_in? %>
+        <li>
+          <%= link_to "Sign in", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <li>
+          <a class="dropdown-trigger" data-target="profile-dropdown" ><i class="material-icons">account_circle</i></a>
+        </li>
+        
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<ul id="profile-dropdown" class="dropdown-content">
+  <li><a href="#!">Your profile</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete  %>
+  </li>
+</ul>

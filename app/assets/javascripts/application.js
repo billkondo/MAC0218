@@ -20,4 +20,8 @@
 // TODO: separate in modules later
 $(document).ready(function() {
   $('.sidenav').sidenav();
+  $('.dropdown-trigger').dropdown({
+    constrainWidth: false,
+    alignment: 'right'
+  });
 });

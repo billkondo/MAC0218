@@ -1,4 +1,13 @@
 <div class="container">
-  <h1>Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+  <div class="row">
+    <h1 class="center-align">MAC0218</h1>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="row">
+      <button class="btn">
+        Create a problem
+      </button>
+    </div>
+  <% end %>
 </div>

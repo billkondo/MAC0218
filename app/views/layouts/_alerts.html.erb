@@ -1,7 +1,14 @@
 <% if notice %>
-  <p class="notice"><%= notice %></p>
+  <script type="text/javascript">
+    M.toast({
+      html: '<%= notice %>',
+      classes: 'rounded green darken-3'
+    })
+  </script>
 <% end %>
 
-<%if alert %>
-  <p class="alert"><%= alert %></p>
+<% if alert %>
+  <script type="text/javascript">
+    M.toast('<%= alert %>', 4000)
+  </script>
 <% end %>
