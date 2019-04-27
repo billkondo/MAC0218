@@ -69,3 +69,5 @@ gem 'materialize-sass', '~> 1.0.0'
 
 # jquery
 gem 'jquery-rails'
+
+gem 'webpacker'

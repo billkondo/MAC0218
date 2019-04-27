@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'app' %>
 
     <%# Material Icons  %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -14,14 +15,7 @@
 
   <body>
     <%= render "layouts/navbar" %>
-
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="sass.html">Sign up</a></li>
-      
-    </ul>
-
     <%= render "layouts/alerts" %>
-
     <%= yield %>
   </body>
 </html>
