@@ -10,18 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require materialize
+
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
-
-// TODO: separate in modules later
-$(document).ready(function() {
-  $('.sidenav').sidenav();
-  $('.dropdown-trigger').dropdown({
-    constrainWidth: false,
-    alignment: 'right'
-  });
-});

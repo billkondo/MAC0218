@@ -5,17 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'app' %>
+    <%= javascript_pack_tag 'navbar' %>
 
     <%# Material Icons  %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <div id="navbar">
+    </div>
+
     <%= render "layouts/alerts" %>
+
+    <div id="root">
+    </div>
+
     <%= yield %>
+    
+    <%= content_tag :div, id: "app-data", "data-is-user-signed-in": user_signed_in? do %>
+    <% end %>
   </body>
 </html>

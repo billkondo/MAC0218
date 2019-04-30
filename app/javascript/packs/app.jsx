@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Grid, CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { Home } from '../components';
+import { Home, TypeSelection, SignIn } from '../components';
 
-const App = () => (
+const App = ({ isAuth }) => (
   <BrowserRouter>
+    <CssBaseline />
+
     <Switch>
-      <Route path="/home" component={Home} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/create_problem/" component={TypeSelection} />
+      <Route exact path="/sign-in/" component={SignIn} />
     </Switch>
   </BrowserRouter>
 );
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('root'));
+  const isUserSignedIn =
+    document
+      .getElementById('app-data')
+      .getAttribute('data-is-user-signed-in') === 'true';
+
+  ReactDOM.render(
+    <App isAuth={isUserSignedIn} />,
+    document.getElementById('root')
+  );
 });

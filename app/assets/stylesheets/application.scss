@@ -13,12 +13,3 @@
  *= require_tree .
  *= require_self
  */
-@import 'materialize';
-
-.fill-space-horizontally {
-  width: 100%;
-}
-
-#profile-dropdown {
-  transform: translateY(-50px);
-}
