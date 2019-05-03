@@ -25,7 +25,7 @@ class ProfileIcon extends React.Component {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
       }
     })
-      .then(res => window.location.reload())
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   };
 
@@ -50,7 +50,9 @@ class ProfileIcon extends React.Component {
         >
           <MenuItem onClick={this.handleClose}>Profile</MenuItem>
           <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+          <a href="/users/sign_out/" style={{ textDecoration: 'none' }}>
+            <MenuItem>Logout</MenuItem>
+          </a>
         </Menu>
       </div>
     );
