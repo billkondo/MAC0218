@@ -35,12 +35,14 @@ class Form extends React.Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   createAlternative = (isCorrect = false) => {
-    this.setState(state => ({
-      alternatives: state.alternatives.concat([state.alternative]),
-      alternative: '',
-      isAlternativeDialogOpen: false,
-      correctAnswer: isCorrect ? state.alternative : state.correctAnswer
-    }));
+    if (this.state.alternative) {
+      this.setState(state => ({
+        alternatives: state.alternatives.concat([state.alternative]),
+        alternative: '',
+        isAlternativeDialogOpen: false,
+        correctAnswer: isCorrect ? state.alternative : state.correctAnswer
+      }));
+    }
   };
 
   setCorrectAnswer = altCorrect => this.setState({ correctAnswer: altCorrect });
@@ -54,6 +56,8 @@ class Form extends React.Component {
   };
 
   onSubmit = () => {
+    // TODO validate form
+
     Services.Api.MultipleChoice.create({
       title: this.state.title,
       statement: this.state.statement,

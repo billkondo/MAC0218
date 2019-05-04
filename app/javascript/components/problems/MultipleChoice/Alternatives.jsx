@@ -15,7 +15,7 @@ const Alternatives = ({
     <Grid item>
       <Grid container spacing={32} alignItems="center">
         <Grid item>
-          <Typography variant="h6">Alternatives</Typography>
+          <Typography variant="h6">Alternativas</Typography>
         </Grid>
 
         <Grid item container style={{ flex: 1 }} justify="flex-end">

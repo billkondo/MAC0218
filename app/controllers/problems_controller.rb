@@ -1,6 +1,8 @@
 class ProblemsController < ApplicationController
   def create_multiple_choice
-    print "create"
-    print params
+    print "create\n"
+    print params[:question]
+
+    
   end
 end

@@ -28,7 +28,10 @@ class SignIn extends React.Component {
         utf8: '✓'
       }
     })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        window.location.reload();
+      })
       .catch(err => console.log(err));
   };
 
