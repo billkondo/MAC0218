@@ -43,6 +43,7 @@ class AlternativeDialog extends React.Component {
                 label="Alternativa"
                 value={alternative}
                 onChange={handleChange}
+                autoFocus
               />
             </Grid>
 

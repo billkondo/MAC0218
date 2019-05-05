@@ -12,9 +12,9 @@ const TypeSelection = () => (
     </Grid>
 
     <Grid item container justify="center" spacing={32} alignItems="center">
-      <Grid item md={5} xs={10}>
+      <Grid item md={6} xs={10}>
         <a href={routes.multipleChoiceForm} style={{ textDecoration: 'none' }}>
-          <Paper style={{ padding: 32, height: 250 }}>
+          <Paper style={{ padding: 32, height: 300 }}>
             <Grid container direction="column" spacing={32}>
               <Grid item>
                 <Typography variant="h6">
@@ -33,8 +33,8 @@ const TypeSelection = () => (
         </a>
       </Grid>
 
-      <Grid item md={5} xs={10}>
-        <Paper style={{ padding: 32, height: 250 }}>
+      <Grid item md={6} xs={10}>
+        <Paper style={{ padding: 32, height: 300 }}>
           <Grid container direction="column" spacing={32}>
             <Grid item>
               <Typography variant="h6">Questão Escrita</Typography>

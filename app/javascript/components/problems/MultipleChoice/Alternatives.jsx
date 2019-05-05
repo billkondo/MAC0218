@@ -31,11 +31,11 @@ const Alternatives = ({
         {alternatives.length > 0 ? (
           <React.Fragment>
             {alternatives.map(alt => (
-              <Grid item key={alt}>
+              <Grid item key={alt.text}>
                 <Alternative
                   alt={alt}
                   deleteAlt={() => deleteAlt(alt)}
-                  isCorrect={correct === alt}
+                  isCorrect={correct === alt.text}
                   setCorrect={() => setCorrect(alt)}
                 />
               </Grid>

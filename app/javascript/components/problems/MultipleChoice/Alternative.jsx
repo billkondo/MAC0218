@@ -40,7 +40,7 @@ const Alternative = ({ alt, deleteAlt, isCorrect, setCorrect, classes }) => (
   <Grid container direction="column" spacing={8}>
     <Grid item xs={12}>
       <TextField
-        value={alt}
+        value={alt.text}
         variant="outlined"
         multiline
         InputProps={{

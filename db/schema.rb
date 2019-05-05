@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_141549) do
+ActiveRecord::Schema.define(version: 2019_05_04_235347) do
+
+  create_table "alternatives", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "multiple_choice_problem_id"
+    t.index ["multiple_choice_problem_id"], name: "index_alternatives_on_multiple_choice_problem_id"
+  end
+
+  create_table "multiple_choice_problems", force: :cascade do |t|
+    t.string "title"
+    t.string "statement"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "correct_answer"
+    t.index ["user_id"], name: "index_multiple_choice_problems_on_user_id"
+  end
 
   create_table "problems", force: :cascade do |t|
     t.string "title"

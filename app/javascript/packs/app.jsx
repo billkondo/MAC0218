@@ -11,7 +11,7 @@ const App = ({ isAuth }) => (
     <CssBaseline />
 
     <Grid container justify="center" style={{ marginTop: 64 }}>
-      <Grid item xs={10} md={8}>
+      <Grid item xs={10} md={6}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/create_problem/" component={TypeSelection} />

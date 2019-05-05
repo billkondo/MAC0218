@@ -21,7 +21,7 @@ class Form extends React.Component {
     statement: '',
     alternatives: [],
     alternative: '',
-    correctAnswer: ''
+    correct_answer: ''
   };
 
   openAlternativeDialog = () =>
@@ -37,21 +37,28 @@ class Form extends React.Component {
   createAlternative = (isCorrect = false) => {
     if (this.state.alternative) {
       this.setState(state => ({
-        alternatives: state.alternatives.concat([state.alternative]),
+        alternatives: state.alternatives.concat([
+          {
+            text: state.alternative
+          }
+        ]),
         alternative: '',
         isAlternativeDialogOpen: false,
-        correctAnswer: isCorrect ? state.alternative : state.correctAnswer
+        correct_answer: isCorrect ? state.alternative : state.correct_answer
       }));
     }
   };
 
-  setCorrectAnswer = altCorrect => this.setState({ correctAnswer: altCorrect });
+  setCorrectAnswer = altCorrect =>
+    this.setState({ correct_answer: altCorrect.text });
 
   deleteAlternative = altDelete => {
     this.setState(state => ({
-      alternatives: state.alternatives.filter(alt => alt !== altDelete),
-      correctAnswer:
-        state.correctAnswer === altDelete ? '' : state.correctAnswer
+      alternatives: state.alternatives.filter(
+        alt => alt.text !== altDelete.text
+      ),
+      correct_answer:
+        state.correct_answer === altDelete.text ? '' : state.correct_answer
     }));
   };
 
@@ -61,8 +68,8 @@ class Form extends React.Component {
     Services.Api.MultipleChoice.create({
       title: this.state.title,
       statement: this.state.statement,
-      alternatives: this.state.alternatives,
-      correctAnswer: this.state.correctAnswer
+      alternatives_attributes: this.state.alternatives,
+      correct_answer: this.state.correct_answer
     });
   };
 
@@ -110,7 +117,7 @@ class Form extends React.Component {
                   openDialog={this.openAlternativeDialog}
                   alternatives={this.state.alternatives}
                   deleteAlt={this.deleteAlternative}
-                  correct={this.state.correctAnswer}
+                  correct={this.state.correct_answer}
                   setCorrect={this.setCorrectAnswer}
                 />
               </Grid>

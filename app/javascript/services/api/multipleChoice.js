@@ -1,8 +1,8 @@
 import { routes } from '../../config';
 import axios from 'axios';
 
-const create = question => {
-  console.log(question);
+const create = multiple_choice_problem => {
+  console.log(multiple_choice_problem);
 
   axios({
     method: 'POST',
@@ -11,7 +11,7 @@ const create = question => {
       'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
     },
     data: {
-      question
+      multiple_choice_problem
     }
   })
     .then(res => console.log(res))
