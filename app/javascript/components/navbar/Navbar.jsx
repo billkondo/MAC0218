@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { AppBar, Typography, Toolbar, colors, Grid } from '@material-ui/core';
 
 import ProfileIcon from './ProfileIcon';
@@ -19,11 +20,11 @@ class Navbar extends React.Component {
         <Toolbar>
           <Grid container alignItems="center">
             <Grid item>
-              <a href="/" style={{ textDecoration: 'none' }}>
+              <Link to="/" style={{ textDecoration: 'none' }}>
                 <Typography variant="h6" style={{ color: colors.grey[50] }}>
                   MAC0218
                 </Typography>
-              </a>
+              </Link>
             </Grid>
 
             <Grid item style={{ flex: 1 }}>

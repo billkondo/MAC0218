@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Grid, Paper, Typography } from '@material-ui/core';
 
 import { routes } from '../../config';
@@ -13,7 +14,10 @@ const TypeSelection = () => (
 
     <Grid item container justify="center" spacing={32} alignItems="center">
       <Grid item md={6} xs={10}>
-        <a href={routes.multipleChoiceForm} style={{ textDecoration: 'none' }}>
+        <Link
+          to={routes.multiple_choice_form}
+          style={{ textDecoration: 'none' }}
+        >
           <Paper style={{ padding: 32, height: 300 }}>
             <Grid container direction="column" spacing={32}>
               <Grid item>
@@ -30,7 +34,7 @@ const TypeSelection = () => (
               </Grid>
             </Grid>
           </Paper>
-        </a>
+        </Link>
       </Grid>
 
       <Grid item md={6} xs={10}>
