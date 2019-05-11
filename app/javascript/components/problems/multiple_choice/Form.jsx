@@ -75,8 +75,8 @@ class Form extends React.Component {
 
   render() {
     return (
-      <Grid container direction="column" spacing={32}>
-        <Grid item>
+      <Grid container justify="center">
+        <Grid item xs={10} md={5}>
           <Paper elevation={4}>
             <Grid
               container

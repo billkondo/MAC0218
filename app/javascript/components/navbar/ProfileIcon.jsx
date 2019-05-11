@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Menu, MenuItem, IconButton, colors } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 import { routes } from '../../config';
@@ -51,13 +51,13 @@ class ProfileIcon extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>
-            <Link to={routes.user_profile} style={{ textDecoration: 'none' }}>
-              Profile
-            </Link>
-          </MenuItem>
-
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          <NavLink
+            to={routes.user_profile}
+            style={{ textDecoration: 'none' }}
+            activeStyle={{ textDecoration: 'none', border: 'none' }}
+          >
+            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+          </NavLink>
 
           <a href={routes.sign_out} style={{ textDecoration: 'none' }}>
             <MenuItem>Logout</MenuItem>

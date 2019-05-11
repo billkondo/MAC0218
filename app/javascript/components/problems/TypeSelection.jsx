@@ -5,20 +5,34 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import { routes } from '../../config';
 
 const TypeSelection = () => (
-  <Grid container direction="column" spacing={32} justify="center">
+  <Grid
+    container
+    direction="column"
+    spacing={32}
+    justify="center"
+    alignItems="center"
+  >
     <Grid item>
       <Typography variant="h5" align="center">
         Escolha o tipo de problema
       </Typography>
     </Grid>
 
-    <Grid item container justify="center" spacing={32} alignItems="center">
+    <Grid
+      item
+      md={6}
+      xs={10}
+      container
+      justify="center"
+      spacing={32}
+      alignItems="center"
+    >
       <Grid item md={6} xs={10}>
         <Link
           to={routes.multiple_choice_form}
           style={{ textDecoration: 'none' }}
         >
-          <Paper style={{ padding: 32, height: 300 }}>
+          <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
             <Grid container direction="column" spacing={32}>
               <Grid item>
                 <Typography variant="h6">
@@ -38,7 +52,7 @@ const TypeSelection = () => (
       </Grid>
 
       <Grid item md={6} xs={10}>
-        <Paper style={{ padding: 32, height: 300 }}>
+        <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
           <Grid container direction="column" spacing={32}>
             <Grid item>
               <Typography variant="h6">Questão Escrita</Typography>

@@ -17,22 +17,21 @@ const App = ({ isAuth }) => (
   <BrowserRouter>
     <CssBaseline />
     <Navbar isAuth={isAuth} />
-
-    <Grid container justify="center" style={{ marginTop: 64 }}>
-      <Grid item xs={10} md={6}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/create_problem/" component={TypeSelection} />
-          <Route
-            exact
-            path={routes.multiple_choice_form}
-            component={MultipleChoice.Form}
-          />
-          <Route exact path="/sign-in/" component={SignIn} />
-          <Route exact path={routes.user_profile} component={Profile} />
-        </Switch>
-      </Grid>
-    </Grid>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/create_problem/" component={TypeSelection} />
+      <Route
+        exact
+        path={routes.multiple_choice_form}
+        component={MultipleChoice.Form}
+      />
+      <Route exact path="/sign-in/" component={SignIn} />
+      <Route exact path={routes.user_profile} component={Profile} />
+      <Route
+        path="/problems/multiple_choice/:id"
+        component={MultipleChoice.Read}
+      />
+    </Switch>
   </BrowserRouter>
 );
 

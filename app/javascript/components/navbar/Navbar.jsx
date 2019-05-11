@@ -14,7 +14,8 @@ class Navbar extends React.Component {
       <AppBar
         position="static"
         style={{
-          background: colors.red[400]
+          background: colors.red[400],
+          marginBottom: 64
         }}
       >
         <Toolbar>

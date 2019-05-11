@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   # Problems routing
   post 'api/problems/create_multiple_choice' => "problems#create_multiple_choice"
 
+  get 'api/problems/current_user_multiple_choice' => "problems#current_user_multiple_choice"
+
+  get 'api/problems/get_multiple_choice' => "problems#get_multiple_choice"
+  
   match '*path', to: 'home#index', via: :all
 end
