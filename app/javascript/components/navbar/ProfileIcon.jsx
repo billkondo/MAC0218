@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Menu, MenuItem, IconButton, colors } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { routes } from '../../config';
@@ -15,8 +15,23 @@ class ProfileIcon extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleClose = e => {
+    const name = e.target.getAttribute('name');
     this.setState({ anchorEl: null });
+
+    console.log(name);
+
+    switch (name) {
+      case 'profile': {
+        this.props.history.push(routes.user_profile);
+        break;
+      }
+      case 'sign-out': {
+        window.location.href = routes.sign_out;
+        // this.props.history.push(routes.sign_out);
+        break;
+      }
+    }
   };
 
   handleLogout = () => {
@@ -51,21 +66,17 @@ class ProfileIcon extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <NavLink
-            to={routes.user_profile}
-            style={{ textDecoration: 'none' }}
-            activeStyle={{ textDecoration: 'none', border: 'none' }}
-          >
-            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          </NavLink>
+          <MenuItem onClick={this.handleClose} name="profile">
+            Perfil
+          </MenuItem>
 
-          <a href={routes.sign_out} style={{ textDecoration: 'none' }}>
-            <MenuItem>Logout</MenuItem>
-          </a>
+          <MenuItem onClick={this.handleClose} name="sign-out">
+            Sair
+          </MenuItem>
         </Menu>
       </div>
     );
   }
 }
 
-export default ProfileIcon;
+export default withRouter(ProfileIcon);
