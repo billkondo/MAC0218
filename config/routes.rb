@@ -3,14 +3,18 @@ Rails.application.routes.draw do
   get 'home/index'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "home#index"
+  root 'home#index'
 
   # Problems routing
-  post 'api/problems/create_multiple_choice' => "problems#create_multiple_choice"
+  post 'api/problems/create_multiple_choice' => 'problems#create_multiple_choice' 
 
-  get 'api/problems/current_user_multiple_choice' => "problems#current_user_multiple_choice"
+  get 'api/problems/current_user_multiple_choice' => 'problems#current_user_multiple_choice'
 
-  get 'api/problems/get_multiple_choice' => "problems#get_multiple_choice"
+  get 'api/problems/get_multiple_choice' => 'problems#get_multiple_choice'
+
+  get 'api/problems/get_multiple_choice_favorites' => 'problems#get_multiple_choice_favorites'
+
+  get 'api/problems/update_multiple_choice_favorites' => 'problems#update_multiple_choice_favorites'
   
   match '*path', to: 'home#index', via: :all
 end

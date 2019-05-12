@@ -28,6 +28,12 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def get_multiple_choice_favorites
+  end
+
+  def update_multiple_choice_favorites
+  end
+
   private 
     def multiple_choice_problem_params
       params.require(:multiple_choice_problem).permit(:title, :statement, :correct_answer, alternatives_attributes: [:text])
