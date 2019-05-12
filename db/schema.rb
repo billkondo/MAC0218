@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_235347) do
+ActiveRecord::Schema.define(version: 2019_05_12_031504) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string "text"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_05_04_235347) do
     t.datetime "updated_at", null: false
     t.integer "multiple_choice_problem_id"
     t.index ["multiple_choice_problem_id"], name: "index_alternatives_on_multiple_choice_problem_id"
+  end
+
+  create_table "multiple_choice_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "multiple_choice_problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multiple_choice_problem_id"], name: "index_multiple_choice_favorites_on_multiple_choice_problem_id"
+    t.index ["user_id"], name: "index_multiple_choice_favorites_on_user_id"
   end
 
   create_table "multiple_choice_problems", force: :cascade do |t|

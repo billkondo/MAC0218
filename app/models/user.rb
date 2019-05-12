@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :multiple_choice_problems, dependent: :destroy
+  has_many :multiple_choice_favorites, dependent: :destroy
 end
