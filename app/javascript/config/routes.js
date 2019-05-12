@@ -8,6 +8,8 @@ const getMultipleChoice = id => {
 };
 
 export const routes = {
+  home: '/',
+
   sign_out: '/users/sign_out/',
 
   multiple_choice_form: '/create_problem/multiple_choice_form',

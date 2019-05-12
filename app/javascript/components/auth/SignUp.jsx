@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
+import { routes } from '../../config';
 
 class SignUp extends React.Component {
   state = {
@@ -28,8 +29,11 @@ class SignUp extends React.Component {
       }
     })
       .then(res => {
-        console.log('res');
-        window.location.reload();
+        const isUserSignedIn = res.data.includes('user-signed-in="true"')
+        if(isUserSignedIn)
+          window.location.href = routes.home;
+        else
+          window.location.reload();
       })
       .catch(err => console.log(err));
   };
