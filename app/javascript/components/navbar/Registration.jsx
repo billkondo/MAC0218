@@ -11,11 +11,11 @@ const Registration = () => (
     </Grid>
 
     <Grid item>
-      <a href="/users/sign_up/" style={{ textDecoration: 'none' }}>
+      <Link to="/sign-up/" style={{ textDecoration: 'none' }}>
         <Button variant="outlined" style={{ color: colors.grey[50] }}>
           Sign Up
         </Button>
-      </a>
+      </Link>
     </Grid>
   </Grid>
 );

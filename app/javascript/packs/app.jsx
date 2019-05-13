@@ -7,6 +7,7 @@ import {
   Home,
   TypeSelection,
   SignIn,
+  SignUp,
   MultipleChoice,
   Profile,
   Navbar
@@ -26,6 +27,7 @@ const App = ({ isAuth }) => (
         component={MultipleChoice.Form}
       />
       <Route exact path="/sign-in/" component={SignIn} />
+      <Route exact path="/sign-up/" component={SignUp} />
       <Route exact path={routes.user_profile} component={Profile} />
       <Route
         path="/problems/multiple_choice/:id"
