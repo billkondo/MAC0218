@@ -22,6 +22,9 @@ export const routes = {
   read_multiple_problem: readMultipleProblem,
 
   api: {
-    get_multiple_choice: getMultipleChoice
+    get_multiple_choice: getMultipleChoice,
+    update_multiple_choice_favorites:
+      '/api/problems/update_multiple_choice_favorites',
+    get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites'
   }
 };

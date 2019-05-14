@@ -12,13 +12,16 @@ class ProblemsController < ApplicationController
 
   def current_user_multiple_choice
     # Get the current user problems
+    multiple_choice_problems = current_user.multiple_choice_problems
+      .joins(' LEFT OUTER JOIN "multiple_choice_favorites" ON "multiple_choice_favorites"."multiple_choice_problem_id" = "multiple_choice_problems"."id" ')
+      .select(:title, :statement, 'multiple_choice_problem_id AS favorite', :id) 
 
-    multiple_choice_problems = current_user.multiple_choice_problems.all
     render json: { problems: multiple_choice_problems.as_json }
   end
 
   def get_multiple_choice
     begin 
+      # TODO Try to reduce number of queries (join tables ?)
       id = params[:id]
       problem = MultipleChoiceProblem.find(id)
       alternatives = Alternative.where(multiple_choice_problem_id: problem.id).all
@@ -29,9 +32,39 @@ class ProblemsController < ApplicationController
   end
 
   def get_multiple_choice_favorites
+    # Get user favorite problems
+    favorite_problems = current_user.multiple_choice_problems.joins(:multiple_choice_favorites).all
+      .select(:title, :statement, :id, "multiple_choice_problem_id AS favorite")
+
+    render json: { status: "OK", problems: favorite_problems.as_json }
   end
 
   def update_multiple_choice_favorites
+    flag = params[:flag]
+    multiple_choice_problem_id = params[:multiple_choice_problem_id]
+    user_id = current_user.id
+
+    if flag
+      # Create new favorite relation
+      favorite = MultipleChoiceFavorite.new()
+      favorite.user_id = current_user.id
+      favorite.multiple_choice_problem_id = params[:multiple_choice_problem_id]
+
+      if favorite.save 
+        render json: { status: "OK" }
+      else
+        render json: { status: "ERROR" }
+      end
+    else
+      # Destroy favorite relation
+      favorite = MultipleChoiceFavorite.find_by(multiple_choice_problem_id: multiple_choice_problem_id, user_id: user_id)
+      
+      if favorite.destroy
+        render json: { status: "OK "}
+      else
+        render json: { status: "ERROR" }
+      end
+    end
   end
 
   private 

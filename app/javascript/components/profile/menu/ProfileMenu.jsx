@@ -1,12 +1,17 @@
 import React from 'react';
 import { Tabs, Tab } from '@material-ui/core';
 
-import { Problems } from './problems';
+import { CreatedProblems } from './created_problems';
+import { FavoriteProblems } from './favorite_problems';
 
 const TabContainer = ({ value }) => {
   switch (value) {
     case 0:
-      return <Problems />;
+      return <CreatedProblems />;
+
+    case 1:
+      return <FavoriteProblems />;
+
     default:
       return null;
   }
