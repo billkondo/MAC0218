@@ -6,17 +6,19 @@ const MenuBar = ({ problem }) => (
     <Grid item>
       <Typography variant="h5">{problem.title}</Typography>
     </Grid>
-    <Grid item style={{ flex: 1 }}>
-      <Grid container justify="flex-end" spacing={32}>
-        <Grid item>
-          <Button variant="contained">Editar</Button>
-        </Grid>
+    {problem.isOwner && (
+      <Grid item style={{ flex: 1 }}>
+        <Grid container justify="flex-end" spacing={32}>
+          <Grid item>
+            <Button variant="contained">Editar</Button>
+          </Grid>
 
-        <Grid item>
-          <Button variant="contained">Deletar</Button>
+          <Grid item>
+            <Button variant="contained">Deletar</Button>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    )}
   </Grid>
 );
 

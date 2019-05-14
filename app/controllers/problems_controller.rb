@@ -23,9 +23,12 @@ class ProblemsController < ApplicationController
     begin 
       # TODO Try to reduce number of queries (join tables ?)
       id = params[:id]
-      problem = MultipleChoiceProblem.find(id)
-      alternatives = Alternative.where(multiple_choice_problem_id: problem.id).all
-      render json: { status: "OK", problem: problem.as_json, alternatives: alternatives }
+      problem = MultipleChoiceProblem.find(id).as_json
+      alternatives = Alternative.where(multiple_choice_problem_id: id).all
+
+      problem["isOwner"] = current_user.id == problem["user_id"]
+
+      render json: { status: "OK", problem: problem, alternatives: alternatives }
     rescue
       render json: { status: "ERROR" }
     end

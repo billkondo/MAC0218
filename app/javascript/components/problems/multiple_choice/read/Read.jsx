@@ -53,7 +53,7 @@ class Read extends React.Component {
     const { problem, alternatives, status } = this.state;
 
     return (
-      <Grid container spacing={32} alignItems="flex-start">
+      <Grid container alignItems="flex-start">
         <Grid item xs={12} style={{ padding: 32 }}>
           <MenuBar problem={problem} />
         </Grid>
