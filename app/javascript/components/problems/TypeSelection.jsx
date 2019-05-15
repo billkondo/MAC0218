@@ -5,14 +5,8 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import { routes } from '../../config';
 
 const TypeSelection = () => (
-  <Grid
-    container
-    direction="column"
-    spacing={32}
-    justify="center"
-    alignItems="center"
-  >
-    <Grid item>
+  <Grid container direction="column" justify="center" alignItems="center">
+    <Grid item style={{ padding: 32 }}>
       <Typography variant="h5" align="center">
         Escolha o tipo de problema
       </Typography>
