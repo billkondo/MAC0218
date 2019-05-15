@@ -21,6 +21,19 @@ const App = ({ isAuth }) => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/create_problem/" component={TypeSelection} />
+      {isAuth ? 
+        <Route
+          exact
+          path={routes.multiple_choice_form}
+          component={MultipleChoice.Form}
+        />
+        :
+        <Route
+          exact
+          path={routes.multiple_choice_form}
+          component={SignIn}
+        />
+      }
       <Route
         exact
         path={routes.multiple_choice_form}
