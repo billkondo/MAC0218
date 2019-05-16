@@ -1,7 +1,7 @@
-import Form from './Form';
+import { Create } from './create';
 import { Read } from './read';
 
 export const MultipleChoice = {
-  Form,
+  Create,
   Read
 };

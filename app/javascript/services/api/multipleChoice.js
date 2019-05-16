@@ -1,20 +1,21 @@
 import { routes } from '../../config';
 import axios from 'axios';
 
-const create = multiple_choice_problem => {
-  axios({
-    method: 'POST',
-    url: routes.createMultipleChoice,
-    headers: {
-      'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
-    },
-    data: {
-      multiple_choice_problem
-    }
-  })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-};
+const create = multiple_choice_problem =>
+  new Promise((resolve, reject) => {
+    axios({
+      method: 'POST',
+      url: routes.createMultipleChoice,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      data: {
+        multiple_choice_problem
+      }
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
 
 const get_user = cancelToken =>
   new Promise((resolve, reject) => {

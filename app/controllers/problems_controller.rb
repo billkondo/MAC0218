@@ -4,7 +4,7 @@ class ProblemsController < ApplicationController
     multiple_choice_problem.user_id = current_user.id
 
     if multiple_choice_problem.save 
-      render json: { status: "OK" }
+      render json: { status: "OK", id: multiple_choice_problem.id }
     else
       render json: multiple_choice_problem.errors 
     end

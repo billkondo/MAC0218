@@ -24,7 +24,7 @@ const App = ({ isAuth }) => (
       <Route
         exact
         path={routes.multiple_choice_form}
-        component={MultipleChoice.Form}
+        component={MultipleChoice.Create}
       />
       <Route exact path="/sign-in/" component={SignIn} />
       <Route exact path="/sign-up/" component={SignUp} />

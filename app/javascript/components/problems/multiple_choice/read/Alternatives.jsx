@@ -5,7 +5,7 @@ const Alternatives = ({ alternatives }) => {
   console.log(alternatives);
   return (
     <Card style={{ padding: 32 }}>
-      <Grid container direction="column" spacing={24}>
+      <Grid container direction="column" spacing={32}>
         {alternatives.map(alternative => {
           return (
             <Grid item key={alternative.id}>
