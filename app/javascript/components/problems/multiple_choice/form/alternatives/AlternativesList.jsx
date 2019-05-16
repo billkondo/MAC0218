@@ -8,7 +8,8 @@ export const AlternativesList = ({
   alternatives,
   deleteAlt,
   correct,
-  setCorrect
+  setCorrect,
+  mode
 }) => {
   return (
     <Paper style={{ padding: 32 }}>
@@ -32,6 +33,7 @@ export const AlternativesList = ({
                       deleteAlt={() => deleteAlt(alt)}
                       isCorrect={correct === alt.text}
                       setCorrect={() => setCorrect(alt)}
+                      mode={mode}
                     />
                   </Grid>
                 ))}

@@ -9,7 +9,7 @@ import {
   colors
 } from '@material-ui/core';
 
-import { MenuBar } from './MenuBar';
+import { MenuBar } from './menu_bar';
 import { Statement } from './Statement';
 import { Alternatives } from './alternatives';
 
@@ -21,8 +21,27 @@ class Form extends React.Component {
     statement: '',
     alternatives: [],
     alternative: '',
-    correct_answer: ''
+    correct_answer: '',
+
+    isOwner: '',
+    id: ''
   };
+
+  componentDidMount() {
+    const { problem, alternatives } = this.props;
+
+    if (problem && alternatives) {
+      this.setState({
+        title: problem.title,
+        statement: problem.statement,
+        alternatives,
+        isOwner: problem.isOwner,
+        id: problem.id
+      });
+    } else {
+      // TODO throw errors
+    }
+  }
 
   clearAlternative = () => this.setState({ alternative: '' });
 
@@ -73,8 +92,12 @@ class Form extends React.Component {
       statement,
       alternatives,
       alternative,
-      correct_answer
+      correct_answer,
+      isOwner,
+      id
     } = this.state;
+
+    const { mode } = this.props;
 
     return (
       <Grid container alignItems="flex-start">
@@ -83,11 +106,18 @@ class Form extends React.Component {
             title={title}
             handleChange={this.handleChange}
             onSubmit={this.onSubmit}
+            mode={mode}
+            isOwner={isOwner}
+            id={id}
           />
         </Grid>
 
         <Grid item xs={12} md={6} style={{ padding: 32 }}>
-          <Statement statement={statement} handleChange={this.handleChange} />
+          <Statement
+            statement={statement}
+            handleChange={this.handleChange}
+            mode={mode}
+          />
         </Grid>
 
         <Grid item xs={12} md={6} style={{ padding: 32 }}>
@@ -100,6 +130,7 @@ class Form extends React.Component {
             correct={correct_answer}
             setCorrect={this.setCorrectAnswer}
             deleteAlt={this.deleteAlternative}
+            mode={mode}
           />
         </Grid>
       </Grid>

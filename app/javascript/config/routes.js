@@ -7,12 +7,18 @@ const getMultipleChoice = id => {
   return `/api/problems/get_multiple_choice/?id=${id}`;
 };
 
+const editMultipleChoice = id => {
+  return `/edit_problem/multiple_choice/${id}`;
+};
+
 export const routes = {
   home: '/',
 
   sign_out: '/users/sign_out/',
 
   multiple_choice_form: '/create_problem/multiple_choice_form',
+
+  edit_multiple_choice: editMultipleChoice,
 
   createMultipleChoice: '/api/problems/create_multiple_choice',
 

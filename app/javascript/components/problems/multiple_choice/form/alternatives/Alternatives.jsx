@@ -13,8 +13,11 @@ export const Alternatives = ({
   clearAlternative,
   alternative,
   handleChange,
-  createAlternative
+  createAlternative,
+  mode
 }) => {
+  const showMenu = mode !== 'read';
+
   return (
     <Grid container spacing={32}>
       <Grid item xs={12}>
@@ -23,17 +26,20 @@ export const Alternatives = ({
           correct={correct}
           deleteAlt={deleteAlt}
           setCorrect={setCorrect}
+          mode={mode}
         />
       </Grid>
 
-      <Grid item xs={12}>
-        <AlternativesMenu
-          alternative={alternative}
-          handleChange={handleChange}
-          clearAlternative={clearAlternative}
-          createAlternative={createAlternative}
-        />
-      </Grid>
+      {showMenu && (
+        <Grid item xs={12}>
+          <AlternativesMenu
+            alternative={alternative}
+            handleChange={handleChange}
+            clearAlternative={clearAlternative}
+            createAlternative={createAlternative}
+          />
+        </Grid>
+      )}
     </Grid>
   );
 };

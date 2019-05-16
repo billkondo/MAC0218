@@ -23,7 +23,7 @@ class _Create extends React.Component {
   };
 
   render() {
-    return <Form submitForm={this.submitForm} />;
+    return <Form submitForm={this.submitForm} mode="create" />;
   }
 }
 
