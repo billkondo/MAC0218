@@ -29,6 +29,8 @@ class Form extends React.Component {
 
   componentDidMount() {
     const { problem, alternatives } = this.props;
+    console.log(problem);
+    console.log(alternatives);
 
     if (problem && alternatives) {
       this.setState({

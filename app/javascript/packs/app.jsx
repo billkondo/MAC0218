@@ -33,6 +33,10 @@ const App = ({ isAuth }) => (
         path="/problems/multiple_choice/:id"
         component={MultipleChoice.Read}
       />
+      <Route
+        path="/edit_problem/multiple_choice/:id"
+        component={MultipleChoice.Edit}
+      />
     </Switch>
   </BrowserRouter>
 );
