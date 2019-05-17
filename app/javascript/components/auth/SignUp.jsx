@@ -52,7 +52,7 @@ class SignUp extends React.Component {
         }}
       >
         <Grid item md={6} xs={10}>
-          <Paper>
+          <Paper elevation={4}>
             <form style={{ padding: 32 }}>
               <Grid container direction="column" spacing={24}>
                 <Grid item>
