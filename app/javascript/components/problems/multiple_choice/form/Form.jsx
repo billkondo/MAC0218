@@ -38,6 +38,7 @@ class Form extends React.Component {
         statement: problem.statement,
         alternatives,
         isOwner: problem.isOwner,
+        correct_answer: problem.correct_answer,
         id: problem.id
       });
     } else {
