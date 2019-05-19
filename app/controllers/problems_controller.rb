@@ -20,13 +20,30 @@ class ProblemsController < ApplicationController
       if multiple_choice_problem.update(multiple_choice_problem_params)
         render json: { status: "OK" }
       else
+        # Failed operation in Database
         render json: { status: "ERROR" }
       end
     else
+      # No permission
+      render json: { status: "ERROR" }
+    end  
+  end
+
+  def delete_multiple_choice
+    id = params[:id]
+
+    multiple_choice_problem = MultipleChoiceProblem.find(id)
+
+    if multiple_choice_problem.user_id == current_user.id
+      if multiple_choice_problem.destroy
+        render json: { status: "OK" }
+      else
+        render json: { status: "ERROR" }
+      end
+    else
+      # No permission
       render json: { status: "ERROR" }
     end
-
-  
   end
 
   def current_user_multiple_choice

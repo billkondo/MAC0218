@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'api/problems/update_multiple_choice' => 'problems#update_multiple_choice'
 
+  post 'api/problems/delete_multiple_choice' => 'problems#delete_multiple_choice'
+
   get 'api/problems/current_user_multiple_choice' => 'problems#current_user_multiple_choice'
 
   get 'api/problems/get_multiple_choice' => 'problems#get_multiple_choice'

@@ -96,11 +96,28 @@ const update_multiple_choice = (multiple_choice_problem, id) =>
       .catch(err => reject(err));
   });
 
+const delete_multiple_choice = id =>
+  new Promise((resolve, reject) => {
+    axios({
+      method: 'POST',
+      url: routes.api.delete_multiple_choice,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      data: {
+        id
+      }
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+
 export const MultipleChoice = {
   create,
   get_user,
   get_multiple_choice_problem,
   update_multiple_choice_favorites,
   get_user_favorite_problems,
-  update_multiple_choice
+  update_multiple_choice,
+  delete_multiple_choice
 };
