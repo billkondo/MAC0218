@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-  Grid,
-  Paper,
-  TextField,
-  Divider,
-  Button,
-  Typography,
-  colors
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { MenuBar } from './menu_bar';
 import { Statement } from './Statement';
 import { Alternatives } from './alternatives';
-
-import { Services } from '../../../../services';
 
 const AREA = {
   TITLE: 'TILE',
