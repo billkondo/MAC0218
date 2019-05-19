@@ -15,6 +15,53 @@ import { Alternatives } from './alternatives';
 
 import { Services } from '../../../../services';
 
+const AREA = {
+  TITLE: 'TILE',
+  STATEMENT: 'STATEMENT',
+  ALTERNATIVES: 'ALTERNATIVES',
+}
+
+const form_validation = problem => {
+  const {
+    title,
+    statement,
+    alternatives_attributes: alternatives,
+    correct_answer,
+  } = problem
+  
+  const errors = [];
+
+  if (!title) {
+    errors.push({
+      area: AREA.TITLE,
+      description: 'O problema precisa de um título',
+    });
+  }
+
+  if (!statement) {
+    errors.push({
+      area: AREA.STATEMENT,
+      description: 'O problema precisa de um enunciado',
+    });
+  }
+
+  if (alternatives.length < 2) {
+    errors.push({
+      area: AREA.ALTERNATIVES,
+      description: 'O problema precisa de no mínimo duas alternativas',
+    });
+  }
+
+  if (!correct_answer) {
+    errors.push({
+      area: AREA.ALTERNATIVES,
+      description: 'O problema precisa de uma alternativa correta',
+    });
+  }
+
+  return errors
+}
+
 class Form extends React.Component {
   state = {
     title: '',
@@ -24,7 +71,9 @@ class Form extends React.Component {
     correct_answer: '',
 
     isOwner: '',
-    id: ''
+    id: '',
+
+    errors: [],
   };
 
   componentDidMount() {
@@ -77,16 +126,23 @@ class Form extends React.Component {
   };
 
   onSubmit = () => {
-    // TODO form validation
-
     const { submitForm } = this.props;
 
-    submitForm({
+    const problem_info = {
       title: this.state.title,
       statement: this.state.statement,
       alternatives_attributes: this.state.alternatives,
       correct_answer: this.state.correct_answer
-    });
+    }
+
+    const errors = form_validation(problem_info)
+    this.setState({
+      errors,
+    }, () => {
+      if (errors.length == 0) {
+        submitForm(problem_info);
+      }
+    })
   };
 
   render() {
@@ -97,10 +153,15 @@ class Form extends React.Component {
       alternative,
       correct_answer,
       isOwner,
-      id
+      id,
+      errors,
     } = this.state;
 
     const { mode } = this.props;
+
+    const titleErros = errors.find(({area}) => area === AREA.TITLE)
+    const statementErrors = errors.find(({area}) => area === AREA.STATEMENT)
+    const alternativesErrors = errors.find(({area}) => area === AREA.ALTERNATIVES)
 
     return (
       <Grid container alignItems="flex-start">
@@ -112,6 +173,7 @@ class Form extends React.Component {
             mode={mode}
             isOwner={isOwner}
             id={id}
+            error={titleErros && titleErros.description}
           />
         </Grid>
 
@@ -120,6 +182,7 @@ class Form extends React.Component {
             statement={statement}
             handleChange={this.handleChange}
             mode={mode}
+            error={statementErrors && statementErrors.description}
           />
         </Grid>
 
@@ -134,6 +197,7 @@ class Form extends React.Component {
             setCorrect={this.setCorrectAnswer}
             deleteAlt={this.deleteAlternative}
             mode={mode}
+            error={alternativesErrors && alternativesErrors.description}
           />
         </Grid>
       </Grid>

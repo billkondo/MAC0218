@@ -34,7 +34,8 @@ export const MenuBar = ({
   mode,
   onSubmit,
   isOwner,
-  id
+  id,
+  error,
 }) => {
   return (
     <Grid container alignItems="flex-start" direction="row-reverse">
@@ -55,6 +56,8 @@ export const MenuBar = ({
           InputProps={{
             readOnly: mode === 'read'
           }}
+          error={!!error}
+          helperText={error}
         />
       </Grid>
     </Grid>

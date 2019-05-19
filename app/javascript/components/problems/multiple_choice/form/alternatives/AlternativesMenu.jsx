@@ -5,7 +5,8 @@ export const AlternativesMenu = ({
   alternative,
   handleChange,
   clearAlternative,
-  createAlternative
+  createAlternative,
+  error,
 }) => {
   return (
     <Grid container direction="column" spacing={16}>
@@ -18,6 +19,8 @@ export const AlternativesMenu = ({
           value={alternative}
           onChange={handleChange}
           name="alternative"
+          error={!!error}
+          helperText={error}
         />
       </Grid>
 

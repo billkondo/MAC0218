@@ -14,7 +14,8 @@ export const Alternatives = ({
   alternative,
   handleChange,
   createAlternative,
-  mode
+  mode,
+  error,
 }) => {
   const showMenu = mode !== 'read';
 
@@ -37,6 +38,7 @@ export const Alternatives = ({
             handleChange={handleChange}
             clearAlternative={clearAlternative}
             createAlternative={createAlternative}
+            error={error}
           />
         </Grid>
       )}
