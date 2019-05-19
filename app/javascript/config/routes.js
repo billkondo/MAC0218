@@ -33,6 +33,7 @@ export const routes = {
     get_multiple_choice: getMultipleChoice,
     update_multiple_choice_favorites:
       '/api/problems/update_multiple_choice_favorites',
-    get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites'
+    get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites',
+    update_multiple_choice: `/api/problems/update_multiple_choice`
   }
 };

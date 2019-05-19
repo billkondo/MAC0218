@@ -58,6 +58,10 @@ const get_multiple_choice_problem = id =>
       .catch(err => reject(err));
   });
 
+/* 
+  flag =  true: problem is favorite
+  flag = false: problem is not favorite
+ */
 const update_multiple_choice_favorites = (id, flag) =>
   new Promise((resolve, reject) => {
     axios({
@@ -75,10 +79,28 @@ const update_multiple_choice_favorites = (id, flag) =>
       .catch(err => reject(err));
   });
 
+const update_multiple_choice = (multiple_choice_problem, id) =>
+  new Promise((resolve, reject) => {
+    axios({
+      method: 'POST',
+      url: routes.api.update_multiple_choice,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      data: {
+        multiple_choice_problem,
+        id
+      }
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+
 export const MultipleChoice = {
   create,
   get_user,
   get_multiple_choice_problem,
   update_multiple_choice_favorites,
-  get_user_favorite_problems
+  get_user_favorite_problems,
+  update_multiple_choice
 };

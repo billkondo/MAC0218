@@ -10,6 +10,25 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def update_multiple_choice
+    id = params[:id]
+    
+    multiple_choice_problem = MultipleChoiceProblem.find(id)
+    multiple_choice_problem.alternatives.destroy_all
+
+    if multiple_choice_problem.user_id == current_user.id
+      if multiple_choice_problem.update(multiple_choice_problem_params)
+        render json: { status: "OK" }
+      else
+        render json: { status: "ERROR" }
+      end
+    else
+      render json: { status: "ERROR" }
+    end
+
+  
+  end
+
   def current_user_multiple_choice
     # Get the current user problems
     multiple_choice_problems = current_user.multiple_choice_problems
@@ -27,6 +46,8 @@ class ProblemsController < ApplicationController
       alternatives = Alternative.where(multiple_choice_problem_id: id).all
 
       problem["isOwner"] = current_user.id == problem["user_id"]
+
+      print problem.as_json
 
       render json: { status: "OK", problem: problem, alternatives: alternatives }
     rescue
