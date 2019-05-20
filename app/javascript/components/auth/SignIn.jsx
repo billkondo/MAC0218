@@ -2,14 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
 import { routes } from '../../config';
+import { Message } from '../'
 
 class SignIn extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    open: false, 
+    message: ''
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  toggleMenu = () => {
+      this.setState({open: false});
+  }
 
   submit = () => {
     axios({
@@ -34,13 +41,17 @@ class SignIn extends React.Component {
         if(isUserSignedIn)
           window.location.href = routes.home;
         else
-          window.location.reload();
+          this.setState({ open: true });  
+          this.setState({ message: 'E-mail ou senha errado.' });    
       })
       .catch(err => console.log(err));
   };
 
+
   render() {
     return (
+      <div>
+      <Message open = {this.state.open} mensagem = {this.state.message} toggleMenu = {this.toggleMenu}/>
       <Grid
         container
         justify="center"
@@ -101,6 +112,7 @@ class SignIn extends React.Component {
           </Paper>
         </Grid>
       </Grid>
+      </div>
     );
   }
 }
