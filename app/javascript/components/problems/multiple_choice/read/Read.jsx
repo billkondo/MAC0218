@@ -2,10 +2,10 @@ import React from 'react';
 import { Grid, CircularProgress } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 
+import { Form } from '../form';
+
 import { Services } from '../../../../services';
-import { default as Statement } from './Statement';
-import { default as Alternatives } from './Alternatives';
-import { default as MenuBar } from './MenuBar';
+import { routes } from '../../../../config';
 
 class Read extends React.Component {
   state = {
@@ -22,6 +22,7 @@ class Read extends React.Component {
 
   componentWillMount() {
     // Fetch problem data
+    // TODO assert id != NULL
     const id = this.getProblemID();
 
     this.setState({ status: this.status.fetching });
@@ -44,7 +45,6 @@ class Read extends React.Component {
 
   getProblemID() {
     // Get problem id from URL
-
     const { id } = this.props.match.params;
     return id;
   }
@@ -52,28 +52,14 @@ class Read extends React.Component {
   render() {
     const { problem, alternatives, status } = this.state;
 
+    const isReady = status === 'DONE';
+
     return (
-      <Grid container spacing={32} alignItems="flex-start">
-        <Grid item xs={12} style={{ padding: 32 }}>
-          <MenuBar problem={problem} />
-        </Grid>
-
-        <Grid item xs={12} md={6} style={{ padding: 32 }}>
-          {status == this.status.done ? (
-            <Statement problem={problem} />
-          ) : (
-            <CircularProgress />
-          )}
-        </Grid>
-
-        <Grid item xs={12} md={6} style={{ padding: 32 }}>
-          {status == this.status.done ? (
-            <Alternatives alternatives={alternatives} />
-          ) : (
-            <CircularProgress />
-          )}
-        </Grid>
-      </Grid>
+      <React.Fragment>
+        {isReady ? (
+          <Form mode="read" problem={problem} alternatives={alternatives} />
+        ) : null}
+      </React.Fragment>
     );
   }
 }

@@ -5,15 +5,17 @@ import { PersonalInfo } from './personal_info';
 import { ProfileMenu } from './menu';
 
 const Profile = () => (
-  <Grid container style={{ minWidth: 300 }} spacing={32}>
-    <Grid item md={4} xs={12}>
-      <PersonalInfo />
-    </Grid>
+  <div style={{ padding: 8 }}>
+    <Grid container spacing={16}>
+      <Grid item md={4} xs={12}>
+        <PersonalInfo />
+      </Grid>
 
-    <Grid item md={8} xs={12}>
-      <ProfileMenu />
+      <Grid item md={8} xs={12}>
+        <ProfileMenu />
+      </Grid>
     </Grid>
-  </Grid>
+  </div>
 );
 
 export default Profile;

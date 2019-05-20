@@ -4,9 +4,45 @@ class ProblemsController < ApplicationController
     multiple_choice_problem.user_id = current_user.id
 
     if multiple_choice_problem.save 
-      render json: { status: "OK" }
+      render json: { status: "OK", id: multiple_choice_problem.id }
     else
       render json: multiple_choice_problem.errors 
+    end
+  end
+
+  def update_multiple_choice
+    id = params[:id]
+    
+    multiple_choice_problem = MultipleChoiceProblem.find(id)
+    multiple_choice_problem.alternatives.destroy_all
+
+    if multiple_choice_problem.user_id == current_user.id
+      if multiple_choice_problem.update(multiple_choice_problem_params)
+        render json: { status: "OK" }
+      else
+        # Failed operation in Database
+        render json: { status: "ERROR" }
+      end
+    else
+      # No permission
+      render json: { status: "ERROR" }
+    end  
+  end
+
+  def delete_multiple_choice
+    id = params[:id]
+
+    multiple_choice_problem = MultipleChoiceProblem.find(id)
+
+    if multiple_choice_problem.user_id == current_user.id
+      if multiple_choice_problem.destroy
+        render json: { status: "OK" }
+      else
+        render json: { status: "ERROR" }
+      end
+    else
+      # No permission
+      render json: { status: "ERROR" }
     end
   end
 
@@ -23,9 +59,14 @@ class ProblemsController < ApplicationController
     begin 
       # TODO Try to reduce number of queries (join tables ?)
       id = params[:id]
-      problem = MultipleChoiceProblem.find(id)
-      alternatives = Alternative.where(multiple_choice_problem_id: problem.id).all
-      render json: { status: "OK", problem: problem.as_json, alternatives: alternatives }
+      problem = MultipleChoiceProblem.find(id).as_json
+      alternatives = Alternative.where(multiple_choice_problem_id: id).all
+
+      problem["isOwner"] = current_user.id == problem["user_id"]
+
+      print problem.as_json
+
+      render json: { status: "OK", problem: problem, alternatives: alternatives }
     rescue
       render json: { status: "ERROR" }
     end

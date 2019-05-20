@@ -37,7 +37,7 @@ const App = ({ isAuth }) => (
       <Route
         exact
         path={routes.multiple_choice_form}
-        component={MultipleChoice.Form}
+        component={MultipleChoice.Create}
       />
       <Route exact path="/sign-in/" component={SignIn} />
       <Route exact path="/sign-up/" component={SignUp} />
@@ -45,6 +45,10 @@ const App = ({ isAuth }) => (
       <Route
         path="/problems/multiple_choice/:id"
         component={MultipleChoice.Read}
+      />
+      <Route
+        path="/edit_problem/multiple_choice/:id"
+        component={MultipleChoice.Edit}
       />
     </Switch>
   </BrowserRouter>
