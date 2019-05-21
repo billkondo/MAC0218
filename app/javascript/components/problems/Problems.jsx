@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { Services } from '../../services';
 import { UserProblem } from '../profile/menu/problems_components';
 import axios from 'axios';
@@ -56,8 +56,27 @@ class Problems extends React.Component {
     const { problems, status } = this.state;
 
     return (
-      <Grid container direction="column" spacing={32} style={{ padding: 16 }}>
-        <ProblemsList problems={problems} />
+      <Grid
+      container
+      justify="center"
+      spacing={32}
+      style={{
+        position: 'absolute',
+        top: '20%'
+      }}
+      >
+        <Grid mb={5}>
+          <Typography variant="h3">Problems</Typography>
+        </Grid>
+        <Grid
+          container
+          alignItems="center"
+          justify="center"
+          spacing={32}
+        >
+
+          <ProblemsList problems={problems} />
+        </Grid>
       </Grid>
     );
   }
