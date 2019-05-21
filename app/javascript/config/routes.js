@@ -30,6 +30,7 @@ export const routes = {
   read_multiple_problem: readMultipleProblem,
 
   api: {
+    problems: '/api/problems',
     get_multiple_choice: getMultipleChoice,
     update_multiple_choice_favorites:
       '/api/problems/update_multiple_choice_favorites',
