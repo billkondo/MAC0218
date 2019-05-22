@@ -11,6 +11,10 @@ const editMultipleChoice = id => {
   return `/edit_problem/multiple_choice/${id}`;
 };
 
+const solveMultipleProblem = id => {
+  return `/practice/${id}`;
+}
+
 export const routes = {
   home: '/',
 
@@ -28,6 +32,8 @@ export const routes = {
   user_profile: '/profile/',
 
   read_multiple_problem: readMultipleProblem,
+
+  solve_multiple_problem: solveMultipleProblem,
 
   api: {
     problems: '/api/problems',

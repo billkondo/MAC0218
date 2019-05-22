@@ -1,14 +1,14 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Services } from '../../services';
-import { UserProblem } from '../profile/menu/problems_components';
+import { Problem } from './';
 import axios from 'axios';
 
 const ProblemsList = ({ problems }) => (
   <React.Fragment>
     {problems.map(prob => (
       <Grid item key={prob.id} xs={10} md={8}>
-        <UserProblem problem={prob} /> {/* TODO: Trocar isso por uma componente propria do problema */}
+        <Problem problem={prob} /> 
       </Grid>
     ))}
   </React.Fragment>
