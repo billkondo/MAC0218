@@ -35,6 +35,7 @@ export const routes = {
       '/api/problems/update_multiple_choice_favorites',
     get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites',
     update_multiple_choice: `/api/problems/update_multiple_choice`,
-    delete_multiple_choice: `/api/problems/delete_multiple_choice`
+    delete_multiple_choice: `/api/problems/delete_multiple_choice`,
+    sign_up: '/api/auth/sign_up'
   }
 };

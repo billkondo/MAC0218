@@ -1,0 +1,2 @@
+module AppSignUpHelper
+end
