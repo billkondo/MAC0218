@@ -3,7 +3,6 @@ import { routes } from '../../config';
 
 const sign_up = ({ username, email, password, password_confirmation }) =>
   new Promise((resolve, reject) => {
-    console.log(email);
     axios({
       method: 'POST',
       url: routes.api.sign_up,
@@ -12,9 +11,10 @@ const sign_up = ({ username, email, password, password_confirmation }) =>
       },
       data: {
         user: {
-          email: email,
-          password: password,
-          password_confirmation: password_confirmation
+          username,
+          email,
+          password,
+          password_confirmation
         },
         commit: 'Sign up',
         utf8: '✓'
