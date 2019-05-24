@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'api/problems/current_user_multiple_choice' => 'problems#current_user_multiple_choice'
 
+  get 'api/problems' => 'problems#get_problems'
+
   get 'api/problems/get_multiple_choice' => 'problems#get_multiple_choice'
 
   get 'api/problems/get_multiple_choice_favorites' => 'problems#get_multiple_choice_favorites'

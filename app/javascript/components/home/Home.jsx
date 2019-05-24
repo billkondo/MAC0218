@@ -17,10 +17,17 @@ const Home = () => (
         <Typography variant="h3">Home</Typography>
       </Grid>
 
-      <Grid item mt={5}>
-        <Link to="/create_problem/" style={{ textDecoration: 'none' }}>
-          <Button variant="contained"> Create Problem</Button>
-        </Link>
+      <Grid container spacing={32}>
+        <Grid item mt={5}>
+          <Link to="/create_problem/" style={{ textDecoration: 'none' }}>
+            <Button variant="contained"> Create Problem</Button>
+          </Link>
+        </Grid>
+        <Grid item mt={5}>
+          <Link to="/problems/" style={{ textDecoration: 'none' }}>
+            <Button variant="contained"> All Problems</Button>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
   </Grid>
