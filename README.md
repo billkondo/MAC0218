@@ -6,7 +6,7 @@
 - run bundle:install to install ruby gems
 - you must have [yarn](https://yarnpkg.com/en/), a javascript package manager, installed
 - also, you must run the webpacker install script `rails webpacker:install` and then run the React install script `rails webpacker:install:react`
-- to start server, run rails s
+- to start server, run rails s, the project should be running in [localhost:3000](http://localhost:3000/) (after the webpacker finishes its compilation).
 - run ./bin/webpack-dev-server in another terminal window in order to start client server. It will allow you to have hot reload (the browser will be refreshed when javascript code is changed)
 
 ### Implementation details
