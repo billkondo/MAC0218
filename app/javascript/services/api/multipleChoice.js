@@ -17,6 +17,20 @@ const create = multiple_choice_problem =>
       .catch(err => reject(err));
   });
 
+const get_problems = cancelToken =>  // TODO: Should be in another file, instead of multipleChoice.js 
+  new Promise((resolve, reject) => {
+    axios({
+      method: 'GET',
+      url: routes.api.problems,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      cancelToken
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+
 const get_user = cancelToken =>
   new Promise((resolve, reject) => {
     axios({
@@ -115,6 +129,7 @@ const delete_multiple_choice = id =>
 export const MultipleChoice = {
   create,
   get_user,
+  get_problems,
   get_multiple_choice_problem,
   update_multiple_choice_favorites,
   get_user_favorite_problems,

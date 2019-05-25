@@ -55,6 +55,12 @@ class ProblemsController < ApplicationController
     render json: { problems: multiple_choice_problems.as_json }
   end
 
+  def get_problems
+    # Gets all problems created
+    problems = MultipleChoiceProblem.all.as_json
+    render json: { status: "OK", problems: problems}
+  end
+
   def get_multiple_choice
     begin 
       # TODO Try to reduce number of queries (join tables ?)

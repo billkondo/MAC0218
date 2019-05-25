@@ -10,7 +10,9 @@ import {
   SignUp,
   MultipleChoice,
   Profile,
-  Navbar
+  Navbar,
+  Problems,
+  PracticeProblem
 } from '../components';
 import { routes } from '../config';
 
@@ -21,6 +23,8 @@ const App = ({ isAuth }) => {
       <Navbar isAuth={isAuth} />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/problems" component={Problems} />
+        <Route exact path="/practice/:id" component={PracticeProblem} />
         <Route exact path="/create_problem/" component={TypeSelection} />
         {isAuth ? (
           <Route
