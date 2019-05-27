@@ -46,19 +46,21 @@ const TypeSelection = () => (
       </Grid>
 
       <Grid item md={6} xs={10}>
-        <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
-          <Grid container direction="column" spacing={32}>
-            <Grid item>
-              <Typography variant="h6">Questão Escrita</Typography>
-            </Grid>
+        <Link to={routes.write_form} style={{ textDecoration: 'none' }}>
+          <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
+            <Grid container direction="column" spacing={32}>
+              <Grid item>
+                <Typography variant="h6">Questão Escrita</Typography>
+              </Grid>
 
-            <Grid item>
-              <Typography variant="body1">
-                Os alunos devem demonstrar o racicíonio por trás da questão
-              </Typography>
+              <Grid item>
+                <Typography variant="body1">
+                  Os alunos devem demonstrar o racicíonio por trás da questão
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
     </Grid>
   </Grid>

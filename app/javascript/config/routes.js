@@ -13,7 +13,7 @@ const editMultipleChoice = id => {
 
 const solveMultipleProblem = id => {
   return `/practice/${id}`;
-}
+};
 
 export const routes = {
   home: '/',
@@ -34,6 +34,8 @@ export const routes = {
   read_multiple_problem: readMultipleProblem,
 
   solve_multiple_problem: solveMultipleProblem,
+
+  write_form: '/create_problem/write_form',
 
   api: {
     problems: '/api/problems',

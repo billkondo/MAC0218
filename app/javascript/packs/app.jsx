@@ -12,7 +12,8 @@ import {
   Profile,
   Navbar,
   Problems,
-  PracticeProblem
+  PracticeProblem,
+  Write
 } from '../components';
 import { routes } from '../config';
 
@@ -46,6 +47,7 @@ const App = ({ isAuth }) => {
           path="/edit_problem/multiple_choice/:id"
           component={MultipleChoice.Edit}
         />
+        <Route path={routes.write_form} component={Write.Form} />
       </Switch>
     </BrowserRouter>
   );
