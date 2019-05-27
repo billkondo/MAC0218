@@ -1,5 +1,5 @@
-import { Form } from './form';
+import { Create } from './create';
 
 export const Write = {
-  Form
+  Create
 };

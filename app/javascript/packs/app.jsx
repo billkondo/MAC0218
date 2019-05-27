@@ -47,7 +47,7 @@ const App = ({ isAuth }) => {
           path="/edit_problem/multiple_choice/:id"
           component={MultipleChoice.Edit}
         />
-        <Route path={routes.write_form} component={Write.Form} />
+        <Route path={routes.write_form} component={Write.Create} />
       </Switch>
     </BrowserRouter>
   );
