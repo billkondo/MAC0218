@@ -8,7 +8,7 @@ const ProblemsList = ({ problems }) => (
   <React.Fragment>
     {problems.map(prob => (
       <Grid item key={prob.id} xs={10} md={8}>
-        <Problem problem={prob} /> 
+        <Problem problem={prob} />
       </Grid>
     ))}
   </React.Fragment>
@@ -29,11 +29,11 @@ class Problems extends React.Component {
   };
 
   componentDidMount() {
-    const  problems_fetch = Services.Api.MultipleChoice.get_problems;
+    this.setState({ status: this.status.loading });
 
+    const problems_fetch = Services.Api.MultipleChoice.get_problems;
 
     if (problems_fetch) {
-      this.setState({ status: this.status.loading });
       try {
         problems_fetch(this.signal.token)
           .then(res => {
@@ -51,30 +51,25 @@ class Problems extends React.Component {
     this.signal.cancel('API: get all problems is being canceled');
   }
 
-
   render() {
     const { problems, status } = this.state;
 
+    if (status === this.status.loading) return null;
+
     return (
       <Grid
-      container
-      justify="center"
-      spacing={32}
-      style={{
-        position: 'absolute',
-        top: '20%'
-      }}
+        container
+        justify="center"
+        spacing={32}
+        style={{
+          position: 'absolute',
+          top: '20%'
+        }}
       >
         <Grid mb={5}>
           <Typography variant="h3">Problems</Typography>
         </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justify="center"
-          spacing={32}
-        >
-
+        <Grid container alignItems="center" justify="center" spacing={32}>
           <ProblemsList problems={problems} />
         </Grid>
       </Grid>

@@ -10,44 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_031504) do
+ActiveRecord::Schema.define(version: 2019_05_31_021319) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "alternatives", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "multiple_choice_problem_id"
+    t.uuid "multiple_choice_problem_id"
     t.index ["multiple_choice_problem_id"], name: "index_alternatives_on_multiple_choice_problem_id"
   end
 
-  create_table "multiple_choice_favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "multiple_choice_problem_id"
+  create_table "multiple_choice_favorites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "multiple_choice_problem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["multiple_choice_problem_id"], name: "index_multiple_choice_favorites_on_multiple_choice_problem_id"
     t.index ["user_id"], name: "index_multiple_choice_favorites_on_user_id"
   end
 
-  create_table "multiple_choice_problems", force: :cascade do |t|
+  create_table "multiple_choice_problems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.string "statement"
-    t.integer "user_id"
+    t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "correct_answer"
     t.index ["user_id"], name: "index_multiple_choice_problems_on_user_id"
   end
 
-  create_table "problems", force: :cascade do |t|
-    t.string "title"
-    t.string "statement"
-    t.integer "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -59,4 +56,26 @@ ActiveRecord::Schema.define(version: 2019_05_12_031504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "write_problem_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "question"
+    t.uuid "write_problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["write_problem_id"], name: "index_write_problem_questions_on_write_problem_id"
+  end
+
+  create_table "write_problems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.string "statement"
+    t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_write_problems_on_user_id"
+  end
+
+  add_foreign_key "alternatives", "multiple_choice_problems"
+  add_foreign_key "multiple_choice_favorites", "multiple_choice_problems"
+  add_foreign_key "multiple_choice_favorites", "users"
+  add_foreign_key "write_problem_questions", "write_problems"
+  add_foreign_key "write_problems", "users"
 end
