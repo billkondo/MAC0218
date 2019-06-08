@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   get 'api/problems/get_multiple_choice_favorites' => 'problems#get_multiple_choice_favorites'
 
   post 'api/problems/update_multiple_choice_favorites' => 'problems#update_multiple_choice_favorites'
+
+  # Authentication
+  devise_scope :user do
+    post 'api/auth/sign_up' => 'app_sign_up#create'
+  end
   
   match '*path', to: 'home#index', via: :all
 end
