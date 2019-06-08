@@ -24,6 +24,11 @@ Rails.application.routes.draw do
 
   post 'api/problems/write/create' => 'write_problems#create'
   get  'api/problems/write/get'    => 'write_problems#get'
+
+  # Authentication
+  devise_scope :user do
+    post 'api/auth/sign_up' => 'app_sign_up#create'
+  end
   
   match '*path', to: 'home#index', via: :all
 end

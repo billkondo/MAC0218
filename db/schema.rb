@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_05_31_021319) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
+ActiveRecord::Schema.define(version: 2019_05_23_144034) do
+
   create_table "alternatives", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", null: false
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_021319) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

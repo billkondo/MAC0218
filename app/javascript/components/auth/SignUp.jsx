@@ -1,39 +1,46 @@
 import React from 'react';
 import axios from 'axios';
-import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  Typography,
+  TextField,
+  Button,
+  Fade
+} from '@material-ui/core';
+import { withRouter } from 'react-router';
+
 import { routes } from '../../config';
+import { Services } from '../../services';
 
 class SignUp extends React.Component {
   state = {
+    username: '',
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
+    errors: {}
   };
 
   submit = () => {
-    axios({
-      method: 'POST',
-      url: '/users/',
-      headers: {
-        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
-      },
-      data: {
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-          password_confirmation: this.state.password_confirmation
-        },
-        authenticity_token: this.props.authToken,
-        commit: 'Sign up',
-        utf8: '✓'
-      }
+    const { history } = this.props;
+    const { username, email, password, password_confirmation } = this.state;
+    Services.Api.Auth.sign_up({
+      username,
+      email,
+      password,
+      password_confirmation
     })
       .then(res => {
-        const isUserSignedIn = res.data.includes('user-signed-in="true"')
-        if(isUserSignedIn)
-          window.location.href = routes.home;
-        else
-          window.location.reload();
+        const { errors, status } = res.data;
+
+        if (status === 'OK') {
+          window.location = routes.home;
+        } else if (status === 'ERROR_AUTH') {
+          this.setState({ errors });
+        } else {
+          // TODO handle error
+        }
       })
       .catch(err => console.log(err));
   };
@@ -41,6 +48,8 @@ class SignUp extends React.Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    const { errors } = this.state;
+
     return (
       <Grid
         container
@@ -52,62 +61,83 @@ class SignUp extends React.Component {
         }}
       >
         <Grid item md={6} xs={10}>
-          <Paper elevation={4}>
-            <form style={{ padding: 32 }}>
-              <Grid container direction="column" spacing={24}>
-                <Grid item>
-                  <Typography variant="h6" align="center">
-                    Create account
-                  </Typography>
-                </Grid>
+          <Fade in={true}>
+            <Paper elevation={4}>
+              <form style={{ padding: 32 }}>
+                <Grid container direction="column" spacing={24}>
+                  <Grid item>
+                    <Typography variant="h6" align="center">
+                      Create account
+                    </Typography>
+                  </Grid>
 
-                <Grid item>
-                  <TextField
-                    label="Email"
-                    name="email"
-                    variant="outlined"
-                    fullWidth
-                    onChange={this.handleChange}
-                    value={this.state.email}
-                  />
-                </Grid>
+                  <Grid item>
+                    <TextField
+                      label="Username"
+                      name="username"
+                      variant="outlined"
+                      fullWidth
+                      onChange={this.handleChange}
+                      value={this.state.username}
+                      error={!!errors.username}
+                      helperText={errors.username}
+                    />
+                  </Grid>
 
-                <Grid item>
-                  <TextField
-                    label="Password"
-                    name="password"
-                    variant="outlined"
-                    fullWidth
-                    type="password"
-                    onChange={this.handleChange}
-                    value={this.state.password}
-                  />
-                </Grid>
+                  <Grid item>
+                    <TextField
+                      label="Email"
+                      name="email"
+                      variant="outlined"
+                      fullWidth
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                      error={!!errors.email}
+                      helperText={errors.email}
+                    />
+                  </Grid>
 
-                <Grid item>
-                  <TextField
-                    label="Password Confirmation"
-                    name="password_confirmation"
-                    variant="outlined"
-                    fullWidth
-                    type="password"
-                    onChange={this.handleChange}
-                    value={this.state.password_confirmation}
-                  />
-                </Grid>
+                  <Grid item>
+                    <TextField
+                      label="Password"
+                      name="password"
+                      variant="outlined"
+                      fullWidth
+                      type="password"
+                      onChange={this.handleChange}
+                      value={this.state.password}
+                      error={!!errors.password}
+                      helperText={errors.password}
+                    />
+                  </Grid>
 
-                <Grid item>
-                  <Button variant="contained" fullWidth onClick={this.submit}>
-                    Submit
-                  </Button>
+                  <Grid item>
+                    <TextField
+                      label="Password Confirmation"
+                      name="password_confirmation"
+                      variant="outlined"
+                      fullWidth
+                      type="password"
+                      onChange={this.handleChange}
+                      value={this.state.password_confirmation}
+                      error={!!errors.password_confirmation}
+                      helperText={errors.password_confirmation}
+                    />
+                  </Grid>
+
+                  <Grid item>
+                    <Button variant="contained" fullWidth onClick={this.submit}>
+                      Submit
+                    </Button>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </form>
-          </Paper>
+              </form>
+            </Paper>
+          </Fade>
         </Grid>
       </Grid>
     );
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -1,22 +1,29 @@
 import React from 'react';
 import axios from 'axios';
-import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  Typography,
+  TextField,
+  Button,
+  Fade
+} from '@material-ui/core';
 import { routes } from '../../config';
-import { Message } from '../'
+import { Message } from '../';
 
 class SignIn extends React.Component {
   state = {
     email: '',
     password: '',
-    open: false, 
+    open: false,
     message: ''
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   toggleMenu = () => {
-      this.setState({open: false});
-  }
+    this.setState({ open: false });
+  };
 
   submit = () => {
     axios({
@@ -37,81 +44,84 @@ class SignIn extends React.Component {
       }
     })
       .then(res => {
-        const isUserSignedIn = res.data.includes('user-signed-in="true"')
-        if(isUserSignedIn)
-          window.location.href = routes.home;
-        else
-          this.setState({ open: true });  
-          this.setState({ message: 'E-mail ou senha errado.' });    
+        const isUserSignedIn = res.data.includes('user-signed-in="true"');
+        if (isUserSignedIn) window.location.href = routes.home;
+        else this.setState({ open: true });
+        this.setState({ message: 'E-mail ou senha errado.' });
       })
       .catch(err => console.log(err));
   };
 
-
   render() {
     return (
       <div>
-      <Message open = {this.state.open} mensagem = {this.state.message} toggleMenu = {this.toggleMenu}/>
-      <Grid
-        container
-        justify="center"
-        spacing={32}
-        style={{
-          position: 'absolute',
-          top: '25%'
-        }}
-      >
-        <Grid item md={6} xs={10}>
-          <Paper elevation={4}>
-            <form style={{ padding: 32 }}>
-              <Grid container direction="column" spacing={24}>
-                <Grid item>
-                  <Typography variant="h6" align="center">
-                    Sign in to MAC0218
-                  </Typography>
-                </Grid>
-
-                <Grid item>
-                  <Grid container direction="column" spacing={32}>
+        <Message
+          open={this.state.open}
+          mensagem={this.state.message}
+          toggleMenu={this.toggleMenu}
+        />
+        <Grid
+          container
+          justify="center"
+          spacing={32}
+          style={{
+            position: 'absolute',
+            top: '25%'
+          }}
+        >
+          <Grid item md={6} xs={10}>
+            <Fade in={true}>
+              <Paper elevation={4}>
+                <form style={{ padding: 32 }}>
+                  <Grid container direction="column" spacing={24}>
                     <Grid item>
-                      <TextField
-                        label="Email"
-                        variant="outlined"
-                        fullWidth
-                        name="email"
-                        onChange={this.handleChange}
-                        value={this.state.email}
-                      />
+                      <Typography variant="h6" align="center">
+                        Sign in to MAC0218
+                      </Typography>
                     </Grid>
 
                     <Grid item>
-                      <TextField
-                        label="Password"
-                        type="password"
-                        variant="outlined"
-                        fullWidth
-                        name="password"
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                      />
-                    </Grid>
+                      <Grid container direction="column" spacing={32}>
+                        <Grid item>
+                          <TextField
+                            label="Email"
+                            variant="outlined"
+                            fullWidth
+                            name="email"
+                            onChange={this.handleChange}
+                            value={this.state.email}
+                          />
+                        </Grid>
 
-                    <Grid item>
-                      <Button
-                        variant="contained"
-                        fullWidth
-                        onClick={this.submit}
-                      >
-                        Submit
-                  </Button>
+                        <Grid item>
+                          <TextField
+                            label="Password"
+                            type="password"
+                            variant="outlined"
+                            fullWidth
+                            name="password"
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                          />
+                        </Grid>
+
+                        <Grid item>
+                          <Button
+                            variant="contained"
+                            fullWidth
+                            onClick={this.submit}
+                          >
+                            Submit
+                          </Button>
+                        </Grid>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-              </Grid>
-            </form>
-          </Paper>
+                </form>
+              </Paper>
+            </Fade>
+          </Grid>
         </Grid>
-      </Grid>
       </div>
     );
   }
