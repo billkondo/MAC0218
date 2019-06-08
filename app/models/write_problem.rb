@@ -6,5 +6,5 @@ class WriteProblem < ApplicationRecord
 
   validates :title, presence: true
   validates :statement, presence: true
-  # validates :write_problem_questions, length: { minimum: 1 }
+  validates :write_problem_questions, length: { minimum: 1 }
 end

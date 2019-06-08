@@ -20,7 +20,7 @@ export const List = ({ questions, deleteQuestion, editQuestion }) => {
           ) : (
             <React.Fragment>
               {questions.map(q => (
-                <Grid item key={q.app_id}>
+                <Grid item key={q.id}>
                   <Question
                     question={q.question}
                     deleteQuestion={deleteQuestion}

@@ -6,7 +6,7 @@ import { Statement } from './statement';
 import { Questions, Editor } from './questions';
 import { Services } from '../../../../services';
 
-export const Form = ({ submit, mode }) => {
+export const Form = ({ submit, mode, problemProps, questionsProps }) => {
   // TODO separate state ?
   // TODO wasted renders ??
 
@@ -25,7 +25,18 @@ export const Form = ({ submit, mode }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (problemProps) {
+      console.log(problemProps);
+      const _questions = questionsProps ? questionsProps : [];
+      console.log(questionsProps);
+      setProblem({
+        title: problemProps.title,
+        statement: problemProps.statement,
+        questions: _questions
+      });
+    }
+  }, [problemProps, questionsProps]);
 
   const handleChange = e =>
     setProblem({ ...problem, [e.target.name]: e.target.value });
@@ -97,6 +108,7 @@ export const Form = ({ submit, mode }) => {
             handleChange={handleChange}
             title={problem.title}
             submitQuestion={submitQuestion}
+            mode={mode}
           />
         </Grid>
 
@@ -104,6 +116,7 @@ export const Form = ({ submit, mode }) => {
           <Statement
             statement={problem.statement}
             handleChange={handleChange}
+            mode={mode}
           />
         </Grid>
 

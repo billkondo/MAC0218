@@ -20,8 +20,6 @@ const create = write_problem => {
 };
 
 const get = ID => {
-  console.log('get', ID);
-
   return new Promise((resolve, reject) => {
     axios({
       method: 'GET',

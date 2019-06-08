@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, TextField } from '@material-ui/core';
 
-export const Statement = ({ statement, handleChange }) => {
+export const Statement = ({ statement, handleChange, mode }) => {
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -13,6 +13,9 @@ export const Statement = ({ statement, handleChange }) => {
           name="statement"
           fullWidth
           label="Enunciado"
+          InputProps={{
+            readOnly: mode === 'READ' ? true : false
+          }}
         />
       </Grid>
     </Grid>

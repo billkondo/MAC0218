@@ -11,15 +11,22 @@ const _Create = ({ history }) => {
   };
 
   const createQuestion = problem => {
+    problem = {
+      ...problem,
+      write_problem_questions_attributes: problem.write_problem_questions_attributes.map(
+        m => ({ question: m.question })
+      )
+    };
+
     Services.Api.write
       .create(problem)
       .then(res => {
         console.log(res);
 
-        const { write_problem_app_id, status } = res.data;
+        const { write_problem_id, status } = res.data;
 
         if (status === 'OK') {
-          goToRead(write_problem_app_id);
+          goToRead(write_problem_id);
         } else {
           // TODO throw errors
         }
