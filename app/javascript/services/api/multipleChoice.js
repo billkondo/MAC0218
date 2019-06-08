@@ -17,11 +17,13 @@ const create = multiple_choice_problem =>
       .catch(err => reject(err));
   });
 
-const get_problems = cancelToken =>  // TODO: Should be in another file, instead of multipleChoice.js 
+const get_problems = (
+  cancelToken // TODO: Should be in another file, instead of multipleChoice.js
+) =>
   new Promise((resolve, reject) => {
     axios({
       method: 'GET',
-      url: routes.api.problems,
+      url: routes.api.problems_all,
       headers: {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
       },

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   post 'api/problems/update_multiple_choice_favorites' => 'problems#update_multiple_choice_favorites'
 
+  post 'api/problems/write/create' => 'write_problems#create'
+  get  'api/problems/write/get'    => 'write_problems#get'
+
   # Authentication
   devise_scope :user do
     post 'api/auth/sign_up' => 'app_sign_up#create'

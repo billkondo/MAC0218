@@ -13,7 +13,15 @@ const editMultipleChoice = id => {
 
 const solveMultipleProblem = id => {
   return `/practice/${id}`;
-}
+};
+
+const readWriteProblem = id => {
+  return `/problems/write/${id}`;
+};
+
+const getWriteProblem = id => {
+  return `/api/problems/write/get/?app_id=${id}`;
+};
 
 export const routes = {
   home: '/',
@@ -35,14 +43,24 @@ export const routes = {
 
   solve_multiple_problem: solveMultipleProblem,
 
+  write_form: '/create_problem/write_form',
+
+  read_write_problem: readWriteProblem,
+
   api: {
-    problems: '/api/problems',
+    problems_all: '/api/problems',
     get_multiple_choice: getMultipleChoice,
     update_multiple_choice_favorites:
       '/api/problems/update_multiple_choice_favorites',
     get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites',
     update_multiple_choice: `/api/problems/update_multiple_choice`,
     delete_multiple_choice: `/api/problems/delete_multiple_choice`,
+    problems: {
+      write: {
+        create: `/api/problems/write/create`,
+        get: getWriteProblem
+      }
+    },
     sign_up: '/api/auth/sign_up'
   }
 };

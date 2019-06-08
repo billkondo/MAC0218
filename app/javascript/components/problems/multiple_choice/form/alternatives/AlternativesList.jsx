@@ -39,15 +39,10 @@ export const AlternativesList = ({
                 ))}
               </React.Fragment>
             ) : (
-              <Grid item container spacing={16} alignItems="center">
-                <Grid item>
-                  <Block />
-                </Grid>
-                <Grid item>
-                  <Typography variant="body1">
-                    Nenhuma alternativa criada
-                  </Typography>
-                </Grid>
+              <Grid item>
+                <Typography variant="body1">
+                  Nenhuma alternativa criada
+                </Typography>
               </Grid>
             )}
           </Grid>
