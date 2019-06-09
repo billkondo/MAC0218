@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Grow } from '@material-ui/core';
 
 import { MenuBar } from './menu_bar';
 import { Statement } from './Statement';
@@ -8,49 +8,49 @@ import { Alternatives } from './alternatives';
 const AREA = {
   TITLE: 'TILE',
   STATEMENT: 'STATEMENT',
-  ALTERNATIVES: 'ALTERNATIVES',
-}
+  ALTERNATIVES: 'ALTERNATIVES'
+};
 
 const form_validation = problem => {
   const {
     title,
     statement,
     alternatives_attributes: alternatives,
-    correct_answer,
-  } = problem
-  
+    correct_answer
+  } = problem;
+
   const errors = [];
 
   if (!title) {
     errors.push({
       area: AREA.TITLE,
-      description: 'O problema precisa de um título',
+      description: 'O problema precisa de um título'
     });
   }
 
   if (!statement) {
     errors.push({
       area: AREA.STATEMENT,
-      description: 'O problema precisa de um enunciado',
+      description: 'O problema precisa de um enunciado'
     });
   }
 
   if (alternatives.length < 2) {
     errors.push({
       area: AREA.ALTERNATIVES,
-      description: 'O problema precisa de no mínimo duas alternativas',
+      description: 'O problema precisa de no mínimo duas alternativas'
     });
   }
 
   if (!correct_answer) {
     errors.push({
       area: AREA.ALTERNATIVES,
-      description: 'O problema precisa de uma alternativa correta',
+      description: 'O problema precisa de uma alternativa correta'
     });
   }
 
-  return errors
-}
+  return errors;
+};
 
 class Form extends React.Component {
   state = {
@@ -63,7 +63,7 @@ class Form extends React.Component {
     isOwner: '',
     id: '',
 
-    errors: [],
+    errors: []
   };
 
   componentDidMount() {
@@ -123,16 +123,19 @@ class Form extends React.Component {
       statement: this.state.statement,
       alternatives_attributes: this.state.alternatives,
       correct_answer: this.state.correct_answer
-    }
+    };
 
-    const errors = form_validation(problem_info)
-    this.setState({
-      errors,
-    }, () => {
-      if (errors.length == 0) {
-        submitForm(problem_info);
+    const errors = form_validation(problem_info);
+    this.setState(
+      {
+        errors
+      },
+      () => {
+        if (errors.length == 0) {
+          submitForm(problem_info);
+        }
       }
-    })
+    );
   };
 
   render() {
@@ -144,53 +147,57 @@ class Form extends React.Component {
       correct_answer,
       isOwner,
       id,
-      errors,
+      errors
     } = this.state;
 
     const { mode } = this.props;
 
-    const titleErros = errors.find(({area}) => area === AREA.TITLE)
-    const statementErrors = errors.find(({area}) => area === AREA.STATEMENT)
-    const alternativesErrors = errors.find(({area}) => area === AREA.ALTERNATIVES)
+    const titleErros = errors.find(({ area }) => area === AREA.TITLE);
+    const statementErrors = errors.find(({ area }) => area === AREA.STATEMENT);
+    const alternativesErrors = errors.find(
+      ({ area }) => area === AREA.ALTERNATIVES
+    );
 
     return (
-      <Grid container alignItems="flex-start">
-        <Grid item xs={12} style={{ padding: 32 }}>
-          <MenuBar
-            title={title}
-            handleChange={this.handleChange}
-            onSubmit={this.onSubmit}
-            mode={mode}
-            isOwner={isOwner}
-            id={id}
-            error={titleErros && titleErros.description}
-          />
-        </Grid>
+      <Grow in={true}>
+        <Grid container alignItems="flex-start">
+          <Grid item xs={12} style={{ padding: 32 }}>
+            <MenuBar
+              title={title}
+              handleChange={this.handleChange}
+              onSubmit={this.onSubmit}
+              mode={mode}
+              isOwner={isOwner}
+              id={id}
+              error={titleErros && titleErros.description}
+            />
+          </Grid>
 
-        <Grid item xs={12} md={6} style={{ padding: 32 }}>
-          <Statement
-            statement={statement}
-            handleChange={this.handleChange}
-            mode={mode}
-            error={statementErrors && statementErrors.description}
-          />
-        </Grid>
+          <Grid item xs={12} md={6} style={{ padding: 32 }}>
+            <Statement
+              statement={statement}
+              handleChange={this.handleChange}
+              mode={mode}
+              error={statementErrors && statementErrors.description}
+            />
+          </Grid>
 
-        <Grid item xs={12} md={6} style={{ padding: 32 }}>
-          <Alternatives
-            alternatives={alternatives}
-            clearAlternative={this.clearAlternative}
-            alternative={alternative}
-            handleChange={this.handleChange}
-            createAlternative={this.createAlternative}
-            correct={correct_answer}
-            setCorrect={this.setCorrectAnswer}
-            deleteAlt={this.deleteAlternative}
-            mode={mode}
-            error={alternativesErrors && alternativesErrors.description}
-          />
+          <Grid item xs={12} md={6} style={{ padding: 32 }}>
+            <Alternatives
+              alternatives={alternatives}
+              clearAlternative={this.clearAlternative}
+              alternative={alternative}
+              handleChange={this.handleChange}
+              createAlternative={this.createAlternative}
+              correct={correct_answer}
+              setCorrect={this.setCorrectAnswer}
+              deleteAlt={this.deleteAlternative}
+              mode={mode}
+              error={alternativesErrors && alternativesErrors.description}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Grow>
     );
   }
 }

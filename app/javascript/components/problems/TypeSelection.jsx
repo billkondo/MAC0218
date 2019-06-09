@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Paper, Typography, Fade } from '@material-ui/core';
+import { Grid, Paper, Typography, Grow } from '@material-ui/core';
 
 import { routes } from '../../config';
 
 const TypeSelection = () => (
-  <Fade in={true}>
+  <Grow in={true}>
     <Grid container direction="column" justify="center" alignItems="center">
       <Grid item style={{ padding: 32 }}>
-        <Typography variant="h5" align="center">
+        <Typography variant="h5" align="center" style={{ fontWeight: 'bold' }}>
           Escolha o tipo de problema
         </Typography>
       </Grid>
@@ -65,7 +65,7 @@ const TypeSelection = () => (
         </Grid>
       </Grid>
     </Grid>
-  </Fade>
+  </Grow>
 );
 
 export default TypeSelection;

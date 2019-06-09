@@ -14,15 +14,18 @@ class Navbar extends React.Component {
       <AppBar
         position="static"
         style={{
-          background: colors.red[400],
-          marginBottom: 64
+          marginBottom: 64,
+          background: 'linear-gradient(#e57373, #ff1744)'
         }}
       >
         <Toolbar>
           <Grid container alignItems="center">
             <Grid item>
               <Link to="/" style={{ textDecoration: 'none' }}>
-                <Typography variant="h6" style={{ color: colors.grey[50] }}>
+                <Typography
+                  variant="h6"
+                  style={{ color: colors.grey[50], fontWeight: 'bold' }}
+                >
                   MAC0218
                 </Typography>
               </Link>

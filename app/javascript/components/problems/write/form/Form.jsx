@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Fade } from '@material-ui/core';
+import { Grid, Grow } from '@material-ui/core';
 
 import { MenuBar } from './menu_bar';
 import { Statement } from './statement';
@@ -101,7 +101,7 @@ export const Form = ({ submit, mode, problemProps, questionsProps }) => {
   };
 
   return (
-    <Fade in={true}>
+    <Grow in={true}>
       <Grid container alignItems="flex-start">
         <Grid item xs={12} style={{ padding: 32 }}>
           <MenuBar
@@ -137,6 +137,6 @@ export const Form = ({ submit, mode, problemProps, questionsProps }) => {
           addQuestion={addQuestion}
         />
       </Grid>
-    </Fade>
+    </Grow>
   );
 };
