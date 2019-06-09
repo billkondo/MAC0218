@@ -1,20 +1,105 @@
 # MAC0218
 
-### Development instructions
+This project is being developed during the discipline MAC0218 from University of São Paulo. The goal of doing this project is to develop a site that students and teachers can help each other during their preparation for the university entry exams. The main functionalities of this platform is to create and share problems, create and do practice tests, and create study groups. Additional features include: message exchange and recomendation problems system.
 
-- clone repo
-- run bundle:install to install ruby gems
-- you must have [yarn](https://yarnpkg.com/en/), a javascript package manager, installed
-- also, you must run the webpacker install script `rails webpacker:install` and then run the React install script `rails webpacker:install:react`
-- to start server, run rails s, the project should be running in [localhost:3000](http://localhost:3000/) (after the webpacker finishes its compilation).
-- run ./bin/webpack-dev-server in another terminal window in order to start client server. It will allow you to have hot reload (the browser will be refreshed when javascript code is changed)
+## Getting Started
 
-### Implementation details
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-#### React
+### Prerequisites
 
-- This repo uses React to develop the front-end part of the application
-- To integrate this library with Ruby on Rails, the gem
-  [webpacker](https://github.com/rails/webpacker) is used
-- This gem generates the directory /app/javascript/ where the React code will live
-- Inside this directory, there is the folder /packs. The files from this folder can be imported by Rails views using <% javascript_pack_tag file_name>
+The following technologies need to be installed in order to run this project:
+
+- [Node](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/en/)
+- [Ruby on Rails](https://guides.rubyonrails.org/getting_started.html)
+- [PostgreSQL](https://www.postgresql.org/)
+
+### Installing
+
+Get the repository by cloning it:
+
+```
+git clone git@github.com:billkondo/MAC0218.git     (using SSH)
+git clone https://github.com/billkondo/MAC0218.git (using HTTPS)
+```
+
+Install ruby dependencies:
+
+```
+bundle install
+```
+
+Install webpacker and configure it to accept React:
+
+```
+rails webpacker:install
+rails webpacker:install:react
+```
+
+Install node dependencies
+
+```
+yarn install
+```
+
+Configure the /config/database.yml file by changing the username fields. Write the username from the operating system you are using and select a name for development / test databases. The following blockquote is the database.yml file:
+
+```
+development: &default
+  adapter: postgresql
+  host: localhost
+  username: your_username
+  database: choose_name
+  pool: 5
+  timeout: 5000
+
+test:
+  <<: *default
+  adapter: postgresql
+  username: your_usename
+  database: choose_name
+
+```
+
+Create / update database schema:
+
+```
+rails db:migrate
+```
+
+Start PostgreSQL Server. Check this [tutorial](https://tableplus.io/blog/2018/10/how-to-start-stop-restart-postgresql-server.html):
+
+Start rails server:
+
+```
+rails s
+```
+
+For development, start also the webpacker dev server (faster reinitialization):
+
+```
+./bin/webpack-dev-server
+```
+
+## Running the tests
+
+TODO
+
+## Deployment
+
+TODO
+
+## Built With
+
+- [React](https://reactjs.org/) - The front-end library
+- [Yarn](https://yarnpkg.com/en/) - Dependency Management
+- [Ruby on Rails](https://rubyonrails.org/) - Backend framework
+- [PostgreSQL](https://www.postgresql.org/) - Database
+
+## Authors
+
+- **Gabriel Oliveira** - [gafeol](https://github.com/gafeol)
+- **Jiang Zhi** - [kokosha](https://github.com/kokosha)
+- **Pedro Sousa** - [pedroteosousa](https://github.com/pedroteosousa)
+- **William Kondo** - [billkondo](https://github.com/billkondo)

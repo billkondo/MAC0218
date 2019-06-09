@@ -17,8 +17,6 @@ ActiveRecord::Schema.define(version: 2019_05_31_021319) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-ActiveRecord::Schema.define(version: 2019_05_23_144034) do
-
   create_table "alternatives", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", null: false
