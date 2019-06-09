@@ -90,6 +90,10 @@ TODO
 
 TODO
 
+## Wiki
+
+Check the [wiki](https://github.com/billkondo/MAC0218/wiki) in order to know more about this project.
+
 ## Built With
 
 - [React](https://reactjs.org/) - The front-end library
