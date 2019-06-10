@@ -15,7 +15,7 @@ const TypeSelection = () => (
 
       <Grid
         item
-        md={6}
+        md={10}
         xs={10}
         container
         justify="center"

@@ -5,7 +5,7 @@ import { Actions } from './Actions';
 
 export const MenuBar = ({ handleChange, title, submitQuestion, mode }) => {
   return (
-    <Grid container direction="row-reverse" alignItems="center">
+    <Grid container direction="row-reverse" alignItems="center" spacing={2}>
       <Grid item style={{ flex: 1 }}>
         <Actions submitQuestion={submitQuestion} mode={mode} />
       </Grid>

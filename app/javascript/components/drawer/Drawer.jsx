@@ -12,6 +12,9 @@ import {
   Grid
 } from '@material-ui/core';
 import { MoveToInbox as InboxIcon, Mail as MailIcon } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+
+import { routes } from '../../config';
 
 export const AppDrawer = ({
   classes,
@@ -22,18 +25,29 @@ export const AppDrawer = ({
 }) => {
   const drawer = (
     <div>
-      <Grid container className={classes.toolbar} alignItems="center">
+      <Grid
+        container
+        className={classes.toolbar}
+        alignItems="center"
+        style={{
+          background: 'linear-gradient(#880e4f, #b71c1c)'
+        }}
+      >
         <Grid item container direction="column" justify="center">
-          <Typography
-            variant="h5"
-            align="center"
-            style={{ color: colors.grey[500], fontWeight: 'bold' }}
-          >
-            MAC0218
-          </Typography>
+          <Link to={routes.home} style={{ textDecoration: 'none' }}>
+            <Typography
+              variant="h5"
+              align="center"
+              style={{ color: colors.grey[50], fontWeight: 'bold' }}
+            >
+              MAC0218
+            </Typography>
+          </Link>
         </Grid>
       </Grid>
+
       <Divider />
+
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -44,7 +58,9 @@ export const AppDrawer = ({
           </ListItem>
         ))}
       </List>
+
       <Divider />
+
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem button key={text}>

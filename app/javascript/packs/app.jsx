@@ -24,7 +24,8 @@ import {
   Problems,
   PracticeProblem,
   Write,
-  Drawer
+  Drawer,
+  colors
 } from '../components';
 import { routes } from '../config';
 
@@ -54,7 +55,8 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    background: 'linear-gradient(#ffcdd2, #c5cae9)'
   },
   content: {
     flexGrow: 1,
