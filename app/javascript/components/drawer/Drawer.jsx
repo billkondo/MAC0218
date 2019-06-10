@@ -11,7 +11,13 @@ import {
   colors,
   Grid
 } from '@material-ui/core';
-import { MoveToInbox as InboxIcon, Mail as MailIcon } from '@material-ui/icons';
+import {
+  MoveToInbox as InboxIcon,
+  Mail as MailIcon,
+  Edit,
+  Group,
+  Note
+} from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 import { routes } from '../../config';
@@ -49,28 +55,29 @@ export const AppDrawer = ({
       <Divider />
 
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <Edit />
+          </ListItemIcon>
+          <ListItemText primary="Problemas" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <Group />
+          </ListItemIcon>
+          <ListItemText primary="Grupos" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <Note />
+          </ListItemIcon>
+          <ListItemText primary="Simulados" />
+        </ListItem>
       </List>
 
       <Divider />
-
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 

@@ -51,18 +51,10 @@ class SignUp extends React.Component {
     const { errors } = this.state;
 
     return (
-      <Grid
-        container
-        justify="center"
-        spacing={4}
-        style={{
-          position: 'absolute',
-          top: '25%'
-        }}
-      >
+      <Grid container justify="center" spacing={4}>
         <Grid item md={6} xs={10}>
           <Grow in={true}>
-            <Paper elevation={4}>
+            <Paper elevation={4} style={{ marginTop: 32 }}>
               <form style={{ padding: 32 }}>
                 <Grid container direction="column" spacing={3}>
                   <Grid item>

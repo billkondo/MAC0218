@@ -36,14 +36,6 @@ class Navbar extends React.Component {
               >
                 <Menu />
               </IconButton>
-              {/* <Link to="/" style={{ textDecoration: 'none' }}>
-                <Typography
-                  variant="h6"
-                  style={{ color: colors.grey[50], fontWeight: 'bold' }}
-                >
-                  MAC0218
-                </Typography>
-              </Link> */}
             </Grid>
 
             <Grid item style={{ flex: 1 }}>
