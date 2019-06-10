@@ -55,7 +55,7 @@ class UserProblems extends React.Component {
     const { problems, status } = this.state;
 
     return (
-      <Grid container direction="column" spacing={32} style={{ padding: 16 }}>
+      <Grid container direction="column" spacing={4} style={{ padding: 16 }}>
         <ProblemsList problems={problems} />
       </Grid>
     );

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Grid, colors } from '@material-ui/core';
 
 const Registration = () => (
-  <Grid container spacing={16} justify="flex-end">
+  <Grid container spacing={2} justify="flex-end">
     <Grid item>
       <Link to="/sign-in/" style={{ textDecoration: 'none' }}>
         <Button style={{ color: colors.grey[50] }}> Sign In </Button>

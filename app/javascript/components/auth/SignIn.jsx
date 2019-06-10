@@ -6,7 +6,7 @@ import {
   Typography,
   TextField,
   Button,
-  Fade
+  Grow
 } from '@material-ui/core';
 import { routes } from '../../config';
 import { Message } from '../';
@@ -63,17 +63,17 @@ class SignIn extends React.Component {
         <Grid
           container
           justify="center"
-          spacing={32}
+          spacing={4}
           style={{
             position: 'absolute',
             top: '25%'
           }}
         >
           <Grid item md={6} xs={10}>
-            <Fade in={true}>
+            <Grow in={true}>
               <Paper elevation={4}>
                 <form style={{ padding: 32 }}>
-                  <Grid container direction="column" spacing={24}>
+                  <Grid container direction="column" spacing={3}>
                     <Grid item>
                       <Typography variant="h6" align="center">
                         Sign in to MAC0218
@@ -81,7 +81,7 @@ class SignIn extends React.Component {
                     </Grid>
 
                     <Grid item>
-                      <Grid container direction="column" spacing={32}>
+                      <Grid container direction="column" spacing={4}>
                         <Grid item>
                           <TextField
                             label="Email"
@@ -119,7 +119,7 @@ class SignIn extends React.Component {
                   </Grid>
                 </form>
               </Paper>
-            </Fade>
+            </Grow>
           </Grid>
         </Grid>
       </div>

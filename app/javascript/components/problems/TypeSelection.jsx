@@ -19,7 +19,7 @@ const TypeSelection = () => (
         xs={10}
         container
         justify="center"
-        spacing={32}
+        spacing={4}
         alignItems="center"
       >
         <Grid item md={6} xs={10}>
@@ -28,7 +28,7 @@ const TypeSelection = () => (
             style={{ textDecoration: 'none' }}
           >
             <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
-              <Grid container direction="column" spacing={32}>
+              <Grid container direction="column" spacing={4}>
                 <Grid item>
                   <Typography variant="h6">
                     Questão de Múltipla Escolha
@@ -49,7 +49,7 @@ const TypeSelection = () => (
         <Grid item md={6} xs={10}>
           <Link to={routes.write_form} style={{ textDecoration: 'none' }}>
             <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
-              <Grid container direction="column" spacing={32}>
+              <Grid container direction="column" spacing={4}>
                 <Grid item>
                   <Typography variant="h6">Questão Escrita</Typography>
                 </Grid>

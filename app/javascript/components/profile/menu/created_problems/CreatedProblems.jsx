@@ -7,7 +7,7 @@ import { Services } from '../../../../services';
 class CreatedProblems extends React.Component {
   render() {
     return (
-      <Grid container direction="column" spacing={32}>
+      <Grid container direction="column" spacing={4}>
         <Grid item>
           <UserProblems problems_fetch={Services.Api.MultipleChoice.get_user} />
         </Grid>

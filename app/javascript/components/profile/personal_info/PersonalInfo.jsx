@@ -5,12 +5,12 @@ const PersonalInfo = ({
   name = 'Menino Maluquinho',
   username = 'tester_beast'
 }) => (
-  <Grid container direction="column" spacing={32} alignItems="center">
+  <Grid container direction="column" spacing={4} alignItems="center">
     <Grid item>
       <Avatar style={{ height: 200, width: 200 }} />
     </Grid>
 
-    <Grid item container direction="column" spacing={8}>
+    <Grid item container direction="column" spacing={1}>
       <Grid item>
         <Typography variant="h5" align="center">
           {name}

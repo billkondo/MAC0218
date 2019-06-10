@@ -11,7 +11,7 @@ export const Questions = ({
   editQuestion
 }) => {
   return (
-    <Grid container direction="column" spacing={32}>
+    <Grid container direction="column" spacing={4}>
       <Grid item>
         <List
           questions={questions}

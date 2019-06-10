@@ -8,12 +8,11 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const styles = theme => ({
   close: {
-    padding: theme.spacing.unit / 2,
-  },
+    padding: theme.spacing(2)
+  }
 });
 
 class Message extends React.Component {
-
   render() {
     const { classes } = this.props;
     return (
@@ -21,13 +20,13 @@ class Message extends React.Component {
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           open={this.props.open}
           autoHideDuration={6000}
           onClose={() => this.props.toggleMenu()}
           ContentProps={{
-            'aria-describedby': 'message-id',
+            'aria-describedby': 'message-id'
           }}
           message={<span id="message-id">{this.props.mensagem}</span>}
           action={[
@@ -39,7 +38,7 @@ class Message extends React.Component {
               onClick={() => this.props.toggleMenu()}
             >
               <CloseIcon />
-            </IconButton>,
+            </IconButton>
           ]}
         />
       </div>
@@ -48,7 +47,7 @@ class Message extends React.Component {
 }
 
 Message.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Message);

@@ -14,8 +14,8 @@ const styles = theme => ({
     flexWrap: 'wrap'
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
     width: 200
   },
 
@@ -46,7 +46,7 @@ const Alternative = ({
 }) => {
   const showMenu = mode !== 'read';
   return (
-    <Grid container direction="column" spacing={8}>
+    <Grid container direction="column" spacing={1}>
       <Grid item xs={12}>
         <TextField
           value={alt.text}
@@ -65,7 +65,7 @@ const Alternative = ({
 
       {showMenu && (
         <Grid item>
-          <Grid container justify="flex-end" spacing={16}>
+          <Grid container justify="flex-end" spacing={2}>
             <Grid item>
               <IconButton onClick={setCorrect}>
                 {isCorrect ? (

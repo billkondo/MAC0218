@@ -12,7 +12,7 @@ export const Question = ({ question, deleteQuestion, id, editQuestion }) => {
   };
 
   return (
-    <Grid container spacing={8} direction="column">
+    <Grid container spacing={1} direction="column">
       <Grid item>
         <TextField
           variant="outlined"
@@ -24,7 +24,7 @@ export const Question = ({ question, deleteQuestion, id, editQuestion }) => {
       </Grid>
 
       <Grid item>
-        <Grid container spacing={8} justify="flex-end">
+        <Grid container spacing={1} justify="flex-end">
           <Grid item>
             <IconButton onClick={_edit}>
               <Edit />

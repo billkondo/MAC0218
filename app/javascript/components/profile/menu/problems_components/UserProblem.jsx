@@ -63,7 +63,7 @@ class UserProblem extends React.Component {
     return (
       <Card>
         <CardContent>
-          <Grid container direction="column" spacing={24}>
+          <Grid container direction="column" spacing={3}>
             <Grid item>
               <Link
                 to={routes.read_multiple_problem(problem.id)}
@@ -88,7 +88,7 @@ class UserProblem extends React.Component {
         </CardContent>
 
         <CardActions>
-          <Grid container justify="flex-end" spacing={16}>
+          <Grid container justify="flex-end" spacing={2}>
             <Grid item>
               <Grid item container justify="center">
                 <Grid item>

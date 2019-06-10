@@ -35,12 +35,12 @@ export const MenuBar = ({
   onSubmit,
   isOwner,
   id,
-  error,
+  error
 }) => {
   return (
     <Grid container alignItems="flex-start" direction="row-reverse">
       <Grid item style={{ flex: 1, paddingBottom: 32 }}>
-        <Grid container justify="flex-end" spacing={32}>
+        <Grid container justify="flex-end" spacing={4}>
           <Panel mode={mode} onSubmit={onSubmit} isOwner={isOwner} id={id} />
         </Grid>
       </Grid>

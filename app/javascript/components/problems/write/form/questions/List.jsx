@@ -7,12 +7,12 @@ import { Question } from './Question';
 export const List = ({ questions, deleteQuestion, editQuestion }) => {
   return (
     <Paper style={{ padding: 32 }}>
-      <Grid container spacing={32}>
+      <Grid container spacing={4}>
         <Grid item>
           <Typography variant="h6">Perguntas</Typography>
         </Grid>
 
-        <Grid item container spacing={32} direction="column">
+        <Grid item container spacing={4} direction="column">
           {questions.length === 0 ? (
             <Grid item>
               <Typography variant="body1">Nenhuma pergunta criada</Typography>

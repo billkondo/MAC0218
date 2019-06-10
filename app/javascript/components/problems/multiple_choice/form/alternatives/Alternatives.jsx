@@ -15,12 +15,12 @@ export const Alternatives = ({
   handleChange,
   createAlternative,
   mode,
-  error,
+  error
 }) => {
   const showMenu = mode !== 'read';
 
   return (
-    <Grid container spacing={32}>
+    <Grid container spacing={4}>
       <Grid item xs={12}>
         <AlternativesList
           alternatives={alternatives}

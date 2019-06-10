@@ -57,19 +57,11 @@ class Problems extends React.Component {
     if (status === this.status.loading) return null;
 
     return (
-      <Grid
-        container
-        justify="center"
-        spacing={32}
-        style={{
-          position: 'absolute',
-          top: '20%'
-        }}
-      >
+      <Grid container justify="center" spacing={4}>
         <Grid mb={5}>
           <Typography variant="h3">Problems</Typography>
         </Grid>
-        <Grid container alignItems="center" justify="center" spacing={32}>
+        <Grid container alignItems="center" justify="center" spacing={4}>
           <ProblemsList problems={problems} />
         </Grid>
       </Grid>

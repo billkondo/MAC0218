@@ -37,7 +37,7 @@ const Read = ({ mode }) => {
 
 export const Actions = ({ submitQuestion, mode }) => {
   return (
-    <Grid container justify="flex-end" alignItems="center" spacing={24}>
+    <Grid container justify="flex-end" alignItems="center" spacing={3}>
       <Create mode={mode} submitQuestion={submitQuestion} />
       <Read mode={mode} />
     </Grid>

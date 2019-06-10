@@ -55,7 +55,7 @@ const _Editor = ({
       }}
     >
       <DialogTitle style={{ backgroundColor: colors.red[300] }}>
-        <Grid container spacing={32} alignItems="center">
+        <Grid container spacing={4} alignItems="center">
           <Grid item>
             <Typography variant="h6" style={{ color: colors.grey[50] }}>
               Editor de Perguntas
@@ -75,7 +75,7 @@ const _Editor = ({
       </DialogTitle>
 
       <DialogContent style={{ padding: 32, marginTop: 32 }}>
-        <Grid container direction="column" spacing={32}>
+        <Grid container direction="column" spacing={4}>
           <Grid item container direction="column">
             <Grid item>
               <TextField
@@ -93,7 +93,7 @@ const _Editor = ({
             </Grid>
           </Grid>
 
-          <Grid item container spacing={16} justify="flex-end">
+          <Grid item container spacing={2} justify="flex-end">
             <Grid item>
               <Button variant="outlined" onClick={clear}>
                 Limpar

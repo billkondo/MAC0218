@@ -6,10 +6,10 @@ export const AlternativesMenu = ({
   handleChange,
   clearAlternative,
   createAlternative,
-  error,
+  error
 }) => {
   return (
-    <Grid container direction="column" spacing={16}>
+    <Grid container direction="column" spacing={2}>
       <Grid item xs={12}>
         <TextField
           multiline
@@ -25,7 +25,7 @@ export const AlternativesMenu = ({
       </Grid>
 
       <Grid item>
-        <Grid container justify="flex-end" spacing={32}>
+        <Grid container justify="flex-end" spacing={4}>
           <Grid item>
             <Button onClick={clearAlternative} variant="outlined">
               Limpar
