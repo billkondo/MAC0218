@@ -1,7 +1,8 @@
 development: &default
   adapter: postgresql
   host: localhost
-  username: billkondo
+  username: gafeol
+  password: papaapatia
   database: development_database
   pool: 5
   timeout: 5000
@@ -9,5 +10,6 @@ development: &default
 test:
   <<: *default
   adapter: postgresql
-  username: billkondo
+  username: gafeol
+  password: papaapatia
   database: test_database
