@@ -10,9 +10,9 @@ const _Breadcrumb = ({ location }) => {
   const labels = breadcrumb.getLabels(pathname);
 
   return (
-    <Grid container alignItems="flex-end">
+    <Grid container alignItems="flex-start" style={{ marginBottom: 64 }}>
       <Grid item>
-        <div style={{ padding: 16 }}>
+        <div style={{ padding: 8 }}>
           <Breadcrumbs
             separator={<NavigateNext fontSize="small" />}
             aria-label="Breadcrumb"
