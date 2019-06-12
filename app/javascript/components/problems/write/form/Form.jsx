@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Grow } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { MenuBar } from './menu_bar';
 import { Statement } from './statement';
@@ -101,42 +101,40 @@ export const Form = ({ submit, mode, problemProps, questionsProps }) => {
   };
 
   return (
-    <Grow in={true}>
-      <Grid container alignItems="flex-start">
-        <Grid item xs={12} style={{ padding: 32 }}>
-          <MenuBar
-            handleChange={handleChange}
-            title={problem.title}
-            submitQuestion={submitQuestion}
-            mode={mode}
-          />
-        </Grid>
-
-        <Grid item md={6} xs={12} style={{ padding: 32 }}>
-          <Statement
-            statement={problem.statement}
-            handleChange={handleChange}
-            mode={mode}
-          />
-        </Grid>
-
-        <Grid item md={6} xs={12} style={{ padding: 32 }}>
-          <Questions
-            questions={problem.questions}
-            openEditor={openEditor}
-            deleteQuestion={deleteQuestion}
-            editQuestion={openEditorWithProblem}
-          />
-        </Grid>
-
-        <Editor
-          isOpen={isOpen}
-          close={closeEditor}
-          editQuestion={editQuestion}
-          question={editor.question}
-          addQuestion={addQuestion}
+    <Grid container alignItems="flex-start">
+      <Grid item xs={12} style={{ padding: 32 }}>
+        <MenuBar
+          handleChange={handleChange}
+          title={problem.title}
+          submitQuestion={submitQuestion}
+          mode={mode}
         />
       </Grid>
-    </Grow>
+
+      <Grid item md={6} xs={12} style={{ padding: 32 }}>
+        <Statement
+          statement={problem.statement}
+          handleChange={handleChange}
+          mode={mode}
+        />
+      </Grid>
+
+      <Grid item md={6} xs={12} style={{ padding: 32 }}>
+        <Questions
+          questions={problem.questions}
+          openEditor={openEditor}
+          deleteQuestion={deleteQuestion}
+          editQuestion={openEditorWithProblem}
+        />
+      </Grid>
+
+      <Editor
+        isOpen={isOpen}
+        close={closeEditor}
+        editQuestion={editQuestion}
+        question={editor.question}
+        addQuestion={addQuestion}
+      />
+    </Grid>
   );
 };

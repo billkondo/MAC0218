@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Grow } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { MenuBar } from './menu_bar';
 import { Statement } from './Statement';
@@ -159,45 +159,43 @@ class Form extends React.Component {
     );
 
     return (
-      <Grow in={true}>
-        <Grid container alignItems="flex-start">
-          <Grid item xs={12} style={{ padding: 32 }}>
-            <MenuBar
-              title={title}
-              handleChange={this.handleChange}
-              onSubmit={this.onSubmit}
-              mode={mode}
-              isOwner={isOwner}
-              id={id}
-              error={titleErros && titleErros.description}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} style={{ padding: 32 }}>
-            <Statement
-              statement={statement}
-              handleChange={this.handleChange}
-              mode={mode}
-              error={statementErrors && statementErrors.description}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} style={{ padding: 32 }}>
-            <Alternatives
-              alternatives={alternatives}
-              clearAlternative={this.clearAlternative}
-              alternative={alternative}
-              handleChange={this.handleChange}
-              createAlternative={this.createAlternative}
-              correct={correct_answer}
-              setCorrect={this.setCorrectAnswer}
-              deleteAlt={this.deleteAlternative}
-              mode={mode}
-              error={alternativesErrors && alternativesErrors.description}
-            />
-          </Grid>
+      <Grid container alignItems="flex-start">
+        <Grid item xs={12} style={{ padding: 32 }}>
+          <MenuBar
+            title={title}
+            handleChange={this.handleChange}
+            onSubmit={this.onSubmit}
+            mode={mode}
+            isOwner={isOwner}
+            id={id}
+            error={titleErros && titleErros.description}
+          />
         </Grid>
-      </Grow>
+
+        <Grid item xs={12} md={6} style={{ padding: 32 }}>
+          <Statement
+            statement={statement}
+            handleChange={this.handleChange}
+            mode={mode}
+            error={statementErrors && statementErrors.description}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6} style={{ padding: 32 }}>
+          <Alternatives
+            alternatives={alternatives}
+            clearAlternative={this.clearAlternative}
+            alternative={alternative}
+            handleChange={this.handleChange}
+            createAlternative={this.createAlternative}
+            correct={correct_answer}
+            setCorrect={this.setCorrectAnswer}
+            deleteAlt={this.deleteAlternative}
+            mode={mode}
+            error={alternativesErrors && alternativesErrors.description}
+          />
+        </Grid>
+      </Grid>
     );
   }
 }

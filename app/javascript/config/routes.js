@@ -26,9 +26,19 @@ const getWriteProblem = id => {
 export const routes = {
   home: '/',
 
+  sign_in: '/sign-in',
+
+  sign_up: '/sign-up',
+
   sign_out: '/users/sign_out/',
 
-  multiple_choice_form: '/create_problem/multiple_choice_form',
+  problems: '/problems',
+
+  create_problem: '/problems/create_problem',
+
+  multiple_choice_form: '/problems/create_problem/multiple_choice_form',
+
+  write_form: '/problems/create_problem/write_form',
 
   edit_multiple_choice: editMultipleChoice,
 
@@ -42,8 +52,6 @@ export const routes = {
   read_multiple_problem: readMultipleProblem,
 
   solve_multiple_problem: solveMultipleProblem,
-
-  write_form: '/create_problem/write_form',
 
   read_write_problem: readWriteProblem,
 

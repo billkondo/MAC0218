@@ -55,12 +55,14 @@ export const AppDrawer = ({
       <Divider />
 
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <Edit />
-          </ListItemIcon>
-          <ListItemText primary="Problemas" />
-        </ListItem>
+        <Link to={routes.problems} style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <Edit />
+            </ListItemIcon>
+            <ListItemText primary="Problemas" />
+          </ListItem>
+        </Link>
 
         <ListItem button>
           <ListItemIcon>

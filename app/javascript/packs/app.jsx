@@ -25,7 +25,7 @@ import {
   PracticeProblem,
   Write,
   Drawer,
-  colors
+  Breadcrumb
 } from '../components';
 import { routes } from '../config';
 
@@ -95,11 +95,16 @@ const App = ({ isAuth, container }) => {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          <Breadcrumb />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/problems" component={Problems} />
+            <Route exact path={routes.home} component={Home} />
+            <Route exact path={routes.problems} component={Problems} />
             <Route exact path="/practice/:id" component={PracticeProblem} />
-            <Route exact path="/create_problem/" component={TypeSelection} />
+            <Route
+              exact
+              path={routes.create_problem}
+              component={TypeSelection}
+            />
             {isAuth ? (
               <Route
                 exact
