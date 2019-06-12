@@ -69,3 +69,6 @@ gem 'devise'
 gem 'jquery-rails'
 
 gem 'webpacker'
+
+# Travis : continuous integration
+gem 'travis'
