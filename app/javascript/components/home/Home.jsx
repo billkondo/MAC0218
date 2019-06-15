@@ -13,7 +13,10 @@ const Home = () => (
 
       <Grid container spacing={4}>
         <Grid item mt={5}>
-          <Link to={routes.create_problem} style={{ textDecoration: 'none' }}>
+          <Link
+            to={routes.problems.create_select_type}
+            style={{ textDecoration: 'none' }}
+          >
             <Button variant="contained"> Create Problem</Button>
           </Link>
         </Grid>

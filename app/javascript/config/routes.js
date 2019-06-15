@@ -32,10 +32,6 @@ export const routes = {
 
   sign_out: '/users/sign_out/',
 
-  problems: '/problems',
-
-  create_problem: '/problems/create_problem',
-
   multiple_choice_form: '/problems/create_problem/multiple_choice_form',
 
   write_form: '/problems/create_problem/write_form',
@@ -54,6 +50,21 @@ export const routes = {
   solve_multiple_problem: solveMultipleProblem,
 
   read_write_problem: readWriteProblem,
+
+  groups: {
+    main: '/groups/',
+    create: '/groups/create_group/'
+  },
+
+  problems: {
+    main: '/problems/',
+    create_select_type: '/problems/create_problem'
+  },
+
+  mocks: {
+    main: '/mocks/',
+    create: '/mocks/create_mock/'
+  },
 
   api: {
     problems_all: '/api/problems',
