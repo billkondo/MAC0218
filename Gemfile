@@ -73,3 +73,9 @@ gem 'devise'
 gem 'jquery-rails'
 
 gem 'webpacker'
+<<<<<<< HEAD
+=======
+
+# Travis : continuous integration
+gem 'travis'
+>>>>>>> master

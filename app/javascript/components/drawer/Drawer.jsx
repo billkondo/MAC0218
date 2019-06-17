@@ -11,16 +11,27 @@ import {
   colors,
   Grid
 } from '@material-ui/core';
-import {
-  MoveToInbox as InboxIcon,
-  Mail as MailIcon,
-  Edit,
-  Group,
-  Note
-} from '@material-ui/icons';
+import { EditOutlined, GroupOutlined, NoteOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 import { routes } from '../../config';
+
+const LinkTextStyle = {
+  fontWeight: 'bold',
+  color: colors.grey[900]
+};
+
+const CustomLinkText = ({ text }) => {
+  return (
+    <ListItemText
+      primary={
+        <Typography variant="body1" style={LinkTextStyle}>
+          {text}
+        </Typography>
+      }
+    />
+  );
+};
 
 export const AppDrawer = ({
   classes,
@@ -55,26 +66,32 @@ export const AppDrawer = ({
       <Divider />
 
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <Edit />
-          </ListItemIcon>
-          <ListItemText primary="Problemas" />
-        </ListItem>
+        <Link to={routes.problems.main} style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <EditOutlined />
+            </ListItemIcon>
+            <CustomLinkText text="Problemas" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <Group />
-          </ListItemIcon>
-          <ListItemText primary="Grupos" />
-        </ListItem>
+        <Link to={routes.groups.main} style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <GroupOutlined />
+            </ListItemIcon>
+            <CustomLinkText text="Grupos" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <Note />
-          </ListItemIcon>
-          <ListItemText primary="Simulados" />
-        </ListItem>
+        <Link to={routes.mocks.main} style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <NoteOutlined />
+            </ListItemIcon>
+            <CustomLinkText text="Simulados" />
+          </ListItem>
+        </Link>
       </List>
 
       <Divider />

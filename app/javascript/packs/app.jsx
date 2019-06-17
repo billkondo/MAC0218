@@ -25,7 +25,9 @@ import {
   PracticeProblem,
   Write,
   Drawer,
-  colors
+  Breadcrumb,
+  Groups,
+  Mocks
 } from '../components';
 import { routes } from '../config';
 
@@ -56,11 +58,10 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: 'linear-gradient(#ffcdd2, #c5cae9)'
+    background: 'linear-gradient(#fff8e1, #fff3e0)'
   },
   content: {
-    flexGrow: 1,
-    padding: theme.spacing(3)
+    flexGrow: 1
   }
 }));
 
@@ -95,11 +96,20 @@ const App = ({ isAuth, container }) => {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          <Breadcrumb />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/problems" component={Problems} />
+            <Route exact path={routes.home} component={Home} />
+            <Route
+              exact
+              path={routes.problems.main}
+              component={Problems.Main}
+            />
             <Route exact path="/practice/:id" component={PracticeProblem} />
-            <Route exact path="/create_problem/" component={TypeSelection} />
+            <Route
+              exact
+              path={routes.problems.create_select_type}
+              component={TypeSelection}
+            />
             {isAuth ? (
               <Route
                 exact
@@ -126,6 +136,16 @@ const App = ({ isAuth, container }) => {
             />
             <Route path={routes.write_form} component={Write.Create} />
             <Route path="/problems/write/:id" component={Write.Read} />
+
+            <Route exact path={routes.groups.main} component={Groups.Main} />
+            <Route
+              exact
+              path={routes.groups.create}
+              component={Groups.Create}
+            />
+            <Route exact path={routes.mocks.main} component={Mocks.Main} />
+
+            <Route exact path={routes.mocks.create} component={Mocks.Create} />
           </Switch>
         </main>
       </BrowserRouter>
