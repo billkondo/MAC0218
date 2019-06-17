@@ -1,0 +1,15 @@
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+/home/gafeol/.rvm/rubies/ruby-2.3.7/bin/ruby -r ./siteconf20190617-16599-1asi98t.rb extconf.rb
+creating Makefile
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20190617-16599-1yj2tz6
