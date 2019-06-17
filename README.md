@@ -1,5 +1,7 @@
 # MAC0218
 
+[![Build Status](https://travis-ci.com/billkondo/MAC0218.svg?branch=master)](https://travis-ci.com/billkondo/MAC0218)
+
 This project is being developed during the discipline MAC0218 from University of São Paulo. The goal of doing this project is to develop a site that students and teachers can help each other during their preparation for the university entry exams. The main functionalities of this platform is to create and share problems, create and do practice tests, and create study groups. Additional features include: message exchange and recomendation problems system.
 
 ## Getting Started
@@ -84,7 +86,13 @@ For development, start also the webpacker dev server (faster reinitialization):
 
 ## Running the tests
 
-TODO
+To run all tests, simply execute `rspec` on the project root folder:
+
+In order to execute a specific test run:
+
+```
+rspec path/to/spec/file.rb
+```
 
 ## Deployment
 
