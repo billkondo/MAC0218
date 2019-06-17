@@ -94,7 +94,7 @@ const App = ({ isAuth, container }) => {
           handleDrawerToggle={handleDrawerToggle}
         />
 
-        <main className={classes.content}>
+        <main className={classes.content} style={{ marginBottom: 64 }}>
           <div className={classes.toolbar} />
           <Breadcrumb />
           <Switch>

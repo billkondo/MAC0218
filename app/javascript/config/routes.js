@@ -58,7 +58,8 @@ export const routes = {
 
   groups: {
     main: '/groups/',
-    create: '/groups/create_group/'
+    create: '/groups/create_group/',
+    read: id => `/groups/read/${id}`
   },
 
   problems: {
