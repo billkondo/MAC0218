@@ -51,6 +51,11 @@ export const routes = {
 
   read_write_problem: readWriteProblem,
 
+  profile: {
+    main: '/profile/',
+    edit: '/profile/edit_profile/'
+  },
+
   groups: {
     main: '/groups/',
     create: '/groups/create_group/'
@@ -80,6 +85,9 @@ export const routes = {
         get: getWriteProblem
       }
     },
-    sign_up: '/api/auth/sign_up'
+    sign_up: '/api/auth/sign_up',
+    users: {
+      get_public_profile: '/api/users/get_public_profile'
+    }
   }
 };

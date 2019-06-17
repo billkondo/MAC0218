@@ -125,7 +125,8 @@ const App = ({ isAuth, container }) => {
             )}
             <Route exact path="/sign-in/" component={SignIn} />
             <Route exact path="/sign-up/" component={SignUp} />
-            <Route exact path={routes.user_profile} component={Profile} />
+            <Route exact path={routes.profile.main} component={Profile.Main} />
+            <Route exact path={routes.profile.edit} component={Profile.Edit} />
             <Route
               path="/problems/multiple_choice/:id"
               component={MultipleChoice.Read}

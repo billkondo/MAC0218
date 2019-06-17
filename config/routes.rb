@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
 
+  # Users
+  get 'api/users/get_public_profile' => 'users#get_public_profile'
+  
   # Problems routing
   post 'api/problems/create_multiple_choice' => 'problems#create_multiple_choice' 
 
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'api/auth/sign_up' => 'app_sign_up#create'
   end
+
   
   match '*path', to: 'home#index', via: :all
 end
