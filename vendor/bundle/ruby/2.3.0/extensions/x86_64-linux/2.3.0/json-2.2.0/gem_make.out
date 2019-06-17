@@ -1,0 +1,13 @@
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/json-2.2.0/ext/json
+/home/gafeol/.rvm/rubies/ruby-2.3.7/bin/ruby -r ./siteconf20190617-29043-5q23tc.rb extconf.rb
+creating Makefile
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/gafeol/MAC0218/vendor/bundle/ruby/2.3.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" install
