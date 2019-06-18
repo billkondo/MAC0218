@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Users
   get 'api/users/get_public_profile' => 'users#get_public_profile'
   
-  # Multiple Choice Problems routing
+  # Multiple choice problems routing
   post 'api/problems/create_multiple_choice' => 'multiple_choice_problems#create_multiple_choice' 
 
   post 'api/problems/update_multiple_choice' => 'multiple_choice_problems#update_multiple_choice'
@@ -21,12 +21,16 @@ Rails.application.routes.draw do
 
   get 'api/problems/get_multiple_choice' => 'multiple_choice_problems#get_multiple_choice'
 
-  get 'api/problems/get_multiple_choice_favorites' => 'multiple_choi  ce_problems#get_multiple_choice_favorites'
+  get 'api/problems/get_multiple_choice_favorites' => 'multiple_choice_problems#get_multiple_choice_favorites'
 
   post 'api/problems/update_multiple_choice_favorites' => 'multiple_choice_problems#update_multiple_choice_favorites'
 
+  # Write problems routing
   post 'api/problems/write/create' => 'write_problems#create'
   get  'api/problems/write/get'    => 'write_problems#get'
+
+  # Problems routing
+  get 'api/problems/get_all' => 'problems#get_all'
 
   # Authentication
   devise_scope :user do

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Paper, Typography, Grow } from '@material-ui/core';
+import { Grid, Paper, Typography, Grow, Fade } from '@material-ui/core';
 
 import { routes } from '../../config';
 
@@ -21,9 +21,15 @@ const TypeSelection = () => {
   return (
     <Grid container direction="column" justify="center" alignItems="center">
       <Grid item style={{ padding: 32 }}>
-        <Typography variant="h6" align="center" style={{ fontWeight: 'bold' }}>
-          Escolha o tipo de problema
-        </Typography>
+        <Fade in={true}>
+          <Typography
+            variant="h6"
+            align="center"
+            style={{ fontWeight: 'bold' }}
+          >
+            Escolha o tipo de problema
+          </Typography>
+        </Fade>
       </Grid>
 
       <Grid
@@ -40,53 +46,63 @@ const TypeSelection = () => {
             to={routes.multiple_choice_form}
             style={{ textDecoration: 'none' }}
           >
-            <Paper
-              style={{ padding: 32, borderRadius: 16 }}
-              ref={multipleChoice}
-            >
-              <Grid container direction="column" spacing={4}>
-                <Grid item>
-                  <Typography
-                    variant="h6"
-                    align="center"
-                    style={{ fontWeight: 'bold' }}
-                  >
-                    Múltipla Escolha
-                  </Typography>
-                </Grid>
+            <Grow in={true}>
+              <Paper
+                style={{ padding: 32, borderRadius: 16 }}
+                ref={multipleChoice}
+                elevation={4}
+              >
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Múltipla Escolha
+                    </Typography>
+                  </Grid>
 
-                <Grid item>
-                  <Typography variant="body1" align="center">
-                    Os alunos devem escolher a alternativa que melhor encaixa na
-                    solução do problema
-                  </Typography>
+                  <Grid item>
+                    <Typography variant="body1" align="center">
+                      Os alunos devem escolher a alternativa que melhor encaixa
+                      na solução do problema
+                    </Typography>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Paper>
+              </Paper>
+            </Grow>
           </Link>
         </Grid>
 
         <Grid item md={4} xs={10}>
           <Link to={routes.write_form} style={{ textDecoration: 'none' }}>
-            <Paper style={{ padding: 32, borderRadius: 16 }} ref={write}>
-              <Grid container direction="column" spacing={4}>
-                <Grid item>
-                  <Typography
-                    variant="h6"
-                    align="center"
-                    style={{ fontWeight: 'bold' }}
-                  >
-                    Discurssiva
-                  </Typography>
-                </Grid>
+            <Grow in={true}>
+              <Paper
+                style={{ padding: 32, borderRadius: 16 }}
+                ref={write}
+                elevation={4}
+              >
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Discurssiva
+                    </Typography>
+                  </Grid>
 
-                <Grid item>
-                  <Typography variant="body1" align="center">
-                    Os alunos devem demonstrar o racicíonio por trás da questão
-                  </Typography>
+                  <Grid item>
+                    <Typography variant="body1" align="center">
+                      Os alunos devem demonstrar o racicíonio por trás da
+                      questão
+                    </Typography>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Paper>
+              </Paper>
+            </Grow>
           </Link>
         </Grid>
       </Grid>

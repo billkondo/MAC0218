@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { Header } from './Header';
+import { List } from './List';
 
 export const Main = () => {
   return (
@@ -9,6 +10,10 @@ export const Main = () => {
       <Grid item xs={12} container justify="center">
         <Grid item xs={10}>
           <Header />
+        </Grid>
+
+        <Grid item xs={10} style={{ marginTop: 64 }}>
+          <List />
         </Grid>
       </Grid>
     </Grid>

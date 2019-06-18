@@ -23,7 +23,8 @@ const mapNameToLabel = {
   create_group: <div> Criar Grupo </div>,
   mocks: <div> Simulados </div>,
   create_mock: <div> Criar simulado </div>,
-  edit_profile: <div> Editar perfil </div>
+  edit_profile: <div> Editar perfil </div>,
+  write_problem: <div> Problema dissertativo </div>
 };
 
 const mapNameToRoute = {

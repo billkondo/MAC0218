@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, colors } from '@material-ui/core';
 
 import { ReadPanel } from './ReadPanel';
 
@@ -8,7 +8,16 @@ const Panel = ({ mode, onSubmit, isOwner, id }) => {
     case 'create':
       return (
         <Grid item>
-          <Button onClick={onSubmit} size="large" variant="contained">
+          <Button
+            onClick={onSubmit}
+            size="large"
+            variant="contained"
+            style={{
+              background: colors.green.A700,
+              color: colors.grey[50],
+              fontWeight: 'bold'
+            }}
+          >
             CRIAR
           </Button>
         </Grid>

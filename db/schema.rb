@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_021319) do
+ActiveRecord::Schema.define(version: 2019_06_17_234000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2019_05_31_021319) do
     t.datetime "updated_at", null: false
     t.string "correct_answer"
     t.index ["user_id"], name: "index_multiple_choice_problems_on_user_id"
+  end
+
+  create_table "problems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "multiple_choice_problem_id"
+    t.uuid "write_problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multiple_choice_problem_id"], name: "index_problems_on_multiple_choice_problem_id"
+    t.index ["write_problem_id"], name: "index_problems_on_write_problem_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -77,6 +86,8 @@ ActiveRecord::Schema.define(version: 2019_05_31_021319) do
   add_foreign_key "alternatives", "multiple_choice_problems"
   add_foreign_key "multiple_choice_favorites", "multiple_choice_problems"
   add_foreign_key "multiple_choice_favorites", "users"
+  add_foreign_key "problems", "multiple_choice_problems"
+  add_foreign_key "problems", "write_problems"
   add_foreign_key "write_problem_questions", "write_problems"
   add_foreign_key "write_problems", "users"
 end

@@ -4,7 +4,14 @@ class MultipleChoiceProblemsController < ApplicationController
     multiple_choice_problem.user_id = current_user.id
 
     if multiple_choice_problem.save 
-      render json: { status: "OK", id: multiple_choice_problem.id }
+      problem = Problem.new()
+      problem.multiple_choice_problem_id = multiple_choice_problem.id
+      
+      if problem.save
+        render json: { status: "OK", id: multiple_choice_problem.id }
+      else
+        render json: { status: "ERROR", errors: "INTERNAL_ERROR" } 
+      end
     else
       render json: multiple_choice_problem.errors 
     end

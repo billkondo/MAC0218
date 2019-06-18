@@ -136,7 +136,7 @@ const App = ({ isAuth, container }) => {
               component={MultipleChoice.Edit}
             />
             <Route path={routes.write_form} component={Write.Create} />
-            <Route path="/problems/write/:id" component={Write.Read} />
+            <Route path="/problems/write_problem/" component={Write.Read} />
 
             <Route exact path={routes.groups.main} component={Groups.Main} />
             <Route
