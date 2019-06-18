@@ -69,6 +69,10 @@ export const routes = {
 
     write: {
       read: id => `/problems/write_problem/?id=${id}`
+    },
+
+    multiple_choice: {
+      read: id => `/problems/multiple_choice/?id=${id}`
     }
   },
 

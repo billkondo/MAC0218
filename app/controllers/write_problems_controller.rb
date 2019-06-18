@@ -4,14 +4,7 @@ class WriteProblemsController < ApplicationController
     write_problem.user_id = current_user.id
 
     if write_problem.save
-      problem = Problem.new()
-      problem.write_problem_id = write_problem.id
-
-      if problem.save 
-        render json: { status: "OK", write_problem_id: write_problem.id }
-      else
-        render json: { status: "ERROR", errors: "INTERNAL_ERROR" }
-      end
+      render json: { status: "OK", write_problem_id: write_problem.id }
     else 
       render json: { status: "ERROR", errors: write_problem.errors.as_json }
     end

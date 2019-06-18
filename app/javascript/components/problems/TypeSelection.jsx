@@ -90,7 +90,7 @@ const TypeSelection = () => {
                       align="center"
                       style={{ fontWeight: 'bold' }}
                     >
-                      Discurssiva
+                      Dissertativa
                     </Typography>
                   </Grid>
 

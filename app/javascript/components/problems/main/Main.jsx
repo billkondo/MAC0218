@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { Header } from './Header';
-import { List } from './List';
+import { List } from './list';
 
 export const Main = () => {
   return (
