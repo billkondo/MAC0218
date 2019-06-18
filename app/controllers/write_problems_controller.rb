@@ -2,10 +2,6 @@ class WriteProblemsController < ApplicationController
   def create
     write_problem = WriteProblem.new(write_problem_params)
     write_problem.user_id = current_user.id
-    # write_problem.app_id = SecureRandom.uuid
-
-    print write_problem.as_json
-    print "\n\n"
 
     if write_problem.save
       render json: { status: "OK", write_problem_id: write_problem.id }
@@ -15,7 +11,7 @@ class WriteProblemsController < ApplicationController
   end
 
   def get
-    id = params[:app_id]
+  id = params[:id]
 
     problem = WriteProblem.select(:title, :id, :statement).find(id)
     questions = WriteProblemQuestion.select(:question, :id).where(write_problem_id: id).all

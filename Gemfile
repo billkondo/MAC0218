@@ -76,3 +76,6 @@ gem 'webpacker'
 
 # Travis : continuous integration
 gem 'travis'
+
+# Pagination for Active Record
+gem 'kaminari'

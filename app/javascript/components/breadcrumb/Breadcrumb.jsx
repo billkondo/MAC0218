@@ -21,7 +21,7 @@ const _Breadcrumb = ({ location }) => {
               <Link
                 to={label.route}
                 key={label.name}
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: 'none', fontWeight: 'bolder' }}
               >
                 {label.name}
               </Link>

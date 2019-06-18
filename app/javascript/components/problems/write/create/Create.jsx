@@ -7,7 +7,7 @@ import { routes } from '../../../../config';
 
 const _Create = ({ history }) => {
   const goToRead = id => {
-    history.push(routes.read_write_problem(id));
+    history.push(routes.problems.write.read(id));
   };
 
   const createQuestion = problem => {

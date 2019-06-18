@@ -22,7 +22,9 @@ const mapNameToLabel = {
   groups: <div> Grupos </div>,
   create_group: <div> Criar Grupo </div>,
   mocks: <div> Simulados </div>,
-  create_mock: <div> Criar simulado </div>
+  create_mock: <div> Criar simulado </div>,
+  edit_profile: <div> Editar perfil </div>,
+  write_problem: <div> Problema dissertativo </div>
 };
 
 const mapNameToRoute = {
@@ -37,7 +39,8 @@ const mapNameToRoute = {
   groups: routes.groups.main,
   create_group: routes.groups.create,
   mocks: routes.mocks.main,
-  create_mock: routes.mocks.create
+  create_mock: routes.mocks.create,
+  edit_profile: routes.profile.edit
 };
 
 const getLabels = pathname => {
