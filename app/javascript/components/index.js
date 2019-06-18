@@ -12,3 +12,5 @@ export { Profile } from './profile';
 export { Message } from './message';
 export { Drawer } from './drawer';
 export { Breadcrumb } from './breadcrumb';
+export { Groups } from './groups';
+export { Mocks } from './mocks';

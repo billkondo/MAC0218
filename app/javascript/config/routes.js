@@ -32,10 +32,6 @@ export const routes = {
 
   sign_out: '/users/sign_out/',
 
-  problems: '/problems',
-
-  create_problem: '/problems/create_problem',
-
   multiple_choice_form: '/problems/create_problem/multiple_choice_form',
 
   write_form: '/problems/create_problem/write_form',
@@ -55,6 +51,36 @@ export const routes = {
 
   read_write_problem: readWriteProblem,
 
+  profile: {
+    main: '/profile/',
+    edit: '/profile/edit_profile/'
+  },
+
+  groups: {
+    main: '/groups/',
+    create: '/groups/create_group/',
+    read: id => `/groups/read/${id}`
+  },
+
+  // client side endpoints for problems
+  problems: {
+    main: '/problems/',
+    create_select_type: '/problems/create_problem',
+
+    write: {
+      read: id => `/problems/write_problem/?id=${id}`
+    },
+
+    multiple_choice: {
+      read: id => `/problems/multiple_choice/?id=${id}`
+    }
+  },
+
+  mocks: {
+    main: '/mocks/',
+    create: '/mocks/create_mock/'
+  },
+
   api: {
     problems_all: '/api/problems',
     get_multiple_choice: getMultipleChoice,
@@ -63,12 +89,31 @@ export const routes = {
     get_user_favorite_problems: '/api/problems/get_multiple_choice_favorites',
     update_multiple_choice: `/api/problems/update_multiple_choice`,
     delete_multiple_choice: `/api/problems/delete_multiple_choice`,
-    problems: {
-      write: {
-        create: `/api/problems/write/create`,
-        get: getWriteProblem
-      }
+
+    sign_up: '/api/auth/sign_up',
+
+    // users endpoints
+    users: {
+      get_public_profile: '/api/users/get_public_profile'
     },
-    sign_up: '/api/auth/sign_up'
+
+    // problems endpoints
+    problems: {
+      get_all: '/api/problems/get_all',
+
+      // write problems endpoints
+      write: {
+        create: '/api/problems/write/create',
+        get: id => `/api/problems/write/get/?id=${id}`
+      },
+
+      // multiple choice problems endpoints
+      multiple_choice: {
+        create: '/api/problems/multiple_choice/create',
+        get: id => `/api/problems/multiple_choice/get/?id=${id}`,
+        delete: id => `/api/problems/multiple_choice/delete/?id=${id}`,
+        update: id => `/api/problems/multiple_choice/update/?id=${id}`
+      }
+    }
   }
 };

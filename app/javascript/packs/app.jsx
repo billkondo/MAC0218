@@ -25,7 +25,9 @@ import {
   PracticeProblem,
   Write,
   Drawer,
-  Breadcrumb
+  Breadcrumb,
+  Groups,
+  Mocks
 } from '../components';
 import { routes } from '../config';
 
@@ -56,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: 'linear-gradient(#ffcdd2, #c5cae9)'
+    background: 'linear-gradient(#fff8e1, #fff3e0)'
   },
   content: {
     flexGrow: 1
@@ -92,16 +94,20 @@ const App = ({ isAuth, container }) => {
           handleDrawerToggle={handleDrawerToggle}
         />
 
-        <main className={classes.content}>
+        <main className={classes.content} style={{ marginBottom: 64 }}>
           <div className={classes.toolbar} />
           <Breadcrumb />
           <Switch>
             <Route exact path={routes.home} component={Home} />
-            <Route exact path={routes.problems} component={Problems} />
+            <Route
+              exact
+              path={routes.problems.main}
+              component={Problems.Main}
+            />
             <Route exact path="/practice/:id" component={PracticeProblem} />
             <Route
               exact
-              path={routes.create_problem}
+              path={routes.problems.create_select_type}
               component={TypeSelection}
             />
             {isAuth ? (
@@ -119,7 +125,8 @@ const App = ({ isAuth, container }) => {
             )}
             <Route exact path="/sign-in/" component={SignIn} />
             <Route exact path="/sign-up/" component={SignUp} />
-            <Route exact path={routes.user_profile} component={Profile} />
+            <Route exact path={routes.profile.main} component={Profile.Main} />
+            <Route exact path={routes.profile.edit} component={Profile.Edit} />
             <Route
               path="/problems/multiple_choice/:id"
               component={MultipleChoice.Read}
@@ -129,7 +136,17 @@ const App = ({ isAuth, container }) => {
               component={MultipleChoice.Edit}
             />
             <Route path={routes.write_form} component={Write.Create} />
-            <Route path="/problems/write/:id" component={Write.Read} />
+            <Route path="/problems/write_problem/" component={Write.Read} />
+
+            <Route exact path={routes.groups.main} component={Groups.Main} />
+            <Route
+              exact
+              path={routes.groups.create}
+              component={Groups.Create}
+            />
+            <Route exact path={routes.mocks.main} component={Mocks.Main} />
+
+            <Route exact path={routes.mocks.create} component={Mocks.Create} />
           </Switch>
         </main>
       </BrowserRouter>

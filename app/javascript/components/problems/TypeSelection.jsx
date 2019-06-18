@@ -1,69 +1,113 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Paper, Typography, Grow } from '@material-ui/core';
+import { Grid, Paper, Typography, Grow, Fade } from '@material-ui/core';
 
 import { routes } from '../../config';
 
-const TypeSelection = () => (
-  <Grid container direction="column" justify="center" alignItems="center">
-    <Grid item style={{ padding: 32 }}>
-      <Typography variant="h5" align="center" style={{ fontWeight: 'bold' }}>
-        Escolha o tipo de problema
-      </Typography>
-    </Grid>
+const TypeSelection = () => {
+  const multipleChoice = useRef(null);
+  const write = useRef(null);
 
-    <Grid
-      item
-      md={10}
-      xs={10}
-      container
-      justify="center"
-      spacing={4}
-      alignItems="center"
-    >
-      <Grid item md={6} xs={10}>
-        <Link
-          to={routes.multiple_choice_form}
-          style={{ textDecoration: 'none' }}
-        >
-          <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
-            <Grid container direction="column" spacing={4}>
-              <Grid item>
-                <Typography variant="h6">
-                  Questão de Múltipla Escolha
-                </Typography>
-              </Grid>
+  useEffect(() => {
+    const height = Math.max(
+      multipleChoice.current.clientHeight,
+      write.current.clientHeight
+    );
 
-              <Grid item>
-                <Typography variant="body1">
-                  Os alunos devem escolher a alternativa que melhor encaixa na
-                  solução do problema
-                </Typography>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Link>
+    multipleChoice.current.style.height = `${height}px`;
+    write.current.style.height = `${height}px`;
+  }, []);
+
+  return (
+    <Grid container direction="column" justify="center" alignItems="center">
+      <Grid item style={{ padding: 32 }}>
+        <Fade in={true}>
+          <Typography
+            variant="h6"
+            align="center"
+            style={{ fontWeight: 'bold' }}
+          >
+            Escolha o tipo de problema
+          </Typography>
+        </Fade>
       </Grid>
 
-      <Grid item md={6} xs={10}>
-        <Link to={routes.write_form} style={{ textDecoration: 'none' }}>
-          <Paper style={{ padding: 32, height: 300, borderRadius: 16 }}>
-            <Grid container direction="column" spacing={4}>
-              <Grid item>
-                <Typography variant="h6">Questão Escrita</Typography>
-              </Grid>
+      <Grid
+        item
+        md={12}
+        xs={12}
+        container
+        justify="center"
+        spacing={4}
+        alignItems="center"
+      >
+        <Grid item md={4} xs={10}>
+          <Link
+            to={routes.multiple_choice_form}
+            style={{ textDecoration: 'none' }}
+          >
+            <Grow in={true}>
+              <Paper
+                style={{ padding: 32, borderRadius: 16 }}
+                ref={multipleChoice}
+                elevation={4}
+              >
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Múltipla Escolha
+                    </Typography>
+                  </Grid>
 
-              <Grid item>
-                <Typography variant="body1">
-                  Os alunos devem demonstrar o racicíonio por trás da questão
-                </Typography>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Link>
+                  <Grid item>
+                    <Typography variant="body1" align="center">
+                      Os alunos devem escolher a alternativa que melhor encaixa
+                      na solução do problema
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grow>
+          </Link>
+        </Grid>
+
+        <Grid item md={4} xs={10}>
+          <Link to={routes.write_form} style={{ textDecoration: 'none' }}>
+            <Grow in={true}>
+              <Paper
+                style={{ padding: 32, borderRadius: 16 }}
+                ref={write}
+                elevation={4}
+              >
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      Dissertativa
+                    </Typography>
+                  </Grid>
+
+                  <Grid item>
+                    <Typography variant="body1" align="center">
+                      Os alunos devem demonstrar o racicíonio por trás da
+                      questão
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grow>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 
 export default TypeSelection;

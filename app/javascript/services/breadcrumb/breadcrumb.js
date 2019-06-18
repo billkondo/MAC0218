@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
-import { Home } from '@material-ui/icons';
+import { HomeOutlined } from '@material-ui/icons';
 
 import { routes } from '../../config';
 
@@ -8,7 +8,7 @@ const mapNameToLabel = {
   '': (
     <div style={{ display: 'grid', alignItems: 'center' }}>
       <IconButton>
-        <Home />
+        <HomeOutlined />
       </IconButton>
     </div>
   ),
@@ -18,23 +18,32 @@ const mapNameToLabel = {
   problems: <div> Problemas </div>,
   profile: <div>Perfil</div>,
   'sign-in': <div> Entrar </div>,
-  'sign-up': <div> Registrar </div>
+  'sign-up': <div> Registrar </div>,
+  groups: <div> Grupos </div>,
+  create_group: <div> Criar Grupo </div>,
+  mocks: <div> Simulados </div>,
+  create_mock: <div> Criar simulado </div>,
+  edit_profile: <div> Editar perfil </div>,
+  write_problem: <div> Problema dissertativo </div>
 };
 
 const mapNameToRoute = {
   '': routes.home,
-  create_problem: routes.create_problem,
+  create_problem: routes.problems.create_select_type,
   write_form: routes.write_form,
   multiple_choice_form: routes.multiple_choice_form,
-  problems: routes.problems,
+  problems: routes.problems.main,
   profile: routes.user_profile,
   'sign-in': routes.sign_in,
-  'sign-up': routes.sign_up
+  'sign-up': routes.sign_up,
+  groups: routes.groups.main,
+  create_group: routes.groups.create,
+  mocks: routes.mocks.main,
+  create_mock: routes.mocks.create,
+  edit_profile: routes.profile.edit
 };
 
 const getLabels = pathname => {
-  console.log(pathname);
-
   if (pathname.substr(-1) === '/') pathname = pathname.slice(0, -1);
 
   const labels = pathname.split('/');

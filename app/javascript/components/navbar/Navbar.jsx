@@ -25,6 +25,7 @@ class Navbar extends React.Component {
           background: 'linear-gradient(#e57373, #ff1744)'
         }}
         className={classes.appBar}
+        elevation={0}
       >
         <Toolbar>
           <Grid container alignItems="center">
