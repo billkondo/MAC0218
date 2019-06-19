@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/billkondo/MAC0218.svg?branch=master)](https://travis-ci.com/billkondo/MAC0218)
 
+### This project is currently deployed in heroku on [simula-prova.herokuapp.com](https://simula-prova.herokuapp.com/)!
+
 This project is being developed during the discipline MAC0218 from University of São Paulo. The goal of doing this project is to develop a site that students and teachers can help each other during their preparation for the university entry exams. The main functionalities of this platform is to create and share problems, create and do practice tests, and create study groups. Additional features include: message exchange and recomendation problems system.
 
 ## Getting Started
