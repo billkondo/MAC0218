@@ -98,7 +98,9 @@ rspec path/to/spec/file.rb
 
 ## Deployment
 
-TODO
+This project is currently deployed on heroku on a free dyno.
+
+You can check the project website [here](https://simula-prova.herokuapp.com/).
 
 ## Wiki
 
