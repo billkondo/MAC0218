@@ -176,7 +176,7 @@ GEM
       activerecord (= 5.2.3)
       activestorage (= 5.2.3)
       activesupport (= 5.2.3)
-      bundler (>= 2.0.1)
+      bundler (>= 2.0.2)
       railties (= 5.2.3)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
@@ -296,6 +296,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  bundler
   byebug
   capybara (>= 2.15)
   chromedriver-helper
