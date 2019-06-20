@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Grid } from '@material-ui/core';
+import { Grid, TextField, Button} from '@material-ui/core';
 
 
 class Form extends React.Component {
     state = {
         title: '',
+        description: '',
         problems: [],
         problem_id: '',
 
@@ -32,6 +33,7 @@ class Form extends React.Component {
     render() {
         const {
             title,
+            description,
             problems,
             problem_id,
             isOwner, 
@@ -42,12 +44,37 @@ class Form extends React.Component {
         const {mode} = this.props;
 
         return (
-            <Grid container alignItems="flex-start">
+            <Grid container justify="center">
+                <Grid item xs={10}>
+                    <Grid container direction="column" spacing={4}>
+                        <Grid item xs={10} md={6}>
+                        <TextField
+                            label="Título"
+                            variant="outlined"
+                            fullWidth
+                            name="title"
+                            value={this.title}
+                        />
+                        </Grid>
+                        <Grid item xs={10} md={6}>
+                        <TextField
+                            label="Descrição"
+                            variant="outlined"
+                            fullWidth
+                            name="description"
+                            value={this.description}
+                        />
+                        </Grid>                        
+                        <Grid item xs={10} md={6}>
+                        <Button variant="outlined">
+                            Atualizar informações
+                        </Button>
+                        </Grid>
+                
 
-            <Grid item xs={12} md={6} style={{ padding: 32 }}>
+                    </Grid>
+                </Grid>
             </Grid>
-    
-          </Grid>
         );
 
     }
