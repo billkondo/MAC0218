@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Form } from '../form';
+import { Form } from '../Form';
 
-import { routes } from '../../../../config';
-import { Services } from '../../../../services';
+import { routes } from '../../../config';
+import { Services } from '../../../services';
 
 class _Create extends React.Component {
   submitForm = problem => {
@@ -20,7 +20,7 @@ class _Create extends React.Component {
   };
 
   render() {
-    return <Form submitForm={this.submitForm} mode="create" />;
+    return (<Form/>);
   }
 }
 
