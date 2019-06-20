@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Form } from '../Form';
+import Form from '../Form/Form';
 
 import { routes } from '../../../config';
 import { Services } from '../../../services';

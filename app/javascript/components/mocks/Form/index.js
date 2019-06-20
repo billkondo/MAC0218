@@ -1,1 +1,1 @@
-export { Form } from './Form';
+export Form2 from './Form2';
