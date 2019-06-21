@@ -6,10 +6,14 @@ import {
   Typography,
   TextField,
   Button,
-  Grow
+  colors,
+  Grow,
+  Box
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
+import { Message } from '../message';
 import { routes } from '../../config';
-import { Message } from '../';
 
 class SignIn extends React.Component {
   state = {
@@ -60,57 +64,103 @@ class SignIn extends React.Component {
           mensagem={this.state.message}
           toggleMenu={this.toggleMenu}
         />
-        <Grid container justify="center" spacing={4}>
-          <Grid item md={6} xs={10}>
-            <Grow in={true}>
-              <Paper elevation={4} style={{ marginTop: 32 }}>
-                <form style={{ padding: 32 }}>
-                  <Grid container direction="column" spacing={3}>
-                    <Grid item>
-                      <Typography variant="h6" align="center">
-                        Sign in to MAC0218
-                      </Typography>
-                    </Grid>
+        <Grid container direction="column">
+          <Grid item xs={12} container justify="center">
+            <Grid item md={6} xs={10}>
+              <Grow in={true}>
+                <Paper elevation={8} style={{ marginTop: 32 }}>
+                  <form style={{ padding: 32 }}>
+                    <Grid container direction="column" spacing={3}>
+                      <Grid item>
+                        <Typography
+                          variant="h6"
+                          align="center"
+                          style={{ fontWeight: 'bold' }}
+                        >
+                          Entrar em MAC0218
+                        </Typography>
+                      </Grid>
 
-                    <Grid item>
-                      <Grid container direction="column" spacing={4}>
-                        <Grid item>
-                          <TextField
-                            label="Email"
-                            variant="outlined"
-                            fullWidth
-                            name="email"
-                            onChange={this.handleChange}
-                            value={this.state.email}
-                          />
-                        </Grid>
+                      <Grid item>
+                        <Grid container direction="column" spacing={4}>
+                          <Grid item>
+                            <TextField
+                              label="Email"
+                              variant="outlined"
+                              fullWidth
+                              name="email"
+                              onChange={this.handleChange}
+                              value={this.state.email}
+                            />
+                          </Grid>
 
-                        <Grid item>
-                          <TextField
-                            label="Password"
-                            type="password"
-                            variant="outlined"
-                            fullWidth
-                            name="password"
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                          />
-                        </Grid>
+                          <Grid item>
+                            <TextField
+                              label="Senha"
+                              type="password"
+                              variant="outlined"
+                              fullWidth
+                              name="password"
+                              onChange={this.handleChange}
+                              value={this.state.password}
+                            />
+                          </Grid>
 
-                        <Grid item>
-                          <Button
-                            variant="contained"
-                            fullWidth
-                            onClick={this.submit}
-                          >
-                            Submit
-                          </Button>
+                          <Grid item>
+                            <Button
+                              variant="contained"
+                              fullWidth
+                              onClick={this.submit}
+                              style={{
+                                background: colors.green.A700,
+                                color: colors.grey[50],
+                                fontWeight: 'bold'
+                              }}
+                            >
+                              Entrar
+                            </Button>
+                          </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
+                  </form>
+                </Paper>
+              </Grow>
+            </Grid>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            container
+            justify="center"
+            style={{ marginTop: 64 }}
+          >
+            <Grow in={true}>
+              <Grid item xs={10} md={6}>
+                <Box border={0.5} borderRadius={5} p={3}>
+                  <Grid container spacing={4} justify="center">
+                    <Grid item>
+                      <Box fontWeight="bold">
+                        <Typography variant="body1">
+                          Novo no MACO218 ?
+                        </Typography>
+                      </Box>
+                    </Grid>
+
+                    <Grid item>
+                      <Link to={routes.sign_up}>
+                        <Typography
+                          variant="body1"
+                          style={{ fontWeight: 'bold' }}
+                        >
+                          Criar conta
+                        </Typography>
+                      </Link>
+                    </Grid>
                   </Grid>
-                </form>
-              </Paper>
+                </Box>
+              </Grid>
             </Grow>
           </Grid>
         </Grid>
