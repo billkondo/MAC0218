@@ -2,7 +2,9 @@ import React from 'react';
 import { Grid, TextField, IconButton } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 
-export const Problem = ({ problem }) => {
+export const Problem = ({ problem, add}) => {
+
+
   return (
     <Grid container direction="column" spacing={1}>
       <Grid item style={{ fontWeight: 'bold' }}>
@@ -10,7 +12,7 @@ export const Problem = ({ problem }) => {
           <Grid item>{problem.title}</Grid>
 
           <Grid item style={{ flex: 1 }} container justify="flex-end">
-            <IconButton>
+            <IconButton onClick={() => add(problem.id)}>
               <Add />
             </IconButton>
           </Grid>

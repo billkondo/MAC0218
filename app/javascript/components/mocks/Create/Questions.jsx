@@ -5,7 +5,7 @@ import { AddCircle } from '@material-ui/icons';
 import { List } from './List';
 import { Menu } from './Menu';
 
-export const Questions = ({ problems }) => {
+export const Questions = ({ problems, add}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => setIsOpen(true);
@@ -26,10 +26,10 @@ export const Questions = ({ problems }) => {
       </Grid>
 
       <Grid item>
-        <List problems={problems} />
+        <List problems={problems}/>
       </Grid>
 
-      <Menu isOpen={isOpen} close={closeMenu} problems={problems} />
+      <Menu isOpen={isOpen} close={closeMenu} problems={problems} add={add}/>
     </Grid>
   );
 };

@@ -1,4 +1,4 @@
-import { Main } from './main';
-import { Create } from './create';
+import { Main } from './Main';
+import { Create } from './Create';
 
 export const Groups = { Main, Create };

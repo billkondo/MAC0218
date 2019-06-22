@@ -21,11 +21,13 @@ const _Create = () => {
   };
 
   const addProblem = id => {
+    console.log('entrou nessa funcao mizeravel');
     setMock({
       ...mock,
       problems: mock.problems.concat(id)
     });
   };
+
 
   const handleSubmit = () => {
     console.log('submit', mock);
@@ -83,7 +85,7 @@ const _Create = () => {
           </Grid>
 
           <Grid item>
-            <Questions problems={mock.problems} />
+            <Questions problems={mock.problems} add={addProblem}/>
           </Grid>
 
           <Grid item container justify="flex-end" style={{ marginTop: 32 }}>
