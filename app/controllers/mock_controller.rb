@@ -1,13 +1,22 @@
 class MockController < ApplicationController
-  def create_mock
-    mock = Mock.new(mock_params)
-    mock.user_id = current_user.id
+  def create
+    print "OI\n\n"
 
-    if mock.save 
-      render json: { status: "OK", id: mock.id }
-    else
-      render json: mock.errors 
-    end
+    print params[:mock]
+
+    print "\n\n"
+
+    render json: {
+      status: 'OK'
+    }
+    # mock = Mock.new(mock_params)
+    # mock.user_id = current_user.id
+
+    # if mock.save 
+    #   render json: { status: "OK", id: mock.id }
+    # else
+    #   render json: mock.errors 
+    # end
   end
 
   def update_mock
@@ -58,6 +67,29 @@ class MockController < ApplicationController
       render json: { status: "ERROR" }
     end
   end
+
+  def get_problems_list
+    multiple_choice_problems_record = MultipleChoiceProblem.all.select(:title, :id, :statement).as_json
+    write_problems_record = WriteProblem.all.select(:title, :id, :statement).as_json
+
+    multiple_choice_problems = multiple_choice_problems_record.map do |problem| 
+      problem["type"] = :multiple_choice
+      problem
+    end
+
+    write_problems = write_problems_record.map do |problem|
+      problem["type"] = :write
+      problem
+    end
+
+    problems = multiple_choice_problems | write_problems
+
+    render json: { 
+      status: 'OK',
+      problems: problems
+    }
+  end
+
   private 
     def mock_params
       # need to complete

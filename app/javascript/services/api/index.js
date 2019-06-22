@@ -4,5 +4,14 @@ import { Auth } from './auth';
 import { profile } from './profile';
 import { group } from './groups';
 import { problems } from './problems';
+import { Mock } from './mock';
 
-export const Api = { MultipleChoice, Auth, write, profile, group, problems };
+export const Api = {
+  MultipleChoice,
+  Auth,
+  write,
+  profile,
+  group,
+  problems,
+  Mock
+};

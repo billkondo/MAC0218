@@ -114,6 +114,12 @@ export const routes = {
         delete: id => `/api/problems/multiple_choice/delete/?id=${id}`,
         update: id => `/api/problems/multiple_choice/update/?id=${id}`
       }
+    },
+
+    // mocks endpoints
+    mocks: {
+      create: '/api/mocks/create',
+      get_problems_list: '/api/mocks/get_problems_list'
     }
   }
 };

@@ -1,11 +1,12 @@
-import { routes } from '../../config';
 import axios from 'axios';
 
-const create = mock_problem =>
-  new Promise((resolve, reject) => {
+import { routes } from '../../config';
+
+const create = mock => {
+  return new Promise((resolve, reject) => {
     axios({
       method: 'POST',
-      url: routes.createMock,
+      url: routes.api.mocks.create,
       headers: {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
       },
@@ -16,9 +17,24 @@ const create = mock_problem =>
       .then(res => resolve(res))
       .catch(err => reject(err));
   });
+};
 
+const get_problems_list = () => {
+  console.log('get problems list');
+  return new Promise((resolve, reject) => {
+    axios({
+      method: 'GET',
+      url: routes.api.mocks.get_problems_list,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      }
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+};
 
-  export const Mock = {
-    create,
-  };
-  
+export const Mock = {
+  create,
+  get_problems_list
+};

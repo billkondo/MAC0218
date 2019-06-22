@@ -33,11 +33,11 @@ Rails.application.routes.draw do
   get 'api/problems/get_all' => 'problems#get_all'
 
   # Mock routing
-  get 'api/mocks/create_mock' => 'mock#create_mock'
+  post 'api/mocks/create' => 'mock#create'
   get 'api/mocks/delete_mock' => 'mock#delete_mock'
   get 'api/mocks/update_mock' => 'mock#update_mock'
   get 'api/mocks/get_mock'    => 'mock#get_mock'
-
+  get 'api/mocks/get_problems_list' => 'mock#get_problems_list'
 
 
   # Authentication
