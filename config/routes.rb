@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   # Problems routing
   get 'api/problems/get_all' => 'problems#get_all'
 
+  # Groups routing
+  post 'api/groups/create' => 'groups#create'
+  get  'api/groups/current_user_groups' => 'groups#current_user_groups'
+  get  'api/groups/read' => 'groups#read'
+
   # Authentication
   devise_scope :user do
     post 'api/auth/sign_up' => 'app_sign_up#create'

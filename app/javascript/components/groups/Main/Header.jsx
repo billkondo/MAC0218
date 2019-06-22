@@ -6,7 +6,8 @@ import {
   Icon,
   Button,
   colors,
-  Fade
+  Fade,
+  Grow
 } from '@material-ui/core';
 import { GroupOutlined } from '@material-ui/icons';
 
@@ -14,9 +15,9 @@ import { routes } from '../../../config';
 
 export const Header = () => {
   return (
-    <Fade in={true}>
-      <Grid container direction="column">
-        <Grid item>
+    <Grid container direction="column">
+      <Grid item>
+        <Fade in={true}>
           <Typography variant="h6" style={{ fontWeight: 'bold' }}>
             <Grid container alignItems="center" spacing={3}>
               <Grid item />
@@ -26,10 +27,12 @@ export const Header = () => {
               <Grid item>Grupos</Grid>
             </Grid>
           </Typography>
-        </Grid>
+        </Fade>
+      </Grid>
 
-        <Grid item style={{ marginTop: 16 }}>
-          <Link to={routes.groups.create} style={{ textDecoration: 'none' }}>
+      <Grid item style={{ marginTop: 16 }}>
+        <Link to={routes.groups.create} style={{ textDecoration: 'none' }}>
+          <Grow in={true}>
             <Button
               variant="contained"
               style={{
@@ -40,9 +43,9 @@ export const Header = () => {
             >
               Criar grupo
             </Button>
-          </Link>
-        </Grid>
+          </Grow>
+        </Link>
       </Grid>
-    </Fade>
+    </Grid>
   );
 };

@@ -1,5 +1,5 @@
-import { Main } from './Main';
-import { Create } from './Create';
-import { Suggestions } from './Main/Suggestions';
+import { Main } from './main';
+import { Create } from './create';
+import { Read } from './read';
 
-export const Groups = { Main, Create };
+export const Groups = { Main, Create, Read };

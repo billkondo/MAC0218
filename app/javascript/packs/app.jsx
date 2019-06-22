@@ -25,7 +25,6 @@ import {
   PracticeProblem,
   Write,
   Drawer,
-  Breadcrumb,
   Groups,
   Mocks
 } from '../components';
@@ -95,8 +94,7 @@ const App = ({ isAuth, container }) => {
         />
 
         <main className={classes.content} style={{ marginBottom: 64 }}>
-          <div className={classes.toolbar} />
-          <Breadcrumb />
+          <div className={classes.toolbar} style={{ marginBottom: 32 }} />
           <Switch>
             <Route exact path={routes.home} component={Home} />
             <Route
@@ -144,6 +142,8 @@ const App = ({ isAuth, container }) => {
               path={routes.groups.create}
               component={Groups.Create}
             />
+            <Route path={routes.groups.read(':id')} component={Groups.Read} />
+
             <Route exact path={routes.mocks.main} component={Mocks.Main} />
 
             <Route exact path={routes.mocks.create} component={Mocks.Create} />

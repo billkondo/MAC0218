@@ -114,6 +114,12 @@ export const routes = {
         delete: id => `/api/problems/multiple_choice/delete/?id=${id}`,
         update: id => `/api/problems/multiple_choice/update/?id=${id}`
       }
+    },
+
+    groups: {
+      create: '/api/groups/create',
+      current_user_groups: '/api/groups/current_user_groups',
+      read: id => `/api/groups/read/?id=${id}`
     }
   }
 };

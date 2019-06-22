@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Typography, Icon, Button, colors } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  Icon,
+  Button,
+  colors,
+  Fade,
+  Grow
+} from '@material-ui/core';
 import { EditOutlined } from '@material-ui/icons';
 
 import { routes } from '../../../config';
@@ -9,15 +17,17 @@ export const Header = () => {
   return (
     <Grid container direction="column">
       <Grid item>
-        <Typography variant="h6" style={{ fontWeight: 'bold' }}>
-          <Grid container alignItems="center" spacing={3}>
-            <Grid item />
-            <Icon>
-              <EditOutlined />
-            </Icon>
-            <Grid item>Problemas</Grid>
-          </Grid>
-        </Typography>
+        <Fade in={true}>
+          <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+            <Grid container alignItems="center" spacing={3}>
+              <Grid item />
+              <Icon>
+                <EditOutlined />
+              </Icon>
+              <Grid item>Problemas</Grid>
+            </Grid>
+          </Typography>
+        </Fade>
       </Grid>
 
       <Grid item style={{ marginTop: 16 }}>
@@ -25,16 +35,18 @@ export const Header = () => {
           to={routes.problems.create_select_type}
           style={{ textDecoration: 'none' }}
         >
-          <Button
-            variant="contained"
-            style={{
-              background: colors.green.A700,
-              color: colors.grey[50],
-              fontWeight: 'bold'
-            }}
-          >
-            Criar Problema
-          </Button>
+          <Grow in={true}>
+            <Button
+              variant="contained"
+              style={{
+                background: colors.green.A700,
+                color: colors.grey[50],
+                fontWeight: 'bold'
+              }}
+            >
+              Criar Problema
+            </Button>
+          </Grow>
         </Link>
       </Grid>
     </Grid>
