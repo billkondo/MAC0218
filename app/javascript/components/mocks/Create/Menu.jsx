@@ -13,7 +13,7 @@ import { Clear } from '@material-ui/icons';
 import { Problem } from './Problem';
 import { Services } from '../../../services';
 
-export const Menu = ({ isOpen, close, add}) => {
+export const Menu = ({ isOpen, close, add, remove}) => {
   const [problems, setProblems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,7 +79,7 @@ export const Menu = ({ isOpen, close, add}) => {
                     justify="center"
                   >
                     <Grid item md={6} xs={10}>
-                      <Problem problem={problem} add = {add}/>
+                      <Problem problem={problem} add={add} remove={remove}/>
                     </Grid>
                   </Grid>
                 );

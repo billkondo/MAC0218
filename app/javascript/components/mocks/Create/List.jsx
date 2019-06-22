@@ -38,7 +38,7 @@ export const List = ({ problems }) => {
             justify="center"
           >
             <Grid item md={6} xs={10}>
-              <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+              <Typography variant="h6" style={{ fontWeight: 'bold' }} >
                 Precisa da API para achar problema por ID
               </Typography>
             </Grid>

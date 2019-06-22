@@ -1,9 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Grid, TextField, IconButton } from '@material-ui/core';
-import { Add, Remove } from '@material-ui/icons';
+import { Add, Close } from '@material-ui/icons';
 
-export const Problem = ({ problem, add}) => {
+export const Problem = ({ problem, add, remove}) => {
 
+  const [isSelected, setIsSelected] = useState(false);
+  
+  const add_prob = id => {
+    add(id);
+    setIsSelected(true);
+  };
+
+  const remove_prob = id => {
+    remove(id);
+    setIsSelected(false);
+  };
 
   return (
     <Grid container direction="column" spacing={1}>
@@ -12,9 +23,16 @@ export const Problem = ({ problem, add}) => {
           <Grid item>{problem.title}</Grid>
 
           <Grid item style={{ flex: 1 }} container justify="flex-end">
-            <IconButton onClick={() => add(problem.id)}>
-              <Add />
-            </IconButton>
+            {!isSelected && 
+              (<IconButton onClick={() => add_prob(problem.id)}>
+                <Add />
+              </IconButton>)
+            }            
+            {isSelected && 
+              (<IconButton onClick={() => remove_prob(problem.id)}>
+                <Close />
+              </IconButton>)
+            }
           </Grid>
         </Grid>
       </Grid>
