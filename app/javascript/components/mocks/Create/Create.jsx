@@ -29,10 +29,12 @@ const _Create = () => {
 
   const removeProblem = id => {
     console.log('antes', mock.problems);
+    console.log('id', id);
+    console.log('id2', id.id);
     setMock({
       ...mock,
       problems: mock.problems.filter(
-        prob => prob.id !== id.id
+        prob => prob.id !== id
       ),
     });
     console.log('depois', mock.problems);
