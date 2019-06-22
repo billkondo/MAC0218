@@ -10,5 +10,4 @@ RSpec.describe User, type: :model do
         # Passwords must have 6 or more characters
         expect(@user2).not_to be_valid
     end
-    
 end
