@@ -4,9 +4,9 @@ class MultipleChoiceProblemsController < ApplicationController
     multiple_choice_problem.user_id = current_user.id
 
     if multiple_choice_problem.save 
-      render json: { status: "OK", id: multiple_choice_problem.id }
+      render json: {id: multiple_choice_problem.id }, status: :created
     else
-      render json: multiple_choice_problem.errors 
+      render json: multiple_choice_problem.errors, status: :error
     end
   end
 
@@ -17,6 +17,8 @@ class MultipleChoiceProblemsController < ApplicationController
     multiple_choice_problem.alternatives.destroy_all
 
     if multiple_choice_problem.user_id == current_user.id
+      p "Passoou a verificacao de user"
+      byebug
       if multiple_choice_problem.update(multiple_choice_problem_params)
         render json: { status: "OK" }
       else

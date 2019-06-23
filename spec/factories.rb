@@ -5,4 +5,14 @@ FactoryBot.define do
         password { "password"} 
         password_confirmation { "password" }
     end
+    factory :alternative do
+        text { "test_alternative" }
+    end
+
+    factory :multiple_choice_problem do
+        #title { Faker::Books::Lovecraft.tome }
+        #statement { Faker::Books::Lovecraft.paragraph }
+        #correct_answer { "Cthulhu" }
+        user # tem que pertencer a um usuario
+    end
 end
