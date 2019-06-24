@@ -32,6 +32,15 @@ Rails.application.routes.draw do
   # Problems routing
   get 'api/problems/get_all' => 'problems#get_all'
 
+  # Mock routing
+  post 'api/mocks/create' => 'mock#create'
+  get 'api/mocks/delete_mock' => 'mock#delete_mock'
+  get 'api/mocks/update_mock' => 'mock#update_mock'
+  get 'api/mocks/get_mock'    => 'mock#get_mock'
+  get 'api/mocks/get_problems_list' => 'mock#get_problems_list'
+  get 'api/mocks/get_all_mocks' => 'mock#get_all_mocks'
+
+
   # Authentication
   devise_scope :user do
     post 'api/auth/sign_up' => 'app_sign_up#create'

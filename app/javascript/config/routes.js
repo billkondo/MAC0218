@@ -78,7 +78,8 @@ export const routes = {
 
   mocks: {
     main: '/mocks/',
-    create: '/mocks/create_mock/'
+    create: '/mocks/create_mock/',
+    read: id => `/mocks/read/${id}`
   },
 
   api: {
@@ -114,6 +115,13 @@ export const routes = {
         delete: id => `/api/problems/multiple_choice/delete/?id=${id}`,
         update: id => `/api/problems/multiple_choice/update/?id=${id}`
       }
+    },
+
+    mocks: {
+      create: '/api/mocks/create',
+      get_problems_list: '/api/mocks/get_problems_list',
+      get_all_mocks: '/api/mocks/get_all_mocks',
+      get: id => `/api/mocks/get_mock/?id=${id}`
     }
   }
 };

@@ -17,15 +17,18 @@ const _Breadcrumb = ({ location }) => {
             separator={<NavigateNext fontSize="small" />}
             aria-label="Breadcrumb"
           >
-            {labels.map(label => (
-              <Link
-                to={label.route}
-                key={label.name}
-                style={{ textDecoration: 'none', fontWeight: 'bolder' }}
-              >
-                {label.name}
-              </Link>
-            ))}
+            {labels.map(label => {
+              return (
+                // TODO: fix undefined labels
+                <Link
+                  to={label.route}
+                  key={label.name}
+                  style={{ textDecoration: 'none', fontWeight: 'bolder' }}
+                >
+                  {label.name}
+                </Link>
+              )
+            })}
           </Breadcrumbs>
         </div>
       </Grid>

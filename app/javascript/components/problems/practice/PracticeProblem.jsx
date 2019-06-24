@@ -1,63 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+
+import PracticeMultipleChoice from './PracticeMultipleChoice'
 
 import { Services } from '../../../services';
-import { Form } from '../multiple_choice/form';
-import { routes } from '../../../config';
 
-const Practice = ({ match, history }) => {
+const STATUS = {
+  DONE: 'DONE',
+  LOADING: 'LOADING',
+  ERROR: 'ERROR'
+};
+
+const TYPE = {
+  MULTIPLE_CHOICE: 'MULTIPLE_CHOICE',
+  WRITE: 'WRITE',
+}
+
+export const PracticeProblem = ({ match, id }) => {
   const [problem, setProblem] = useState({});
   const [alternatives, setAlternatives] = useState([]);
-  const [status, setStatus] = useState('');
-
-  const _status = {
-    done: 'DONE',
-    loading: 'LOADING',
-    error: 'ERROR'
-  };
+  const [type, setType] = useState('')
+  const [status, setStatus] = useState(STATUS.LOADING);
 
   useEffect(() => {
-    const id = match.params.id;
+    const problem_id = id || match.params.id;
 
-    setStatus(_status.loading);
-
-    Services.Api.MultipleChoice.get_multiple_choice_problem(id)
+    Services.Api.MultipleChoice.get_multiple_choice_problem(problem_id)
       .then(res => {
-        const { problem, alternatives } = res.data;
-
-        if (res.data.status === 'OK') {
-          setAlternatives(alternatives);
-          setProblem(problem);
-          setStatus(_status.done);
-        } else {
-          setStatus(_status.error);
+        if(res.data.status != "ERROR"){
+          const { problem, alternatives } = res.data;
+          try {
+            setProblem(problem)
+            setAlternatives(alternatives)
+            setType(TYPE.MULTIPLE_CHOICE)
+            setStatus(STATUS.DONE)
+          } catch(e) {
+            console.error(e)
+          }
         }
       })
-      .catch(err => console.log(err));
+      .catch(_ => this.setState({ status: this.status.error }));
+
+    Services.Api.write.get(problem_id)
+      .then(res => {
+        if (res.data.status != "ERROR") {
+          const problem = res.data.write_problem;
+          try {
+            setProblem(problem)
+            setType(TYPE.WRITE)
+            setStatus(STATUS.DONE)
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      })
   }, []);
 
-  const submitForm = problem => {
-    const id = match.params.id;
-
-    Services.Api.MultipleChoice.update_multiple_choice(problem, id)
-      .then(res => {
-        if (res.data.status === 'OK') {
-          history.push(routes.read_multiple_problem(id));
-        } else {
-          setStatus(_status.error);
-        }
-      })
-      .catch(err => console.log(err));
-  };
-
-  return status === _status.done ? (
-    <Form
-      mode="edit"
+  return status === STATUS.DONE ? (
+    <PracticeMultipleChoice
       problem={problem}
       alternatives={alternatives}
-      submitForm={submitForm}
     />
   ) : null;
 };
-
-export const PracticeProblem = withRouter(Practice);
