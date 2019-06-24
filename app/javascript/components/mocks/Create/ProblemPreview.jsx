@@ -29,7 +29,6 @@ class ProblemPreview extends React.Component {
     Services.Api.write.get(problem_id)
       .then(res => {
         if (res.data.status != "ERROR") {
-          debug
           const problem = res.data.write_problem;
           try {
             this.setState({
