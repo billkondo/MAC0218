@@ -1,29 +1,20 @@
 class MockController < ApplicationController
   def create
-    print "OI\n\n"
+    mock = Mock.new(mock_params)
+    mock.user_id = current_user.id
 
-    print params[:mock]
-
-    print "\n\n"
-
-    render json: {
-      status: 'OK'
-    }
-    # mock = Mock.new(mock_params)
-    # mock.user_id = current_user.id
-
-    # if mock.save 
-    #   render json: { status: "OK", id: mock.id }
-    # else
-    #   render json: mock.errors 
-    # end
+    if mock.save 
+      render json: { status: "OK", id: mock.id }
+    else
+      render json: mock.errors 
+    end
   end
 
   def update_mock
     id = params[:id]
     
     mock = Mock.find(id)
-    mock.multiple_choice_problems.destroy_all
+    mock.problems.destroy_all
 
     if mock.user_id == current_user.id
       if mock.update(mock_params)
@@ -68,6 +59,15 @@ class MockController < ApplicationController
     end
   end
 
+  def get_all_mocks
+    begin
+      mocks = Mock.all
+      render json: { status: "OK", mocks: mocks }
+    rescue
+      render json: { status: "ERROR" }
+    end
+  end
+
   def get_problems_list
     multiple_choice_problems_record = MultipleChoiceProblem.all.select(:title, :id, :statement).as_json
     write_problems_record = WriteProblem.all.select(:title, :id, :statement).as_json
@@ -89,9 +89,8 @@ class MockController < ApplicationController
       problems: problems
     }
   end
-
   private 
-    def mock_params
-      # need to complete
+    def mock_params 
+      params.require(:mock).permit(:title, :description, :problems => [])
     end
 end
