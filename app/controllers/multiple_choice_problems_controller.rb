@@ -68,7 +68,6 @@ class MultipleChoiceProblemsController < ApplicationController
       problem = MultipleChoiceProblem.find(id).as_json
       alternatives = Alternative.where(multiple_choice_problem_id: id).all
 
-      problem["isOwner"] = current_user.id == problem["user_id"]
 
       print problem.as_json
 
