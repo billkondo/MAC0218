@@ -9,6 +9,8 @@ import {
   colors
 } from '@material-ui/core';
 
+import { PracticeProblem } from '../../problems/practice/PracticeProblem'
+
 const _Read = ({ location }) => {
   const [mock, setMock] = useState([]);
   const [startMock, setStartMock] = useState(false);
@@ -44,19 +46,23 @@ const _Read = ({ location }) => {
           {mock.description}
         </Typography>
       </Grid>  
-      <Button 
-        variant="contained"
-        style={{
-          fontWeight: 'bold',
-          background: colors.green.A700,
-          color: colors.grey[50]
-        }}
-        onClick={() => setStartMock(true)}>
+      {startMock ?
+        mock.problems.map((problem_id) => {
+          console.log(problem_id);
+          return <PracticeProblem id={problem_id} />
+        })
+        :
+        <Button
+          variant="contained"
+          style={{
+            fontWeight: 'bold',
+            background: colors.green.A700,
+            color: colors.grey[50]
+          }}
+          onClick={() => setStartMock(true)}>
           Começar!
-      </Button>
-      <h1>
-        {startMock ? "True" : "FALSE"}
-      </h1>
+        </Button>
+      }
     </Grid>
   )
 };
