@@ -88,13 +88,15 @@ For development, start also the webpacker dev server (faster reinitialization):
 
 ## Running the tests
 
-To run all tests, simply execute `rspec` on the project root folder:
+For back-end tests, simply run `rspec` on the project root folder and for front-end tests, run `yarn test`:
 
-In order to execute a specific test run:
+In order to execute a specific back-end test run:
 
 ```
 rspec path/to/spec/file.rb
 ```
+
+Back-end tests were developed with Rspec, whilst Front-end tests were developed with Jest and Enzyme.
 
 ## Deployment
 
