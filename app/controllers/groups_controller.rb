@@ -28,7 +28,9 @@ class GroupsController < ApplicationController
 
   def read
     id = params[:id]
-    group = Group.find(id)
+    print id
+    print "\n"
+    group = Group.select(:title, :id, :description, :status).find(id)
 
     render json: {
       status: 'OK', 

@@ -143,6 +143,14 @@ const App = ({ isAuth, container }) => {
               component={Groups.Create}
             />
             <Route path={routes.groups.read(':id')} component={Groups.Read} />
+            <Route
+              path={routes.groups.blog.create(':group_id')}
+              component={Groups.Blog.Create}
+            />
+            <Route
+              path={routes.groups.blog.read(':group_id', ':blog_id')}
+              component={Groups.Blog.Read}
+            />
 
             <Route exact path={routes.mocks.main} component={Mocks.Main} />
 

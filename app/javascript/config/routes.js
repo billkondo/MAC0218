@@ -59,7 +59,11 @@ export const routes = {
   groups: {
     main: '/groups/',
     create: '/groups/create_group/',
-    read: id => `/groups/read/${id}`
+    read: id => `/groups/read/${id}`,
+    blog: {
+      create: group_id => `/groups/${group_id}/create`,
+      read: (group_id, blog_id) => `/groups/${group_id}/read/${blog_id}`
+    }
   },
 
   // client side endpoints for problems
@@ -119,7 +123,13 @@ export const routes = {
     groups: {
       create: '/api/groups/create',
       current_user_groups: '/api/groups/current_user_groups',
-      read: id => `/api/groups/read/?id=${id}`
+      read: id => `/api/groups/read/?id=${id}`,
+      blog: {
+        create: '/api/groups/blog/create',
+        get_all: group_id => `/api/groups/blog/get_all/?group_id=${group_id}`,
+        read: (group_id, blog_id) =>
+          `/api/groups/blog/read/?group_id=${group_id}&blog_id=${blog_id}`
+      }
     }
   }
 };

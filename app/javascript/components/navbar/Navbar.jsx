@@ -22,7 +22,7 @@ class Navbar extends React.Component {
       <AppBar
         position="fixed"
         style={{
-          background: 'linear-gradient(#e57373, #ff1744)'
+          background: 'linear-gradient(#e57373, #ef5350)'
         }}
         className={classes.appBar}
         elevation={0}
