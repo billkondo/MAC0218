@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 import { routes } from '../../../../config';
 
 export const MockCard = ({ mock }) => {
-  console.log("MOCK", mock)
   return (
     <Card style={{ width: 300, height: 380 }} elevation={4}>
       <CardContent>

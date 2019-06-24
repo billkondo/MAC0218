@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Typography, Icon } from '@material-ui/core';
 import { SentimentSatisfied } from '@material-ui/icons';
 import { MockCard } from './MockCard';
+import { routes } from '../../../../config';
+import { Services } from '../../../../services'
 
 
 export const Suggestions = () => {
   // TODO: make request to get mocks
-  const [mocks, setMocks] = useState([
-    {
-      title: 'MAC0218',
-      description: 'Um grupo para testes!!! Testando várias possibilidades',
-      id: 1
-    },
-    {
-      title: 'Título',
-      description: 'Description',
-      id: 2
-    }
-  ]);
+  const [mocks, setMocks] = useState([]);
+
+  useEffect(()=> {
+    Services.Api.Mock.get_all_mocks()
+    .then(res => {
+      setMocks(res.data.mocks)
+    })
+    .catch(err => console.log(err));
+  }, [])
 
   return (
     <Grid container direction="column">

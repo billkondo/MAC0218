@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'api/mocks/update_mock' => 'mock#update_mock'
   get 'api/mocks/get_mock'    => 'mock#get_mock'
   get 'api/mocks/get_problems_list' => 'mock#get_problems_list'
+  get 'api/mocks/get_all_mocks' => 'mock#get_all_mocks'
 
 
   # Authentication

@@ -120,6 +120,7 @@ export const routes = {
     mocks: {
       create: '/api/mocks/create',
       get_problems_list: '/api/mocks/get_problems_list',
+      get_all_mocks: '/api/mocks/get_all_mocks'
     }
   }
 };
