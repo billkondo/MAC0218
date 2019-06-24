@@ -16,7 +16,7 @@ const Empty = () => {
 
       <Grid item>
         <Typography variant="body1" style={{ fontWeight: 'bold' }}>
-          Nenhum problema foi adicionada ainda
+          Nenhum problema foi adicionado ainda
         </Typography>
       </Grid>
     </Grid>

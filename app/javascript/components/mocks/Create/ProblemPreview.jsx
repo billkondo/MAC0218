@@ -10,24 +10,36 @@ class ProblemPreview extends React.Component {
   }
 
   componentWillMount() {
-    console.log("VAI MONTAR")
     const { problem_id } = this.props;
-    console.log("id", problem_id)
     Services.Api.MultipleChoice.get_multiple_choice_problem(problem_id)
       .then(res => {
-        console.log(res);
-        const { problem, alternatives } = res.data;
-        console.log("devolveu")
-        console.log(problem)
-        try {
-          this.setState({
-            title: problem.title
-          });
-        } catch (e) {
-          console.log(e);
+        if(res.data.status != "ERROR"){
+          const { problem } = res.data;
+          try {
+            this.setState({
+              title: problem.title
+            });
+          } catch (e) {
+            console.log(e);
+          }
         }
       })
       .catch(err => this.setState({ status: this.status.error }));
+
+    Services.Api.write.get(problem_id)
+      .then(res => {
+        if (res.data.status != "ERROR") {
+          debug
+          const problem = res.data.write_problem;
+          try {
+            this.setState({
+              title: problem.title
+            });
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      })
   }
 
   render() {
