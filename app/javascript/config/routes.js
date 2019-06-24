@@ -78,7 +78,8 @@ export const routes = {
 
   mocks: {
     main: '/mocks/',
-    create: '/mocks/create_mock/'
+    create: '/mocks/create_mock/',
+    read: id => `/mocks/read/?id=${id}`
   },
 
   api: {
@@ -116,10 +117,9 @@ export const routes = {
       }
     },
 
-    // mocks endpoints
     mocks: {
       create: '/api/mocks/create',
-      get_problems_list: '/api/mocks/get_problems_list'
+      get_problems_list: '/api/mocks/get_problems_list',
     }
   }
 };
