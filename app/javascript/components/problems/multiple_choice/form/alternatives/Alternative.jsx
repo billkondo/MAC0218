@@ -34,6 +34,11 @@ const styles = theme => ({
   notchedOutline: {
     borderColor: `${colors.green[300]} !important`,
     borderWidth: '2px',
+  },
+
+  notchedOutlineWrong: {
+    borderColor: `${colors.red[300]} !important`,
+    borderWidth: '2px',
   }
 });
 
@@ -41,6 +46,7 @@ const Alternative = ({
   alt,
   deleteAlt,
   isCorrect,
+  isWrong,
   setCorrect,
   classes,
   mode
@@ -57,7 +63,7 @@ const Alternative = ({
             readOnly: true,
             classes: {
               focused: isCorrect ? classes.cssFocused : null,
-              notchedOutline: isCorrect ? classes.notchedOutline : null
+              notchedOutline: isCorrect ? classes.notchedOutline : isWrong ? classes.notchedOutlineWrong : null
             }
           }}
           fullWidth
