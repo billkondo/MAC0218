@@ -28,11 +28,12 @@ const styles = theme => ({
       borderColor: colors.green[300]
     }
   },
-
+  
   cssFocused: {},
-
+  
   notchedOutline: {
-    borderColor: `${colors.green[300]} !important`
+    borderColor: `${colors.green[300]} !important`,
+    borderWidth: '2px',
   }
 });
 
