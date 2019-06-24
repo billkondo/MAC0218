@@ -48,8 +48,23 @@ const get_all_mocks = () => {
   });
 };
 
+const get_mock = (id) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      method: 'GET',
+      url: routes.mocks.read(id),
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      }
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+};
+
 export const Mock = {
   create,
   get_problems_list,
-  get_all_mocks
+  get_all_mocks,
+  get_mock
 };

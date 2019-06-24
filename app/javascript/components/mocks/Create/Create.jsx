@@ -45,21 +45,7 @@ const _Create = () => {
     Services.Api.Mock.create(mock)
       .then(res => console.log(res))
       .catch(err => console.log(err));
-
-    // HTTP axios post -> servidor -> porta
   };
-
-  // const submitForm = problem => {
-  //   Services.Api.Mock.create(mock)
-  //     .then(res => {
-  //       // redirect user
-  //       if (res.data.status === 'OK') {
-  //       } else {
-  //         // TODO throw errors
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // };
 
   return (
     <Grid container direction="column">

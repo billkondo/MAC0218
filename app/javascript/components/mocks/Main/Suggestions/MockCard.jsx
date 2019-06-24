@@ -15,7 +15,7 @@ import { routes } from '../../../../config';
 
 export const MockCard = ({ mock }) => {
   return (
-    <Card style={{ width: 300, height: 380 }} elevation={4}>
+    <Card style={{ width: 300, height: 300 }} elevation={4}>
       <CardContent>
         <Grid container direction="column">
           <Grid item style={{ padding: 8 }}>
@@ -31,7 +31,7 @@ export const MockCard = ({ mock }) => {
               fullWidth
               InputProps={{ readOnly: true }}
               variant="outlined"
-              rows={10}
+              rows={6}
             />
           </Grid>
 

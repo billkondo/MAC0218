@@ -145,8 +145,8 @@ const App = ({ isAuth, container }) => {
               component={Groups.Create}
             />
             <Route exact path={routes.mocks.main} component={Mocks.Main} />
-
             <Route exact path={routes.mocks.create} component={Mocks.Create} />
+            <Route path="/mocks/read/:id" component={Mocks.Read} />
           </Switch>
         </main>
       </BrowserRouter>
