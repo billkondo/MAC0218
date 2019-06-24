@@ -1,25 +1,48 @@
 import React, { useState, useEffect } from 'react';
+import { 
+  Grid,
+  Button,
+  FormControl,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+  FormLabel,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Alternative from '../multiple_choice/form/alternatives/Alternative'
+
 import { withRouter } from 'react-router-dom';
 
 import { Services } from '../../../services';
-import { Form } from '../multiple_choice/form';
-import { routes } from '../../../config';
 
-const Practice = ({ match, history }) => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  group: {
+    margin: theme.spacing(1, 0),
+  },
+}));
+
+const STATUS = {
+  DONE: 'DONE',
+  LOADING: 'LOADING',
+  ERROR: 'ERROR'
+};
+
+export const PracticeProblem = ({ match }) => {
+  const classes = useStyles()
+
   const [problem, setProblem] = useState({});
   const [alternatives, setAlternatives] = useState([]);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState(STATUS.LOADING);
+  const [marked, mark] = useState('')
+  const [solved, setSolved] = useState(false)
 
-  const _status = {
-    done: 'DONE',
-    loading: 'LOADING',
-    error: 'ERROR'
-  };
 
   useEffect(() => {
     const id = match.params.id;
-
-    setStatus(_status.loading);
 
     Services.Api.MultipleChoice.get_multiple_choice_problem(id)
       .then(res => {
@@ -28,36 +51,71 @@ const Practice = ({ match, history }) => {
         if (res.data.status === 'OK') {
           setAlternatives(alternatives);
           setProblem(problem);
-          setStatus(_status.done);
+          setStatus(STATUS.DONE);
         } else {
-          setStatus(_status.error);
+          setStatus(STATUS.ERROR);
         }
       })
       .catch(err => console.log(err));
   }, []);
 
-  const submitForm = problem => {
-    const id = match.params.id;
+  return status === STATUS.DONE ? (
+    <Grid container alignContent="center" style={{ paddingLeft: 32, paddingRight: 32 }}>
+      <Grid container>
+        <h2>{problem.statement}</h2>
+      </Grid>
+      <Grid container>
+        <FormControl fullWidth component="fieldset">
+          <FormLabel component="legend">Alternatives</FormLabel>
+          <RadioGroup
+            aria-label="Alternatives"
+            name="alternatives"
+            className={classes.group}
+            value={marked}
+            onChange={event => {
+              if (!solved) {
+                mark(event.target.value)
+              }
+            }}
+          >
+            {
+              alternatives.map(alternative => {
+                const isCorrect = alternative.text === problem.correct_answer
+                const isMarked = alternative.id.toString() === marked 
 
-    Services.Api.MultipleChoice.update_multiple_choice(problem, id)
-      .then(res => {
-        if (res.data.status === 'OK') {
-          history.push(routes.read_multiple_problem(id));
-        } else {
-          setStatus(_status.error);
-        }
-      })
-      .catch(err => console.log(err));
-  };
-
-  return status === _status.done ? (
-    <Form
-      mode="edit"
-      problem={problem}
-      alternatives={alternatives}
-      submitForm={submitForm}
-    />
+                return (
+                  <FormControlLabel
+                    value={alternative.id.toString()}
+                    control={<Radio color="primary" />}
+                    label={
+                      !solved
+                        ? alternative.text
+                        :
+                        <Alternative
+                          alt={alternative}
+                          mode="read"
+                          isCorrect={isCorrect}
+                          isWrong={isMarked && !isCorrect}
+                        />
+                    }
+                    key={alternative.id}
+                  />)
+              })
+            }
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      {!solved ?
+        <Grid item container spacing={2} justify="flex-end">
+          <Grid item>
+            <Button variant="outlined" onClick={() => {
+              setSolved(true)
+            }}>
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
+        : null}
+    </Grid>
   ) : null;
 };
-
-export const PracticeProblem = withRouter(Practice);
