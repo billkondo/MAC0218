@@ -46,14 +46,9 @@ class MockController < ApplicationController
   def get_mock
     begin 
       id = params[:id]
-      problem = Mock.find(id).as_json
-      multiple_choice_problem = MultipleChoiceProblem.where(mock_id: id).all
+      mock = Mock.find(id).as_json
 
-      problem["isOwner"] = current_user.id == problem["user_id"]
-
-      print problem.as_json
-
-      render json: { status: "OK", problem: problem, multiple_choice_problem: multiple_choice_problem }
+      render json: { status: "OK", mock: mock }
     rescue
       render json: { status: "ERROR" }
     end

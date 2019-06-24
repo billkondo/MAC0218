@@ -79,7 +79,7 @@ export const routes = {
   mocks: {
     main: '/mocks/',
     create: '/mocks/create_mock/',
-    read: id => `/mocks/read/?id=${id}`
+    read: id => `/mocks/read/${id}`
   },
 
   api: {
@@ -120,7 +120,8 @@ export const routes = {
     mocks: {
       create: '/api/mocks/create',
       get_problems_list: '/api/mocks/get_problems_list',
-      get_all_mocks: '/api/mocks/get_all_mocks'
+      get_all_mocks: '/api/mocks/get_all_mocks',
+      get: id => `/api/mocks/get_mock/?id=${id}`
     }
   }
 };

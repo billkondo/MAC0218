@@ -52,7 +52,7 @@ const get_mock = (id) => {
   return new Promise((resolve, reject) => {
     axios({
       method: 'GET',
-      url: routes.mocks.read(id),
+      url: routes.api.mocks.get(id),
       headers: {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
       }
