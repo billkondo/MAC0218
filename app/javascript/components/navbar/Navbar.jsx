@@ -11,12 +11,13 @@ import {
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
+import { routes } from '../../config';
 import ProfileIcon from './ProfileIcon';
 import Registration from './Registration';
 
 class Navbar extends React.Component {
   render() {
-    const { isAuth, classes, handleDrawerToggle } = this.props;
+    const { isAuth, classes, handleDrawerToggle, drawerWidth } = this.props;
 
     return (
       <AppBar
@@ -25,7 +26,7 @@ class Navbar extends React.Component {
           background: 'linear-gradient(#e57373, #ef5350)'
         }}
         className={classes.appBar}
-        elevation={0}
+        elevation={4}
       >
         <Toolbar>
           <Grid container alignItems="center">
@@ -37,6 +38,17 @@ class Navbar extends React.Component {
               >
                 <Menu />
               </IconButton>
+            </Grid>
+
+            <Grid item style={{ width: drawerWidth }}>
+              <Link to={routes.home} style={{ textDecoration: 'none' }}>
+                <Typography
+                  variant="h6"
+                  style={{ fontWeight: 'bold', color: colors.grey[50] }}
+                >
+                  MAC0218
+                </Typography>
+              </Link>
             </Grid>
 
             <Grid item style={{ flex: 1 }}>
