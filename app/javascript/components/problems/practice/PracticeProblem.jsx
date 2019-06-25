@@ -15,7 +15,7 @@ const TYPE = {
   WRITE: 'WRITE',
 }
 
-export const PracticeProblem = ({ match, id }) => {
+export const PracticeProblem = ({ match, id, showSubmit, isSolved }) => {
   const [problem, setProblem] = useState({});
   const [alternatives, setAlternatives] = useState([]);
   const [type, setType] = useState('')
@@ -59,6 +59,8 @@ export const PracticeProblem = ({ match, id }) => {
     <PracticeMultipleChoice
       problem={problem}
       alternatives={alternatives}
+      showSubmit={showSubmit}
+      isSolved={isSolved}
     />
   ) : null;
 };
