@@ -25,12 +25,18 @@ const useStyles = makeStyles(theme => ({
 const PracticeMultipleChoice = ({
   problem,
   alternatives,
+  showSubmit,
+  isSolved,
 }) => {
   const classes = useStyles()
   
   const [marked, mark] = useState('')
-  const [solved, setSolved] = useState(false)
-  
+  const [solved, setSolved] = useState(isSolved || false)
+ 
+  if (isSolved !== solved) {
+    setSolved(isSolved)
+  }
+
   return (
     <Grid container alignContent="center" style={{ paddingLeft: 32, paddingRight: 32 }}>
       <Grid container>
@@ -77,7 +83,7 @@ const PracticeMultipleChoice = ({
           </RadioGroup>
         </FormControl>
       </Grid>
-      {!solved ?
+      {!solved && showSubmit ?
         <Grid item container spacing={2} justify="flex-end">
           <Grid item>
             <Button variant="outlined" onClick={() => {
