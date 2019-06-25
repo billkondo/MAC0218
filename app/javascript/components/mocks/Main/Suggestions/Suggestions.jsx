@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Typography, Icon } from '@material-ui/core';
-import { SentimentSatisfied } from '@material-ui/icons';
+import { Book } from '@material-ui/icons';
 import { MockCard } from './MockCard';
 import { routes } from '../../../../config';
 import { Services } from '../../../../services'
@@ -25,9 +25,9 @@ export const Suggestions = () => {
           <Grid container alignItems="center" spacing={3}>
             <Grid item />
             <Icon>
-              <SentimentSatisfied />
+              <Book />
             </Icon>
-            <Grid item>Sugestões</Grid>
+            <Grid item>Simulados salvos</Grid>
           </Grid>
         </Typography>
       </Grid>
