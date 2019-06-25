@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import PracticeMultipleChoice from './PracticeMultipleChoice'
+import PracticeMultipleChoice from './PracticeMultipleChoice';
 
 import { Services } from '../../../services';
 
@@ -12,13 +12,13 @@ const STATUS = {
 
 const TYPE = {
   MULTIPLE_CHOICE: 'MULTIPLE_CHOICE',
-  WRITE: 'WRITE',
-}
+  WRITE: 'WRITE'
+};
 
 export const PracticeProblem = ({ match, id, showSubmit, isSolved }) => {
   const [problem, setProblem] = useState({});
   const [alternatives, setAlternatives] = useState([]);
-  const [type, setType] = useState('')
+  const [type, setType] = useState('');
   const [status, setStatus] = useState(STATUS.LOADING);
 
   useEffect(() => {
@@ -26,33 +26,32 @@ export const PracticeProblem = ({ match, id, showSubmit, isSolved }) => {
 
     Services.Api.MultipleChoice.get_multiple_choice_problem(problem_id)
       .then(res => {
-        if(res.data.status != "ERROR"){
+        if (res.data.status != 'ERROR') {
           const { problem, alternatives } = res.data;
           try {
-            setProblem(problem)
-            setAlternatives(alternatives)
-            setType(TYPE.MULTIPLE_CHOICE)
-            setStatus(STATUS.DONE)
-          } catch(e) {
-            console.error(e)
-          }
-        }
-      })
-      .catch(_ => this.setState({ status: this.status.error }));
-
-    Services.Api.write.get(problem_id)
-      .then(res => {
-        if (res.data.status != "ERROR") {
-          const problem = res.data.write_problem;
-          try {
-            setProblem(problem)
-            setType(TYPE.WRITE)
-            setStatus(STATUS.DONE)
+            setProblem(problem);
+            setAlternatives(alternatives);
+            setType(TYPE.MULTIPLE_CHOICE);
+            setStatus(STATUS.DONE);
           } catch (e) {
             console.error(e);
           }
         }
       })
+      .catch(_ => this.setState({ status: this.status.error }));
+
+    Services.Api.Write.get(problem_id).then(res => {
+      if (res.data.status != 'ERROR') {
+        const problem = res.data.write_problem;
+        try {
+          setProblem(problem);
+          setType(TYPE.WRITE);
+          setStatus(STATUS.DONE);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    });
   }, []);
 
   return status === STATUS.DONE ? (
