@@ -31,9 +31,14 @@ const PracticeMultipleChoice = ({
   const classes = useStyles()
   
   const [marked, mark] = useState('')
-  const [solved, setSolved] = useState(isSolved || false)
+  const [solved, setSolved] = useState(false)
+  const [shouldShowSubmit, setShouldShowSubmit] = useState(true)
+
+  if (showSubmit !== undefined && showSubmit !== shouldShowSubmit) {
+    setShouldShowSubmit(showSubmit)
+  }
  
-  if (isSolved !== solved) {
+  if (isSolved !== undefined && isSolved !== solved) {
     setSolved(isSolved)
   }
 
@@ -83,7 +88,7 @@ const PracticeMultipleChoice = ({
           </RadioGroup>
         </FormControl>
       </Grid>
-      {!solved && showSubmit ?
+      {shouldShowSubmit ?
         <Grid item container spacing={2} justify="flex-end">
           <Grid item>
             <Button variant="outlined" onClick={() => {
