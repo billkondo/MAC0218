@@ -43,7 +43,9 @@ const _Create = () => {
     console.log('submit', mock);
 
     Services.Api.Mock.create(mock)
-      .then(res => console.log(res))
+      .then(res => {
+        window.location.href = routes.mocks.main
+      })
       .catch(err => console.log(err));
   };
 
