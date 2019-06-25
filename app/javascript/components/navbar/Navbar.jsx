@@ -46,7 +46,7 @@ class Navbar extends React.Component {
                   variant="h6"
                   style={{ fontWeight: 'bold', color: colors.grey[50] }}
                 >
-                  MAC0218
+                  SimuVest
                 </Typography>
               </Link>
             </Grid>

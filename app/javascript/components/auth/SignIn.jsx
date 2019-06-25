@@ -77,7 +77,7 @@ class SignIn extends React.Component {
                           align="center"
                           style={{ fontWeight: 'bold' }}
                         >
-                          Entrar em MAC0218
+                          Entrar em SimuVest
                         </Typography>
                       </Grid>
 
@@ -143,7 +143,7 @@ class SignIn extends React.Component {
                     <Grid item>
                       <Box fontWeight="bold">
                         <Typography variant="body1">
-                          Novo no MACO218 ?
+                          Novo no SimuVest?
                         </Typography>
                       </Box>
                     </Grid>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Typography, Icon, Button, colors } from '@material-ui/core';
-import { GroupOutlined } from '@material-ui/icons';
+import { NoteOutlined } from '@material-ui/icons';
 
 import { routes } from '../../../config';
 
@@ -13,7 +13,7 @@ export const Header = () => {
           <Grid container alignItems="center" spacing={3}>
             <Grid item />
             <Icon>
-              <GroupOutlined />
+              <NoteOutlined />
             </Icon>
             <Grid item>Simulados</Grid>
           </Grid>

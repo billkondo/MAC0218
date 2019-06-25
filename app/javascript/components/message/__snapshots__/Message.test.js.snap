@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the Message component correctly 1`] = `
+<WithStyles(Message)>
+  <Message
+    classes={
+      Object {
+        "close": "Message-close-1",
+      }
+    }
+  >
+    <div>
+      <WithStyles(ForwardRef(Snackbar))
+        ContentProps={
+          Object {
+            "aria-describedby": "message-id",
+          }
+        }
+        action={
+          Array [
+            <ForwardRef(WithStyles)
+              aria-label="Close"
+              className="Message-close-1"
+              color="inherit"
+              onClick={[Function]}
+            >
+              <pure(CloseIcon) />
+            </ForwardRef(WithStyles)>,
+          ]
+        }
+        anchorOrigin={
+          Object {
+            "horizontal": "left",
+            "vertical": "bottom",
+          }
+        }
+        autoHideDuration={6000}
+        message={
+          <span
+            id="message-id"
+          />
+        }
+        onClose={[Function]}
+      >
+        <ForwardRef(Snackbar)
+          ContentProps={
+            Object {
+              "aria-describedby": "message-id",
+            }
+          }
+          TransitionComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "Naked": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "muiSupportAuto": true,
+                "propTypes": Object {
+                  "children": [Function],
+                  "in": [Function],
+                  "onEnter": [Function],
+                  "onExit": [Function],
+                  "style": [Function],
+                  "theme": [Function],
+                  "timeout": [Function],
+                },
+                "render": [Function],
+              },
+              "displayName": "WithTheme(ForwardRef(Grow))",
+              "muiSupportAuto": true,
+              "propTypes": Object {
+                "innerRef": [Function],
+              },
+              "render": [Function],
+            }
+          }
+          action={
+            Array [
+              <ForwardRef(WithStyles)
+                aria-label="Close"
+                className="Message-close-1"
+                color="inherit"
+                onClick={[Function]}
+              >
+                <pure(CloseIcon) />
+              </ForwardRef(WithStyles)>,
+            ]
+          }
+          anchorOrigin={
+            Object {
+              "horizontal": "left",
+              "vertical": "bottom",
+            }
+          }
+          autoHideDuration={6000}
+          classes={
+            Object {
+              "anchorOriginBottomCenter": "MuiSnackbar-anchorOriginBottomCenter",
+              "anchorOriginBottomLeft": "MuiSnackbar-anchorOriginBottomLeft",
+              "anchorOriginBottomRight": "MuiSnackbar-anchorOriginBottomRight",
+              "anchorOriginTopCenter": "MuiSnackbar-anchorOriginTopCenter",
+              "anchorOriginTopLeft": "MuiSnackbar-anchorOriginTopLeft",
+              "anchorOriginTopRight": "MuiSnackbar-anchorOriginTopRight",
+              "root": "MuiSnackbar-root",
+            }
+          }
+          disableWindowBlurListener={false}
+          message={
+            <span
+              id="message-id"
+            />
+          }
+          onClose={[Function]}
+          transitionDuration={
+            Object {
+              "enter": 225,
+              "exit": 195,
+            }
+          }
+        />
+      </WithStyles(ForwardRef(Snackbar))>
+    </div>
+  </Message>
+</WithStyles(Message)>
+`;

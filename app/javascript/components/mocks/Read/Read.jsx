@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
 import { Services } from '../../../services';
 import {
   Typography,
@@ -14,6 +13,7 @@ import { PracticeProblem } from '../../problems/practice/PracticeProblem'
 const _Read = ({ location }) => {
   const [mock, setMock] = useState([]);
   const [startMock, setStartMock] = useState(false);
+  const [solved, setSolved] = useState(false);
 
   useEffect(() => {
     const pathname = location.pathname
@@ -47,10 +47,27 @@ const _Read = ({ location }) => {
         </Typography>
       </Grid>  
       {startMock ?
-        mock.problems.map((problem_id) => {
-          console.log(problem_id);
-          return <PracticeProblem id={problem_id} />
-        })
+        <Fragment>
+          {mock.problems.map((problem_id) => {
+            return (
+              <PracticeProblem
+                id={problem_id}
+                showSubmit={false}
+                isSolved={solved}
+                key={problem_id}
+              />
+            )
+          })}
+          {!solved && <Grid item container spacing={2} justify="flex-end">
+            <Grid item>
+              <Button variant="outlined" onClick={() => {
+                setSolved(true)
+              }}>
+                Submit
+            </Button>
+            </Grid>
+          </Grid>}
+        </Fragment>
         :
         <Button
           variant="contained"
