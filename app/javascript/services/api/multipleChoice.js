@@ -1,8 +1,8 @@
 import { routes } from '../../config';
 import axios from 'axios';
 
-const create = multiple_choice_problem =>
-  new Promise((resolve, reject) => {
+const create = multiple_choice_problem => {
+  return new Promise((resolve, reject) => {
     axios({
       method: 'POST',
       url: routes.createMultipleChoice,
@@ -16,6 +16,7 @@ const create = multiple_choice_problem =>
       .then(res => resolve(res))
       .catch(err => reject(err));
   });
+};
 
 const get_problems = (
   cancelToken // TODO: Should be in another file, instead of multipleChoice.js

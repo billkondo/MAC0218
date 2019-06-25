@@ -1,19 +1,21 @@
 import { MultipleChoice } from './multipleChoice';
-import { write } from './write';
+import { Write } from './write';
 import { Auth } from './auth';
 import { profile } from './profile';
-import { problems } from './problems';
+import { Problems } from './problems';
 import { Mock } from './mock';
 import { Groups } from './groups';
 import { Blogs } from './blogs';
+import { Axios } from './axios';
 
 export const Api = {
   MultipleChoice,
   Auth,
-  write,
+  Write,
   profile,
   Mock,
-  problems,
+  Problems,
   Groups,
-  Blogs
+  Blogs,
+  Axios
 };

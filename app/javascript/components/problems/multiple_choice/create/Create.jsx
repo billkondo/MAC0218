@@ -14,7 +14,7 @@ class _Create extends React.Component {
         if (res.data.status === 'OK') {
           const { history } = this.props;
           const id = res.data.id;
-          history.push(routes.read_multiple_problem(id));
+          history.push(routes.problems.multiple_choice.read(id));
         } else {
           // TODO throw errors
         }

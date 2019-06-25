@@ -4,9 +4,15 @@ class MultipleChoiceProblemsController < ApplicationController
     multiple_choice_problem.user_id = current_user.id
 
     if multiple_choice_problem.save 
-      render json: {id: multiple_choice_problem.id }, status: :created
+      render json: {
+        id: multiple_choice_problem.id, 
+        status: 'OK'
+      }
     else
-      render json: multiple_choice_problem.errors, status: :error
+      render json: {
+        errors: multiple_choice_problem.errors,
+        status: 'ERROR'
+      }
     end
   end
 

@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :write_favorite do
+    user { nil }
+    write_problem { nil }
+  end
+
     factory :user do
         username { Faker::Internet.username}
         email { Faker::Internet.email }

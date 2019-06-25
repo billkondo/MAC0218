@@ -1,6 +1,7 @@
 class WriteProblem < ApplicationRecord
   belongs_to :user
   has_many :write_problem_questions, dependent: :destroy
+  has_many :write_favorites, dependent: :destroy
 
   accepts_nested_attributes_for :write_problem_questions, allow_destroy: true
 

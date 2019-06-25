@@ -68,15 +68,16 @@ export const routes = {
 
   // client side endpoints for problems
   problems: {
-    main: '/problems/',
+    main: (tab = 'recent', queryParams = true) =>
+      queryParams ? `/problems/?tab=${tab}` : `/problems/`,
     create_select_type: '/problems/create_problem',
 
     write: {
-      read: id => `/problems/write_problem/?id=${id}`
+      read: id => `/problems/write_problem/${id}`
     },
 
     multiple_choice: {
-      read: id => `/problems/multiple_choice/?id=${id}`
+      read: id => `/problems/multiple_choice/${id}`
     }
   },
 
@@ -105,11 +106,13 @@ export const routes = {
     // problems endpoints
     problems: {
       get_all: '/api/problems/get_all',
+      get_user_problems: '/api/problems/get_user_problems',
 
       // write problems endpoints
       write: {
         create: '/api/problems/write/create',
-        get: id => `/api/problems/write/get/?id=${id}`
+        get: id => `/api/problems/write/get/?id=${id}`,
+        update_favorite: `/api/problems/write/update_favorite`
       },
 
       // multiple choice problems endpoints

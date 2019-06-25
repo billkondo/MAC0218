@@ -2,8 +2,6 @@ import axios from 'axios';
 import { routes } from '../../config';
 
 const create = write_problem => {
-  console.log(write_problem);
-
   return new Promise((resolve, reject) => {
     axios({
       method: 'POST',
@@ -34,7 +32,27 @@ const get = ID => {
   });
 };
 
-export const write = {
+const update_favorite = (id, flag, cancelToken = null) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      method: 'POST',
+      url: routes.api.problems.write.update_favorite,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      data: {
+        id,
+        flag
+      },
+      cancelToken
+    })
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+};
+
+export const Write = {
   create,
-  get
+  get,
+  update_favorite
 };

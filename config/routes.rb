@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   post 'api/problems/update_multiple_choice_favorites' => 'multiple_choice_problems#update_multiple_choice_favorites'
 
   # Write problems routing
-  post 'api/problems/write/create' => 'write_problems#create'
-  get  'api/problems/write/get'    => 'write_problems#get'
+  post 'api/problems/write/create'          => 'write_problems#create'
+  get  'api/problems/write/get'             => 'write_problems#get'
+  post 'api/problems/write/update_favorite' => 'write_problems#update_favorite'
 
   # Problems routing
-  get 'api/problems/get_all' => 'problems#get_all'
+  get 'api/problems/get_all'           => 'problems#get_all'
+  get 'api/problems/get_user_problems' => 'problems#get_user_problems'
 
   # Mock routing
   post 'api/mocks/create' => 'mock#create'

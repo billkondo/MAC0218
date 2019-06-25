@@ -64,7 +64,7 @@ export const AppDrawer = ({
       </Grid>
 
       <List>
-        <Link to={routes.problems.main} style={{ textDecoration: 'none' }}>
+        <Link to={routes.problems.main()} style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <EditOutlined />

@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :multiple_choice_favorites, dependent: :destroy
 
   has_many :write_problems, dependent: :destroy
+  has_many :write_favorites, dependent: :destroy
 end

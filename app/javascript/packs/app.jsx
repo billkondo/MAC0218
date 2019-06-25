@@ -8,7 +8,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Hidden
+  Hidden,
+  colors
 } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -43,10 +44,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   appBar: {
-    // marginLeft: drawerWidth,
-    // [theme.breakpoints.up('sm')]: {
-    //   width: `calc(100% - ${drawerWidth}px)`
-    // }
     zIndex: theme.zIndex.drawer + 1
   },
   menuButton: {
@@ -58,8 +55,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: 'linear-gradient(#fff8e1, #fff3e0)',
-    flexShrink: 0
+    flexShrink: 0,
+    background: colors.grey[200]
   },
   content: {
     flexGrow: 1
@@ -106,11 +103,6 @@ const App = ({ isAuth, container }) => {
               path={routes.home}
               render={() => <Home isAuth={isAuth} />}
             />
-            <Route
-              exact
-              path={routes.problems.main}
-              component={Problems.Main}
-            />
             <Route exact path="/practice/:id" component={PracticeProblem} />
             <Route
               exact
@@ -135,7 +127,8 @@ const App = ({ isAuth, container }) => {
             <Route exact path={routes.profile.main} component={Profile.Main} />
             <Route exact path={routes.profile.edit} component={Profile.Edit} />
             <Route
-              path="/problems/multiple_choice/:id"
+              exact
+              path={routes.problems.multiple_choice.read(':id')}
               component={MultipleChoice.Read}
             />
             <Route
@@ -143,7 +136,11 @@ const App = ({ isAuth, container }) => {
               component={MultipleChoice.Edit}
             />
             <Route path={routes.write_form} component={Write.Create} />
-            <Route path="/problems/write_problem/" component={Write.Read} />
+            <Route
+              exact
+              path={routes.problems.write.read(':id')}
+              component={Write.Read}
+            />
 
             <Route exact path={routes.groups.main} component={Groups.Main} />
             <Route
@@ -164,6 +161,11 @@ const App = ({ isAuth, container }) => {
             <Route exact path={routes.mocks.main} component={Mocks.Main} />
             <Route exact path={routes.mocks.create} component={Mocks.Create} />
             <Route path="/mocks/read/:id" component={Mocks.Read} />
+
+            <Route
+              path={routes.problems.main('', false)}
+              component={Problems.Main}
+            />
           </Switch>
         </main>
       </BrowserRouter>

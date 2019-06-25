@@ -18,11 +18,8 @@ const _Create = ({ history }) => {
       )
     };
 
-    Services.Api.write
-      .create(problem)
+    Services.Api.Write.create(problem)
       .then(res => {
-        console.log(res);
-
         const { write_problem_id, status } = res.data;
 
         if (status === 'OK') {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { Header } from './Header';
-import { List } from './list';
+import { Content } from './content';
 
 export const Main = () => {
   return (
@@ -13,7 +13,7 @@ export const Main = () => {
         </Grid>
 
         <Grid item xs={10} style={{ marginTop: 64 }}>
-          <List />
+          <Content />
         </Grid>
       </Grid>
     </Grid>
