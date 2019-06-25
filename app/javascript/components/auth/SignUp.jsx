@@ -6,8 +6,11 @@ import {
   Typography,
   TextField,
   Button,
-  Grow
+  Grow,
+  colors,
+  Box
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import { routes } from '../../config';
@@ -51,81 +54,104 @@ class SignUp extends React.Component {
     const { errors } = this.state;
 
     return (
-      <Grid container justify="center" spacing={4}>
-        <Grid item md={6} xs={10}>
-          <Grow in={true}>
-            <Paper elevation={4} style={{ marginTop: 32 }}>
-              <form style={{ padding: 32 }}>
-                <Grid container direction="column" spacing={3}>
-                  <Grid item>
-                    <Typography variant="h6" align="center">
-                      Create account
-                    </Typography>
-                  </Grid>
+      <Grid container justify="center">
+        <Grid item xs={12} container justify="center">
+          <Grid item md={6} xs={10}>
+            <Grow in={true}>
+              <Paper elevation={8} style={{ marginTop: 32 }}>
+                <form style={{ padding: 32 }}>
+                  <Grid container direction="column" spacing={3}>
+                    <Grid item>
+                      <Typography
+                        variant="h6"
+                        align="center"
+                        style={{ fontWeight: 'bold' }}
+                      >
+                        Criar conta
+                      </Typography>
+                    </Grid>
 
-                  <Grid item>
-                    <TextField
-                      label="Username"
-                      name="username"
-                      variant="outlined"
-                      fullWidth
-                      onChange={this.handleChange}
-                      value={this.state.username}
-                      error={!!errors.username}
-                      helperText={errors.username}
-                    />
-                  </Grid>
+                    <Grid item>
+                      <TextField
+                        label="Username"
+                        name="username"
+                        variant="outlined"
+                        fullWidth
+                        onChange={this.handleChange}
+                        value={this.state.username}
+                        error={!!errors.username}
+                        helperText={errors.username}
+                      />
+                    </Grid>
 
-                  <Grid item>
-                    <TextField
-                      label="Email"
-                      name="email"
-                      variant="outlined"
-                      fullWidth
-                      onChange={this.handleChange}
-                      value={this.state.email}
-                      error={!!errors.email}
-                      helperText={errors.email}
-                    />
-                  </Grid>
+                    <Grid item>
+                      <TextField
+                        label="Email"
+                        name="email"
+                        variant="outlined"
+                        fullWidth
+                        onChange={this.handleChange}
+                        value={this.state.email}
+                        error={!!errors.email}
+                        helperText={errors.email}
+                      />
+                    </Grid>
 
-                  <Grid item>
-                    <TextField
-                      label="Password"
-                      name="password"
-                      variant="outlined"
-                      fullWidth
-                      type="password"
-                      onChange={this.handleChange}
-                      value={this.state.password}
-                      error={!!errors.password}
-                      helperText={errors.password}
-                    />
-                  </Grid>
+                    <Grid item>
+                      <TextField
+                        label="Senha"
+                        name="password"
+                        variant="outlined"
+                        fullWidth
+                        type="password"
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        error={!!errors.password}
+                        helperText={errors.password}
+                      />
+                    </Grid>
 
-                  <Grid item>
-                    <TextField
-                      label="Password Confirmation"
-                      name="password_confirmation"
-                      variant="outlined"
-                      fullWidth
-                      type="password"
-                      onChange={this.handleChange}
-                      value={this.state.password_confirmation}
-                      error={!!errors.password_confirmation}
-                      helperText={errors.password_confirmation}
-                    />
-                  </Grid>
+                    <Grid item>
+                      <TextField
+                        label="Confirmação de senha"
+                        name="password_confirmation"
+                        variant="outlined"
+                        fullWidth
+                        type="password"
+                        onChange={this.handleChange}
+                        value={this.state.password_confirmation}
+                        error={!!errors.password_confirmation}
+                        helperText={errors.password_confirmation}
+                      />
+                    </Grid>
 
-                  <Grid item>
-                    <Button variant="contained" fullWidth onClick={this.submit}>
-                      Submit
-                    </Button>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={this.submit}
+                        style={{
+                          background: colors.green.A700,
+                          color: colors.grey[50],
+                          fontWeight: 'bold'
+                        }}
+                      >
+                        Criar
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </form>
-            </Paper>
-          </Grow>
+                </form>
+              </Paper>
+            </Grow>
+          </Grid>
+        </Grid>
+
+        <Grid item xs={12} container justify="center" style={{ marginTop: 32 }}>
+          <Grid item xs={10} md={6}>
+            <Link to={routes.sign_in}>
+              <Typography align="center"> Já possuo conta </Typography>
+            </Link>
+          </Grid>
         </Grid>
       </Grid>
     );

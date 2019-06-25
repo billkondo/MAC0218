@@ -40,12 +40,20 @@ Rails.application.routes.draw do
   get 'api/mocks/get_problems_list' => 'mock#get_problems_list'
   get 'api/mocks/get_all_mocks' => 'mock#get_all_mocks'
 
+  # Groups routing
+  post 'api/groups/create' => 'groups#create'
+  get  'api/groups/current_user_groups' => 'groups#current_user_groups'
+  get  'api/groups/read' => 'groups#read'
+
+  # Blog routing
+  post 'api/groups/blog/create'  => 'blogs#create'
+  get  'api/groups/blog/get_all' => 'blogs#get_all'
+  get  'api/groups/blog/read'    => 'blogs#read' 
 
   # Authentication
   devise_scope :user do
     post 'api/auth/sign_up' => 'app_sign_up#create'
   end
-
   
   match '*path', to: 'home#index', via: :all
 end
