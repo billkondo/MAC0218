@@ -25,13 +25,12 @@ import {
   PracticeProblem,
   Write,
   Drawer,
-  Breadcrumb,
   Groups,
   Mocks
 } from '../components';
 import { routes } from '../config';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,10 +43,11 @@ const useStyles = makeStyles(theme => ({
     }
   },
   appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`
-    }
+    // marginLeft: drawerWidth,
+    // [theme.breakpoints.up('sm')]: {
+    //   width: `calc(100% - ${drawerWidth}px)`
+    // }
+    zIndex: theme.zIndex.drawer + 1
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -58,7 +58,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    background: 'linear-gradient(#fff8e1, #fff3e0)'
+    background: 'linear-gradient(#fff8e1, #fff3e0)',
+    flexShrink: 0
   },
   content: {
     flexGrow: 1
@@ -84,21 +85,27 @@ const App = ({ isAuth, container }) => {
           isAuth={isAuth}
           classes={classes}
           handleDrawerToggle={handleDrawerToggle}
+          drawerWidth={drawerWidth}
         />
 
-        <Drawer
-          classes={classes}
-          container={container}
-          theme={theme}
-          mobileOpen={mobileOpen}
-          handleDrawerToggle={handleDrawerToggle}
-        />
+        {isAuth && (
+          <Drawer
+            classes={classes}
+            container={container}
+            theme={theme}
+            mobileOpen={mobileOpen}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+        )}
 
         <main className={classes.content} style={{ marginBottom: 64 }}>
-          <div className={classes.toolbar} />
-          <Breadcrumb />
+          <div className={classes.toolbar} style={{ marginBottom: 32 }} />
           <Switch>
-            <Route exact path={routes.home} component={Home} />
+            <Route
+              exact
+              path={routes.home}
+              render={() => <Home isAuth={isAuth} />}
+            />
             <Route
               exact
               path={routes.problems.main}
@@ -144,6 +151,16 @@ const App = ({ isAuth, container }) => {
               path={routes.groups.create}
               component={Groups.Create}
             />
+            <Route path={routes.groups.read(':id')} component={Groups.Read} />
+            <Route
+              path={routes.groups.blog.create(':group_id')}
+              component={Groups.Blog.Create}
+            />
+            <Route
+              path={routes.groups.blog.read(':group_id', ':blog_id')}
+              component={Groups.Blog.Read}
+            />
+
             <Route exact path={routes.mocks.main} component={Mocks.Main} />
             <Route exact path={routes.mocks.create} component={Mocks.Create} />
             <Route path="/mocks/read/:id" component={Mocks.Read} />

@@ -63,8 +63,6 @@ export const AppDrawer = ({
         </Grid>
       </Grid>
 
-      <Divider />
-
       <List>
         <Link to={routes.problems.main} style={{ textDecoration: 'none' }}>
           <ListItem button>
