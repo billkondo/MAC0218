@@ -13,9 +13,3 @@ test:
   username: gafeol
   password: papaapatia
   database: test_database
-
-production:
-  adapter: postgresql
-  database: my_database_production
-  pool: 5
-  timeout: 5000
