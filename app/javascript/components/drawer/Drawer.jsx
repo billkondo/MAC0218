@@ -57,7 +57,7 @@ export const AppDrawer = ({
               align="center"
               style={{ color: colors.grey[50], fontWeight: 'bold' }}
             >
-              MAC0218
+              SimuVest
             </Typography>
           </Link>
         </Grid>

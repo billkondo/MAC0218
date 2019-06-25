@@ -41,7 +41,7 @@ export const Welcome = () => {
                   marginTop: 64
                 }}
               >
-                MAC0218
+                SimuVest
               </Typography>
             </Title>
 

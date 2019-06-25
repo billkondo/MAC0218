@@ -1,4 +1,4 @@
-# MAC0218
+# MAC0218 - SimuVest
 
 [![Build Status](https://travis-ci.com/billkondo/MAC0218.svg?branch=master)](https://travis-ci.com/billkondo/MAC0218)
 
