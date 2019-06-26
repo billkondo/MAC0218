@@ -20,7 +20,6 @@ const create = mock => {
 };
 
 const get_problems_list = () => {
-  console.log('get problems list');
   return new Promise((resolve, reject) => {
     axios({
       method: 'GET',

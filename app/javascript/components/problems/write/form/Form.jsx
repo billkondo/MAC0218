@@ -27,9 +27,7 @@ export const Form = ({ submit, mode, problemProps, questionsProps }) => {
 
   useEffect(() => {
     if (problemProps) {
-      console.log(problemProps);
       const _questions = questionsProps ? questionsProps : [];
-      console.log(questionsProps);
       setProblem({
         title: problemProps.title,
         statement: problemProps.statement,

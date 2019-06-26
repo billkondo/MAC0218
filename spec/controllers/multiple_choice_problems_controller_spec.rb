@@ -71,7 +71,6 @@ RSpec.describe MultipleChoiceProblemsController, type: :controller do
             prob_id = JSON.parse(response.body)["id"]
             post :update_multiple_choice, :params => {:id => prob_id, :multiple_choice_problem => @params}
             expect(response).to have_http_status(:ok)
-            p response.body
         end
     end
     describe "Get all problems" do

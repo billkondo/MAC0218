@@ -44,7 +44,6 @@ const _Create = ({ history }) => {
       })
       .catch(err => {
         // console.log(err);
-        // TODO implement errors
       });
   };
 

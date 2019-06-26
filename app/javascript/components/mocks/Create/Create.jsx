@@ -28,20 +28,15 @@ const _Create = () => {
   };
 
   const removeProblem = id => {
-    console.log('antes', mock.problems);
-    console.log('id', id);
     setMock({
       ...mock,
       problems: mock.problems.filter(
         prob => prob !== id
       ),
     });
-    console.log('depois', mock.problems);
   };
 
   const handleSubmit = () => {
-    console.log('submit', mock);
-
     Services.Api.Mock.create(mock)
       .then(res => {
         window.location.href = routes.mocks.main

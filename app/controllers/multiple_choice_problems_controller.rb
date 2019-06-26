@@ -7,12 +7,12 @@ class MultipleChoiceProblemsController < ApplicationController
       render json: {
         id: multiple_choice_problem.id, 
         status: 'OK'
-      }
+      }, status: :created
     else
       render json: {
         errors: multiple_choice_problem.errors,
         status: 'ERROR'
-      }
+      }, status: :error
     end
   end
 
@@ -75,9 +75,6 @@ class MultipleChoiceProblemsController < ApplicationController
       id = params[:id]
       problem = MultipleChoiceProblem.find(id).as_json
       alternatives = Alternative.where(multiple_choice_problem_id: id).all
-
-
-      print problem.as_json
 
       render json: { status: "OK", problem: problem, alternatives: alternatives }
     rescue

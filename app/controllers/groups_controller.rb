@@ -17,10 +17,6 @@ class GroupsController < ApplicationController
   def current_user_groups
     groups = current_user.Group.all
 
-    print grups.as_json
-
-    print "\n\n"
-
     render json: {
       status: 'OK'
     }
@@ -28,8 +24,6 @@ class GroupsController < ApplicationController
 
   def read
     id = params[:id]
-    print id
-    print "\n"
     group = Group.select(:title, :id, :description, :status).find(id)
 
     render json: {
