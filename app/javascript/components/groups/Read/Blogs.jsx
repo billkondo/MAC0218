@@ -14,7 +14,6 @@ export const Blogs = ({ group_id }) => {
         .then(res => {
           const { blogs, status } = res.data;
 
-          console.log(blogs);
 
           if (status === 'OK') {
             setBlogs(blogs);

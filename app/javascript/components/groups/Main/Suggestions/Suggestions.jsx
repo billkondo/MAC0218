@@ -18,7 +18,6 @@ export const Suggestions = () => {
     }
   ]);
 
-  console.log(groups);
 
   return (
     <Grid container direction="column">

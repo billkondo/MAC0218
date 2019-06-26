@@ -3,7 +3,6 @@ import axios from 'axios';
 import { routes } from '../../config';
 
 const create = (group_id, blog) => {
-  console.log('create blog', group_id, blog);
 
   return new Promise((resolve, reject) => {
     axios({
@@ -23,7 +22,6 @@ const create = (group_id, blog) => {
 };
 
 const get_all = group_id => {
-  console.log('get_all blog');
 
   return new Promise((resolve, reject) => {
     axios({

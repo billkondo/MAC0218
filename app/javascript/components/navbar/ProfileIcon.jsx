@@ -19,7 +19,6 @@ class ProfileIcon extends React.Component {
     const name = e.target.getAttribute('name');
     this.setState({ anchorEl: null });
 
-    console.log(name);
 
     switch (name) {
       case 'profile': {

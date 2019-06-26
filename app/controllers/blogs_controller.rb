@@ -13,9 +13,6 @@ class BlogsController < ApplicationController
     blog.body = params[:blog][:body]
     blog.group_id = params[:group_id]
 
-    print blog.as_json
-    print "\n\n"
-
     if blog.save
       render json: { 
         status: 'OK'

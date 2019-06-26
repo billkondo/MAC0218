@@ -2,8 +2,6 @@ class AppSignUpController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    print resource.as_json
-
     resource.save
     yield resource if block_given?
     if resource.persisted?

@@ -40,7 +40,6 @@ export const Menu = ({ isOpen, close, add, remove}) => {
     }
   }, [isOpen]);
 
-  console.log(problems);
 
   return (
     <Dialog open={isOpen} fullWidth maxWidth="md" scroll="paper">
@@ -69,7 +68,6 @@ export const Menu = ({ isOpen, close, add, remove}) => {
           {!isLoading && (
             <Grid item container direction="column" spacing={4}>
               {problems.map(problem => {
-                console.log(problem);
                 return (
                   <Grid
                     item

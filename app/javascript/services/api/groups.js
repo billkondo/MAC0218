@@ -30,7 +30,6 @@ const current_user_groups = async () => {
 };
 
 const get_group = async id => {
-  console.log(id);
   const res = await axios({
     method: 'GET',
     url: routes.api.groups.read(id),

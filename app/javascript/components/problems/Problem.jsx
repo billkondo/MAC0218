@@ -58,7 +58,6 @@ class Problem extends React.Component {
 
   render() {
     const { problem } = this.state;
-    console.log('Problem ', problem);
     const isLoading = this.state.status === this.status.loading;
 
     return (

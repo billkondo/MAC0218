@@ -47,7 +47,6 @@ const _Create = ({ match, history }) => {
   }, []);
 
   const handleCreate = () => {
-    console.log('create');
 
     if (!!group) {
       Services.Api.Blogs.create(group.id, blog)
