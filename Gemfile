@@ -78,3 +78,6 @@ gem 'travis'
 
 # Pagination for Active Record
 gem 'kaminari'
+
+# React on Rails 
+gem 'react_on_rails', '11.1.4'
